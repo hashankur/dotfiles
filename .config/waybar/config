@@ -1,0 +1,159 @@
+{
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+        "custom/media",
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "cpu",
+        "memory",
+        "custom/gpu-usage",
+        "temperature",
+        "backlight",
+        "pulseaudio",
+        "network",
+        "bluetooth",
+        "battery",
+    ],
+
+    "sway/mode": {
+        "format": "蘒 {}",
+        "tooltip": false
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "disable-click": true,
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": [],
+        },
+        "format": "{icon}",
+        "format-icons": {
+            "default": "",
+            "urgent": "",
+            //"default": "",
+            "focused": ""
+        }
+    },
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+        "critical-threshold": 80,
+        "interval": 1,
+        "format": " {temperatureC}°C",
+        "tooltip": false,
+    },
+    "backlight": {
+        "format": " {percent}%",
+        "on-scroll-up": "$HOME/.config/sway/modules/executable_brightness.sh --dec",
+        "on-scroll-down": "$HOME/.config/sway/modules/executable_brightness.sh --inc",
+        "smooth-scrolling-threshold": 5,
+    },
+    "pulseaudio": {
+        "scroll-step": 1,
+        "format": "{icon} {volume}%",
+        "format-muted": "婢 Muted",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "states": {
+            "warning": 85,
+        },
+        "on-scroll-up": "$HOME/.config/sway/modules/executable_volume.sh --dec",
+        "on-scroll-down": "$HOME/.config/sway/modules/executable_volume.sh --inc",
+        "smooth-scrolling-threshold": 5,
+        "tooltip": false,
+        "on-click": "$HOME/.config/sway/modules/executable_volume.sh --toggle"
+    },
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "format-full": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "tooltip": true
+    },
+    "clock": {
+        "interval": 1,
+        "format": "{:%a %b %d  %I:%M %p}",
+        "on-click": "eww open calendar"
+    },
+    "memory": {
+        "interval": 1,
+        "format": " {percentage}%",
+        "tooltip-format": "Swap: {swapPercentage}%",
+        "states": {
+            "warning": 90,
+        },
+    },
+    "cpu": {
+        "interval": 1,
+        "format": " {usage}%"
+    },
+    "network": {
+        "format-wifi": "直",
+        "format-ethernet": "  {ifname} ({ipaddr})",
+        "format-linked": "說 {essid}",
+        "format-disconnected": "睊",
+        // "format-alt": "說 {ifname} ({ipaddr})",
+        "tooltip": true,
+        "tooltip-format": "{essid}"
+    },
+    "bluetooth": {
+        "format": "",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 20,
+    },
+    "mpd": {
+        "format": "{stateIcon} {artist} - {title}",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "interval": 10,
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "custom/media": {
+        "format": "{icon}{}",
+        "return-type": "json",
+        "format-icons": {
+            "Playing": "  ",
+            "Paused": "  ",
+            },
+        "max-length":50,
+        "exec": "playerctl -a metadata --player=tauon --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{markup_escape(title)}} | {{album}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "on-click": "playerctl play-pause",
+    },
+    "custom/gpu-usage": {
+        "exec": "cat /sys/class/hwmon/hwmon6/device/gpu_busy_percent",
+        "format": " {}%",
+        "return-type": "",
+        "interval": 1
+    }
+}
