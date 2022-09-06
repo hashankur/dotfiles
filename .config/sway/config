@@ -11,7 +11,6 @@ set $editor hx
 
 set $modules_path $HOME/.config/sway/modules
 set $wallpapers_path $HOME/Pictures/Gradients
-set $lock swaylock -f -i ~/Pictures/Wallpapers/beach.jpg
 set $vault encfs -i 1 --extpass="bemenu -p 'Enter pass: ' < /dev/null" -m ~/.local/share/plasma-vault/Han.enc ~/Vaults/Han/ | xargs -I% notify-send "%"
 
 # Theme: Ayu Mirage
@@ -206,7 +205,8 @@ include /etc/sway/config.d/*
 
 exec_always swayidle -w \
     timeout 300 'swaymsg "output * dpms off"' \
-    timeout 315 $lock \
+    resume 'swaymsg "output * dpms on"' \
+    timeout 315 'swaylock -f -i ~/Pictures/Wallpapers/beach.jpg' \
     timeout 600 'systemctl suspend' \
     after-resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock -f -c cccfff'\
