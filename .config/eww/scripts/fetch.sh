@@ -2,7 +2,7 @@
 
 # Here you should theorically only have to change the pkg variable to whatever commando can count your distro's packages, I left two examples there just in case.
 
-os=$(cat "/etc/os-release" | grep -w "ID=" | tr -d '"')
+os=$(cat "/etc/os-release" | grep -w "ID" | tr -d '"')
 case $1 in
 	"os")
 		echo ${os#*=} ;;

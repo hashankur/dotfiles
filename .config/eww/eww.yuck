@@ -91,9 +91,54 @@
 (defpoll wdesc :interval "900s" "./scripts/weather.sh weather_desc")
 (defpoll wicon :interval "900s" "./scripts/weather.sh weather_desc_icon")
 
-;; SYSPANEL ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; MUSIC ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defwindow music
+	:geometry (geometry :x "10px" :y "5px" :anchor "bottom center"
+			    :width "505px" :height "290px")
+	:windowtype "dock" :stacking "fg" :wm-ignore false
+	:monitor 0
+(musicpanel))
+
+(defwidget musicpanel []
+	(box :class "sysp-window" :orientation "v" :valign "center" :space-evenly "false" :spacing 10
+		(box :class "row1" :orientation "h" :space-evenly "false" :spacing 5
+			(musicplayer))))
+(defvar sysp false)
+
+;; MUSICPANEL WIDGETS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defwidget musicplayer []
+	(box :class "musicbox" :orientation "h" :halign "end" :space-evenly "false"
+		(box :class "music-bg" :orientation "v" :space-evenly "false"
+			 :style "background-image: url('${mus-album-art}');")
+		(box :class "music-bg" :orientation "v" :space-evenly "false"
+			(box :class "music-info" :orientation "v" :space-evenly "false"
+				(label :class "np" :text mus-np)
+				(label :class "title" :text mus-title :limit-width 28)
+				(label :class "artist" :text mus-artist :limit-width 36)
+				(label :class "album" :text mus-album :limit-width 32))
+			(box :class "music-ctrl" :orientation "h" :halign "center" :space-evenly "false" :spacing 20
+				(button :onclick "playerctl previous" "")
+				(button :onclick "playerctl play-pause" mus-tog)
+				(button :onclick "playerctl next" ""))
+			(box :class "mus-prog" :orientation "h" :space-evenly "false"
+				(scale :class "musprog-bar" :orientation "h" :min 0 :max 101 :active false :value mus-prog)
+				(label :class "musprog-info" :text "${mus-prog-display}")))
+		(box :class "mus-vol" :orientation "v" :valign "center" :space-evenly "false"
+			(label :class "musvol-icon" :text "")
+			(scale	:class "musvol-bar" :orientation "v" :flipped true :min 0 :max 100 :onchange "playerctl volume 0.{}" :value musvol))))
+(defpoll musvol     :interval "500ms" "./scripts/volume.sh musvol")
+(defpoll mus-np     :interval "3s"    "./scripts/music.sh status")
+(defpoll mus-tog    :interval "500ms" "./scripts/music.sh statusbut")
+(defpoll mus-title  :interval "3s"    "./scripts/music.sh title")
+(defpoll mus-artist :interval "3s"    "./scripts/music.sh artist")
+(defpoll mus-album  :interval "3s"    "./scripts/music.sh album")
+(defpoll mus-album-art  :interval "3s"    "./scripts/music.sh albumart")
+(defpoll mus-prog   :interval "1s"    "./scripts/music.sh progress")
+(defpoll mus-prog-display   :interval "1s"    "./scripts/music.sh dispprog")
+
+; SYSPANEL ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defwindow systempanel
-	:geometry (geometry :x "10px" :y "5px" :anchor "top left"
+	:geometry (geometry :x "10px" :y "5px" :anchor "top right"
 			    :width "505px" :height "290px")
 	:windowtype "dock" :stacking "fg" :wm-ignore false
 	:monitor 0
@@ -109,7 +154,7 @@
 		(box :class "row2" :orientation "h"
 			(sysvolume)
 			(micvolume))
-		(box :class "row3" :orientation "h" 
+		(box :class "row3" :orientation "h"
 			(profile)
 			(weather)
 			(options))))
