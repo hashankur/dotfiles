@@ -9,4 +9,4 @@ for pfp in ${profiles_photos[@]}; do
   fi
 done
 
-echo $HOME/.config/dk/eww/assets/default-pfp.png
+echo $HOME/.config/eww/assets/default-pfp.png

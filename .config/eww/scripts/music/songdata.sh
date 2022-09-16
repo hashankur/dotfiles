@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 capitalize () {
   toshow="$1"

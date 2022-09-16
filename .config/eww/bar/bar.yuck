@@ -13,7 +13,7 @@
     (literal :content "${workspaces}")
   )
 )
-(deflisten workspaces "~/.config/eww/scripts/workspaces")
+(deflisten workspaces "~/.config/eww/scripts/workspaces.sh")
 
 (defwidget left []
   (box :class "left"
@@ -107,6 +107,6 @@
                       :anchor "center top")
   :type "dock"
   :wm-ignore false
-  :reserve (struts :distance "46px" :side "top")
+  :exclusive true
   :monitor 0
 (bar))

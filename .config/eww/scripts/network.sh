@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 symbol() {
     [ $(cat /sys/class/net/w*/operstate) = down ] && echo 睊  && exit

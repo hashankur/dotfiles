@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 get_state () {
   state=$(bluetoothctl show | grep 'Powered' | awk '{print $2}')
