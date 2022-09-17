@@ -1,7 +1,7 @@
 .actions {
   background-color: $bg;
   color: $fg;
-  font-family: Product Sans;
+  font-family: Iosevka;
   padding: 10px;
 }
 
@@ -126,32 +126,3 @@
   }
 }
 
-.musicbox {
-  .pic-container {
-    .picbox {
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      min-height: 100px;
-      min-width: 225px;
-      border-radius: 7px;
-      padding: 10px;
-    }
-    // i've to make it hidden, so i'll translate it to the INFINITE! LMFAO
-    .hidden {
-      margin-top: -100px;
-    }
-  }
-  .musiccontrolsbox {
-    background-color: $bgSecondary;
-    border-radius: 7px;
-    padding: 7px 15px;
-    font-family: Iosevka Nerd Font;
-    .previousbutton, .nextbutton {
-      font-size: 23px;
-    }
-    .pausebutton {
-      padding: 0px 10px 0px 4px;
-    }
-  }
-}

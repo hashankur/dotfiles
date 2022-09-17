@@ -22,14 +22,14 @@ get_song_art () {
     cp $HOME/.config/eww/assets/fallback.png $TMP_TEMP_PATH
   fi
 
-  # cp $TMP_TEMP_PATH $TMP_COVER_PATH
+  cp $TMP_TEMP_PATH $TMP_COVER_PATH
 
   # an epic effekt
-  # convert $TMP_TEMP_PATH -alpha set -channel A -evaluate multiply 1.0  $TMP_COVER_PATH
-  convert $TMP_TEMP_PATH -gravity center +repage -alpha set -channel A \
-    -sparse-color Barycentric '%[fx:w*2/32],0 transparent  %[fx:w+0.5],0 opaque' \
-    -evaluate multiply 0.45 \
-    $TMP_COVER_PATH
+  ## convert $TMP_TEMP_PATH -alpha set -channel A -evaluate multiply 1.0  $TMP_COVER_PATH
+  # convert $TMP_TEMP_PATH -gravity center +repage -alpha set -channel A \
+  #   -sparse-color Barycentric '%[fx:w*2/32],0 transparent  %[fx:w+0.5],0 opaque' \
+  #   -evaluate multiply 0.45 \
+  #   $TMP_COVER_PATH
 }
 
 echo_song_art_url () {

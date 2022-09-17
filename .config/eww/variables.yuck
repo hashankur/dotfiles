@@ -22,6 +22,7 @@
 
 (defpoll music_title :interval "1s" "~/.config/eww/scripts/music/songdata.sh title")
 (defpoll music_artist :interval "1s" "~/.config/eww/scripts/music/songdata.sh artist")
+(defpoll music_album :interval "1s" "~/.config/eww/scripts/music/songdata.sh album")
 (defpoll music_status :interval "1s" "~/.config/eww/scripts/music/songdata.sh status")
 
 (defpoll calendar_day :interval "10h" "date '+%d'")

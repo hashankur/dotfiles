@@ -3,3 +3,4 @@
 (include "powermenu/powermenu.yuck")
 (include "date/date.yuck")
 (include "actions/actions.yuck")
+(include "music/music.yuck")

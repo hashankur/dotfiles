@@ -91,7 +91,7 @@
     "clock": {
         "interval": 1,
         "format": "{:%a %b %d  %I:%M %p}",
-        "on-click": "eww open calendar"
+        "on-click": "eww open date"
     },
     "memory": {
         "interval": 1,
@@ -146,7 +146,7 @@
             "Playing": "  ",
             "Paused": "  ",
             },
-        "max-length":50,
+        "max-length":100,
         "exec": "playerctl -a metadata --player=tauon --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{markup_escape(title)}} | {{album}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
         "on-click": "playerctl play-pause",
     },
