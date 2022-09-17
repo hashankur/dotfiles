@@ -18,8 +18,9 @@
 // workspaces
 .ws {
   // box properties
-  font-family: Iosevka Nerd Font;
-  font-size: 10px;
+  font-family: Iosevka;
+  font-size: 13px;
+  padding-top: 2px;  // Hacky... Yuck
 
   // btn spacing
   .btn { padding: 0px 7px; }

@@ -2,22 +2,20 @@
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
-        "custom/media",
-    ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "tray",
         "cpu",
         "memory",
         "custom/gpu-usage",
+        "custom/media",
+    ],
+    "modules-center": [
+    ],
+    "modules-right": [
+        "tray",
         "temperature",
-        "backlight",
-        "pulseaudio",
         "network",
         "bluetooth",
         "battery",
+        "clock"
     ],
 
     "sway/mode": {
@@ -91,7 +89,7 @@
     "clock": {
         "interval": 1,
         "format": "{:%a %b %d  %I:%M %p}",
-        "on-click": "eww open date"
+        "on-click": "eww open date --toggle"
     },
     "memory": {
         "interval": 1,

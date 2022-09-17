@@ -13,7 +13,7 @@
     (literal :content "${workspaces}")
   )
 )
-(deflisten workspaces "~/.config/eww/scripts/workspaces.sh")
+;; (deflisten workspaces "~/.config/eww/scripts/workspaces.sh")
 
 (defwidget left []
   (box :class "left"
@@ -101,11 +101,11 @@
 
 (defwindow bar
   :geometry (geometry :x "0px"
-                      :y "0px"
+                      :y "-40px"
                       :width "100%"
                       :height "40px"
                       :anchor "center top")
   :wm-ignore true
-  :stacking "bg"
+  :stacking "overlay"
   :monitor 0
 (bar))

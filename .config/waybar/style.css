@@ -3,7 +3,7 @@
 	font-size: 14px;
 	font-weight: bold;
 	color: #CCCAC2;
-	border-radius: 5px;
+	border-radius: 10px;
 	transition-property: background-color;
 	transition-duration: 0.5s;
 }
@@ -34,6 +34,8 @@ window#waybar.hidden {
 window > box {
 	margin-left: 10px;
 	margin-right: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
 	margin-top: 10px;
 	background-color: rgb(30, 30, 46);
 	/* border-style: solid; */
@@ -78,7 +80,7 @@ tooltip label {
     color: rgb(201, 203, 255);
 }
 
-#mode, #clock, #memory, #cpu, #idle_inhibitor, #temperature, #backlight, #pulseaudio, #network, #battery, #bluetooth, #mpd, #custom-gpu-usage, #custom-media, tray {
+#mode, #clock, #memory, #cpu, #idle_inhibitor, #temperature, #backlight, #pulseaudio, #network, #battery, #bluetooth, #mpd, #custom-gpu-usage, #custom-media, #tray {
 	padding-left: 15px;
 	padding-right: 15px;
 	padding-top: 10px;

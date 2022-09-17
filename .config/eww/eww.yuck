@@ -4,3 +4,4 @@
 (include "date/date.yuck")
 (include "actions/actions.yuck")
 (include "music/music.yuck")
+(include "workspace/workspace.yuck")

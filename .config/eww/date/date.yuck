@@ -47,11 +47,11 @@
 )
 
 (defwindow date
-  :geometry (geometry :x "0px"
-                      :y "46px"
+  :geometry (geometry :x "20px"
+                      :y "20px"
                       :width "10px" ; automatically generated
                       :height "10px" ; automatically generated
-                      :anchor "center top")
+                      :anchor "right top")
   :wm-ignore true
   :monitor 0
 (date))
