@@ -14,6 +14,7 @@
         "temperature",
         "network",
         "bluetooth",
+        "idle_inhibitor",
         "battery",
         "clock"
     ],
@@ -153,5 +154,12 @@
         "format": " {}%",
         "return-type": "",
         "interval": 1
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": "﯈"
+        }
     }
 }

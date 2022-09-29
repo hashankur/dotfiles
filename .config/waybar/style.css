@@ -80,7 +80,14 @@ tooltip label {
     color: rgb(201, 203, 255);
 }
 
-#mode, #clock, #memory, #cpu, #idle_inhibitor, #temperature, #backlight, #pulseaudio, #network, #battery, #bluetooth, #mpd, #custom-gpu-usage, #custom-media, #tray {
+#idle_inhibitor {
+	padding-left: 12px;
+	padding-right: 16px;
+	padding-top: 11px;
+	padding-bottom: 10px;
+}
+
+#mode, #clock, #memory, #cpu, #temperature, #backlight, #pulseaudio, #network, #battery, #bluetooth, #mpd, #custom-gpu-usage, #custom-media, #tray {
 	padding-left: 15px;
 	padding-right: 15px;
 	padding-top: 10px;
