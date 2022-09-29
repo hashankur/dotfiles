@@ -24,15 +24,15 @@ withSafe () {
 }
 
 if [[ $1 == "title" ]]; then
-  capitalize "$(playerctl metadata --format "{{title}}" || echo "Not playing")" 18
+  capitalize "$(playerctl metadata --format "{{title}}" || echo "Not playing")" 45
 fi
 
 if [[ $1 == "artist" ]]; then
-  withSafe "$(capitalize "$(playerctl metadata --format "{{artist}}" || echo "No artist")" 18)" "No artist detected"
+  withSafe "$(capitalize "$(playerctl metadata --format "{{artist}}" || echo "No artist")" 50)" "No artist detected"
 fi
 
 if [[ $1 == "album" ]]; then
-  withSafe "$(capitalize "$(playerctl metadata --format "{{album}}" || echo "No artist")" 18)" "No artist detected"
+  withSafe "$(capitalize "$(playerctl metadata --format "{{album}}" || echo "No artist")" 50)" "No album detected"
 fi
 
 if [[ $1 == "status" ]]; then
