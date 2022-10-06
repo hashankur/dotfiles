@@ -18,11 +18,11 @@
 ;; - `doom-unicode-font' -- for unicode glyphs
 ;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
 
-(setq doom-font (font-spec :family "Iosevka" :size 15)
-      doom-variable-pitch-font (font-spec :family "Iosevka" :size 15)
-      doom-big-font (font-spec :family "iA Writer Duospace" :size 22)
-      doom-unicode-font (font-spec :family "Noto Sans" :size 15)
-      doom-serif-font (font-spec :family "IBM Plex Serif" :size 15))
+(setq doom-font (font-spec :family "Iosevka" :size 16)
+      doom-variable-pitch-font (font-spec :family "Iosevka" :size 16)
+      doom-big-font (font-spec :family "Iosevka" :size 22)
+      doom-unicode-font (font-spec :family "Noto Sans" :size 16)
+      doom-serif-font (font-spec :family "IBM Plex Serif" :size 16))
 
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:

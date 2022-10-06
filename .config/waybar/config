@@ -93,7 +93,7 @@
         "on-click": "eww open date --toggle"
     },
     "memory": {
-        "interval": 1,
+        "interval": 2,
         "format": " {percentage}%",
         "tooltip-format": "Swap: {swapPercentage}%",
         "states": {
@@ -101,7 +101,7 @@
         },
     },
     "cpu": {
-        "interval": 1,
+        "interval": 2,
         "format": " {usage}%"
     },
     "network": {
@@ -145,7 +145,7 @@
             "Playing": "  ",
             "Paused": "  ",
             },
-        "max-length":100,
+        "max-length": 60,
         "exec": "playerctl -a metadata --player=tauon --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{markup_escape(title)}} | {{album}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
         "on-click": "playerctl play-pause",
     },
@@ -153,13 +153,13 @@
         "exec": "cat /sys/class/hwmon/hwmon6/device/gpu_busy_percent",
         "format": " {}%",
         "return-type": "",
-        "interval": 1
+        "interval": 3
     },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": "﯈"
+            "activated": "﯈",
+            "deactivated": ""
         }
     }
 }
