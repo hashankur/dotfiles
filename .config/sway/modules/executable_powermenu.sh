@@ -30,17 +30,16 @@ selected=$(echo -e $options \
 if [[ "$selected" == *"Cancel"* ]]; then
 	:
 elif [[ "$selected" == *"Suspend"* ]]; then
-	notify-send "     Suspending in 5 seconds"
-	sleep 5
-	sleep
+	notify-send "     Suspending..."
+	systemctl suspend
 elif [[ "$selected" == *"Lock"* ]]; then
-  swaylock -f -c 000000
+    swaylock -f -c 000000
 elif [[ "$selected" == *"Logout"* ]]; then
 	$HOME/.config/sway/modules_executable_sway_exit.sh
 elif [[ "$selected" == *"Shutdown"* ]]; then
 	notify-send "  襤   Shutting down in 5 seconds"
 	sleep 5
-  poweroff
+    poweroff
 elif [[ "$selected" == *"Reboot"* ]]; then
 	notify-send "  勒   Rebooting in 5 seconds"
 	sleep 5	
