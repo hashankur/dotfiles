@@ -1,26 +1,26 @@
 ignore-empty-password
 font=Iosevka
 
-inside-color=009ddc00
-inside-clear-color=ffd20400
-inside-ver-color=d9d8d800
-inside-wrong-color=ee2e2400
+inside-color=1F2430FF
+inside-clear-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=F27983FF
 
-ring-color=1F2430
-ring-clear-color=1F2430
-ring-ver-color=1F2430
-ring-wrong-color=1F2430
+ring-color=1F2430FF
+ring-clear-color=87D96CFF
+ring-ver-color=FFCC66FF
+ring-wrong-color=F27983FF
 
-line-color=009ddc00
-line-clear-color=FFCC66
-line-ver-color=95E6CB
-line-wrong-color=FF666
+line-color=1F2430FF
+line-clear-color=1F2430FF
+line-ver-color=1F2430FF
+line-wrong-color=1F2430FF
 
-text-color=009ddc00
-text-clear-color=ffd20400
-text-ver-color=d9d8d800
-text-wrong-color=ee2e2400
+text-color=00000000
+text-clear-color=00000000
+text-ver-color=00000000
+text-wrong-color=00000000
 
-key-hl-color=009ddcFF
-bs-hl-color=ee2e24FF
+key-hl-color=95E6CBFF
+bs-hl-color=F27983FF
 separator-color=231f2000
