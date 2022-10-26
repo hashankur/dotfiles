@@ -55,8 +55,8 @@
     },
     "backlight": {
         "format": " {percent}%",
-        "on-scroll-up": "$HOME/.config/sway/modules/executable_brightness.sh --dec",
-        "on-scroll-down": "$HOME/.config/sway/modules/executable_brightness.sh --inc",
+        "on-scroll-up": "$HOME/.local/share/bin/brightness.sh --dec",
+        "on-scroll-down": "$HOME/.local/share/bin/brightness.sh --inc",
         "smooth-scrolling-threshold": 5,
     },
     "pulseaudio": {
@@ -69,11 +69,11 @@
         "states": {
             "warning": 85,
         },
-        "on-scroll-up": "$HOME/.config/sway/modules/executable_volume.sh --dec",
-        "on-scroll-down": "$HOME/.config/sway/modules/executable_volume.sh --inc",
+        "on-scroll-up": "$HOME/.local/share/bin/volume.sh --dec",
+        "on-scroll-down": "$HOME/.local/share/bin/volume.sh --inc",
         "smooth-scrolling-threshold": 5,
         "tooltip": false,
-        "on-click": "$HOME/.config/sway/modules/executable_volume.sh --toggle"
+        "on-click": "$HOME/.local/share/bin/volume.sh --toggle"
     },
     "battery": {
         "interval": 10,
