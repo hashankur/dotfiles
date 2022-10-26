@@ -21,7 +21,7 @@
 (setq doom-font (font-spec :family "Iosevka" :size 16)
       doom-variable-pitch-font (font-spec :family "Iosevka" :size 16)
       doom-big-font (font-spec :family "Iosevka" :size 22)
-      doom-unicode-font (font-spec :family "Noto Sans" :size 16)
+      doom-unicode-font (font-spec :family "Jetbrains Mono Nerd Font" :size 16)
       doom-serif-font (font-spec :family "IBM Plex Serif" :size 16))
 
 ;; See 'C-h v doom-font' for documentation and more examples of what they
