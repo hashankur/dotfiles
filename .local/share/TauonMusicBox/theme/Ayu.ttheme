@@ -95,7 +95,7 @@
 #-Misc--------------
 
 #               playlist box background
-#223,191,255     window frame
+# 223,191,255     window frame
 28,33,43        artist bio background
 223,191,255     artist bio text
 

@@ -13,7 +13,7 @@ peach="#F8BD96"
 green="#ABE9B3"
 
 clipman pick \
-	--tool bemenu \
+	--tool rofi\
 	-T "
 	--prefix '' \
 	--prompt 'COPY  ' \

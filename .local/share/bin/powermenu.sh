@@ -31,6 +31,7 @@ if [[ "$selected" == *"Cancel"* ]]; then
 	:
 elif [[ "$selected" == *"Suspend"* ]]; then
 	notify-send "     Suspending..."
+	sleep 1
 	systemctl suspend
 elif [[ "$selected" == *"Lock"* ]]; then
     swaylock -f -c 000000
