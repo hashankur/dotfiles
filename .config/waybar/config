@@ -1,5 +1,10 @@
 {
     "layer": "top",
+    "mode": "dock",
+    "margin-top": 10,
+    "margin-left": 10,
+    "margin-right": 10,
+
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
@@ -20,10 +25,6 @@
         "clock"
     ],
 
-    "sway/mode": {
-        "format": "蘒 {}",
-        "tooltip": false
-    },
     "sway/workspaces": {
         "disable-scroll": true,
         "disable-click": true,
@@ -147,7 +148,7 @@
             "Paused": "  ",
             },
         "max-length": 60,
-        "exec": "playerctl -a metadata --player=tauon --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{markup_escape(title)}} | {{album}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{markup_escape(title)}} | {{album}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
         "on-click": "playerctl play-pause",
     },
     "custom/gpu-usage": {
