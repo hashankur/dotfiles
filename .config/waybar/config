@@ -1,5 +1,5 @@
 {
-    "layer": "top",
+    "layer": "overlay",
     "mode": "dock",
     "margin-top": 10,
     "margin-left": 10,
