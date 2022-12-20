@@ -38,11 +38,11 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-ayu-mirage)
+(setq doom-theme 'doom-ayu-dark)
 
-(custom-theme-set-faces! 'doom-ayu-mirage
-    '(line-number :foreground "#5c6773")
-    '(line-number-current-line :foreground "#CCCAC2" :background "#171B24"))
+(custom-theme-set-faces! 'doom-ayu-dark
+    '(line-number :foreground "#33373D"))
+    ;; '(line-number-current-line :foreground "#CCCAC2" :background "#171B24"))
     ;; '(doom-modeline-project-dir :foreground "blue")
     ;; '(doom-modeline-buffer-path   :foreground "blue")
     ;; '(mode-line-inactive :background "dim gray" :foreground "white" :height 80)
@@ -96,3 +96,7 @@
 (setq rustic-lsp-server 'rust-analyzer)
 
 (setq shell-file-name "fish")
+
+(after! ccls
+  (setq ccls-initialization-options '(:index (:comments 2) :completion (:detailedLabel t)))
+  (set-lsp-priority! 'ccls 2)) ; optional as ccls is the default in Doom
