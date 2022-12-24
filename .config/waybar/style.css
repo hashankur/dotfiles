@@ -1,152 +1,46 @@
 * {
-	font-family: iA Writer Duospace, Jetbrains Mono Nerd Font;
-	font-size: 14px;
-	font-weight: bold;
-	color: #CCCAC2;
-	transition-property: background-color;
-	transition-duration: 0.5s;
+  font-family: iA Writer Duospace, "Font Awesome 6 Pro";
+  font-size: 14px;
+  font-weight: bold;
+  color: #bfbdb6;
+  transition-property: background-color;
+  transition-duration: 0.5s;
 }
 
 @keyframes blink_red {
-    to {
-        background-color: #FF6666;
-        /* color: rgb(26, 24, 38); */
-    }
+  to {
+    color: #d95757;
+  }
 }
 
-.warning, .critical, .urgent {
-	 animation-name: blink_red;
-   animation-duration: 1s;
-   animation-timing-function: linear;
-   animation-iteration-count: infinite;
-   animation-direction: alternate;
+.warning,
+.critical,
+.urgent {
+  animation-name: blink_red;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 window#waybar {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 window#waybar.hidden {
-   opacity: 0.5;
+  opacity: 0.5;
 }
 
 window > box {
-	/* border-radius: 10px; */
-	padding-left: 10px;
-	padding-right: 10px;
-	background-color: rgba(23, 27, 36, 0.85);
-	/* border-style: solid; */
-	/* border-width: 2px; */
-	/* border-color: rgb(171, 233, 179); */
-}
-
-#workspaces {
-	padding-left: 10px;
-}
-
-#workspaces button {
-	padding-top: 6px;
-	padding-bottom: 6px;
-	padding-left: 2px;
-	padding-right: 5px;
-	border-radius: 50px;
-}
-
-#workspaces button.focused {
-	/* background-color: rgb(181, 232, 224);
-	color: rgb(26, 24, 38); */
-}
-
-#workspaces button.urgent {
-    /* background-color: rgb(242, 143, 173); */
-   	color: rgb(26, 24, 38);
+  /* border-radius: 10px; */
+  padding: 10px 25px;
+  background-color: rgba(9, 12, 16, 0.85);
 }
 
 tooltip {
-  background: rgb(48, 45, 65);
+  background-color: rgb(9, 12, 16);
 }
 
 tooltip label {
-  color: rgb(217, 224, 238);
+  color: #bfbdb6;
 }
-
-#custom-launcher {
-    padding-left: 20px;
-    padding-right: 15px;
-    font-size: 18px;
-    color: rgb(201, 203, 255);
-}
-
-#idle_inhibitor {
-	padding-left: 12px;
-	padding-right: 16px;
-	padding-top: 11px;
-	padding-bottom: 10px;
-}
-
-#mode, #clock, #memory, #cpu, #temperature, #backlight, #pulseaudio, #network, #battery, #bluetooth, #mpd, #custom-gpu-usage, #custom-media, #tray {
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
-#mode {
-	margin-left: 10px;
-	background-color: rgb(248, 189, 150);	
-	color: rgb(26, 24, 38);
-	border-radius: 0px;
-}
-
-/*
-#memory {
-	color: #95E6CB;
-}
-
-#cpu {
-	color: #DFBFFF;
-}
-
-#clock {
-	color: rgb(217, 224, 238);
-}
-
-#idle_inhibitor {
-	color: rgb(221, 182, 242);
-}
-
-#temperature {
-	color: #80BFFF;
-}
-
-#backlight {
-	color: #FFD173;
-}
-
-#pulseaudio {
-	color: rgb(245, 224, 220);
-}
-
-#network {
-	color: rgb(181, 232, 224);
-}
-
-#battery {
-	padding-right: 20px;
-}
-
-#battery.charging, #battery.full, #battery.discharging {
-	color: rgb(250, 227, 176);
-}
-
-#battery.critical:not(.charging) {
-	color: rgb(242, 143, 173);
-}
-
-#custom-off {
-	color: rgb(242, 143, 173);
-	font-size: 18px;
-	padding-left: 10px;
-	padding-right: 20px;
-}
-*/

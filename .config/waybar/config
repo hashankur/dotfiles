@@ -1,13 +1,11 @@
 {
-    "layer": "overlay",
-    "mode": "dock",
+    "layer": "top",
     "margin-top": 10,
     "margin-left": 10,
     "margin-right": 10,
+    "spacing": 30,
 
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
         "cpu",
         "memory",
         "custom/gpu-usage",
@@ -20,62 +18,33 @@
         "temperature",
         "network",
         "bluetooth",
+        "pulseaudio",
         "idle_inhibitor",
         "battery",
         "clock"
     ],
 
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "disable-click": true,
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            "6": [],
-            "7": [],
-            "8": [],
-            "9": [],
-            "10": [],
-        },
-        "format": "{icon}",
-        "format-icons": {
-            "default": "",
-            "urgent": "",
-            //"default": "",
-            "focused": ""
-        }
-    },
+
     "temperature": {
         "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
         "critical-threshold": 80,
         "interval": 1,
-        "format": " {temperatureC}°C",
+        "format": " {temperatureC}°C",
         "tooltip": false,
     },
     "backlight": {
-        "format": " {percent}%",
-        "on-scroll-up": "$HOME/.local/share/bin/brightness.sh --dec",
-        "on-scroll-down": "$HOME/.local/share/bin/brightness.sh --inc",
-        "smooth-scrolling-threshold": 5,
+        "format": "{icon}",
+        "format-icons": ["", ""]
     },
     "pulseaudio": {
-        "scroll-step": 1,
-        "format": "{icon} {volume}%",
-        "format-muted": "婢 Muted",
+        "format": "{icon}",
+        "format-muted": " Muted",
         "format-icons": {
-            "default": ["", "", ""]
+            "default": ["", "", "", ""]
         },
         "states": {
             "warning": 85,
         },
-        "on-scroll-up": "$HOME/.local/share/bin/volume.sh --dec",
-        "on-scroll-down": "$HOME/.local/share/bin/volume.sh --inc",
-        "smooth-scrolling-threshold": 5,
-        "tooltip": false,
-        "on-click": "$HOME/.local/share/bin/volume.sh --toggle"
     },
     "battery": {
         "interval": 10,
@@ -84,19 +53,19 @@
             "critical": 10
         },
         "format": "{icon} {capacity}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "format-icons": ["", "", "", "", ""],
         "format-full": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
+        "format-charging": " {capacity}%",
         "tooltip": true
     },
     "clock": {
         "interval": 1,
-        "format": "{:%a %b %d  %I:%M %p}",
+        "format": "{:%a %d %b  %I:%M %p}",
         "on-click": "eww open date --toggle"
     },
     "memory": {
         "interval": 2,
-        "format": " {percentage}%",
+        "format": " {percentage}%",
         "tooltip-format": "Swap: {swapPercentage}%",
         "states": {
             "warning": 90,
@@ -104,21 +73,21 @@
     },
     "cpu": {
         "interval": 2,
-        "format": " {usage}%"
+        "format": " {usage}%"
     },
     "network": {
-        "format-wifi": "直",
-        "format-ethernet": "  {ifname} ({ipaddr})",
-        "format-linked": "說 {essid}",
-        "format-disconnected": "睊",
-        // "format-alt": "說 {ifname} ({ipaddr})",
+        "format-wifi": "",
+        "format-ethernet": "  {ifname} ({ipaddr})",
+        "format-linked": " {essid}",
+        "format-disconnected": "",
+        // "format-alt": " {ifname} ({ipaddr})",
         "tooltip": true,
         "tooltip-format": "{essid}"
     },
     "bluetooth": {
-        "format": "",
-        "format-connected": " {device_alias}",
-        "format-connected-battery": " {device_battery_percentage}%",
+        "format": "",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_battery_percentage}%",
         "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
@@ -148,20 +117,20 @@
             "Paused": "  ",
             },
         "max-length": 60,
-        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{markup_escape(title)}} | {{album}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{album}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
         "on-click": "playerctl play-pause",
     },
     "custom/gpu-usage": {
         "exec": "cat /sys/class/hwmon/hwmon6/device/gpu_busy_percent",
-        "format": " {}%",
+        "format": " {}%",
         "return-type": "",
         "interval": 3
     },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "﯈",
-            "deactivated": ""
+            "activated": "",
+            "deactivated": ""
         }
     }
 }
