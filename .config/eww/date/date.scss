@@ -1,33 +1,7 @@
-.date {
-  background-color: $bg;
-  color: $fg;
-  border-radius: 4px;
-}
-
-.timebox {
-  margin: 30px 0px;
-  .time-container {
-    .content {
-      font-family: Product Sans;
-      font-weight: bolder;
-      font-size: 60px;
-    }
-    .divider {
-      margin: 8px 15px;
-      padding: 0px 1px;
-      background: linear-gradient($red, $magenta, $blue, $cyan);
-    }
-  }
-  .date-container {
-    font-family: Product Sans;
-    margin-top: 2px;
-  }
-}
-
 .cal-box {
-  font-family: Product Sans;
+  font-family: Iosevka;
   background-color: $bg;
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 0 1rem .2rem;
   color: $fg;
   background-color: $contrastbg;
@@ -35,7 +9,7 @@
 
   .cal {
     background-color: inherit;
-    padding: .5rem .10rem 0rem;
+    padding: 1em .5rem 0rem 1em;
     margin-left: 10px;
 
     & > * {
@@ -49,7 +23,7 @@
 }
 
 calendar:selected {
-  color: $cyan;
+  color: $yellow;
 }
 
 calendar.header {
@@ -62,10 +36,10 @@ calendar.button {
 }
 
 calendar.highlight {
-  color: $green;
+  color: $blue;
   font-weight: bold;
 }
 
 calendar:indeterminate {
-  color: $lightblack;
+  color: $fgDim;
 }

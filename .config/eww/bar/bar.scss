@@ -8,7 +8,7 @@
   background-color: $black;
   margin: 6px;
   padding: 0px 14px 0px 8px;
-  font-family: Iosevka Nerd Font;
+  font-family: Iosevka;
   border-radius: 7px;
   transition: all ease .2s;
   &:hover { background-color: $dimblack; }
@@ -50,7 +50,7 @@
       color: $lightblack;
     }
     .icon {
-      font-family: Iosevka Nerd Font;
+      font-family: Iosevka;
       margin-right: 14px;
       color: $blue;
     }
@@ -69,7 +69,7 @@
   background-color: $black;
   margin: 6px;
   padding: 0px 14px 0px 8px;
-  font-family: Iosevka Nerd Font;
+  font-family: Phosphor;
   border-radius: 7px;
   transition: all ease .2s;
   &:hover { background-color: $dimblack; }

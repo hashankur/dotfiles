@@ -1,10 +1,3 @@
-(defwidget launcher []
-  (button :class "launcherbox"
-          :onclick "~/.config/eww/scripts/exec rofi -show drun"
-    ""
-  )
-)
-
 (defwidget workspaces []
   (box :class "workspacesbox"
        :orientation "h"
@@ -20,16 +13,7 @@
        :orientation "h"
        :space-evenly false
        :halign "start"
-    (launcher)
     (workspaces)
-  )
-)
-
-(defwidget bardate []
-  (box :class "bardatebox"
-       :orientation "h"
-       :space-evenly true
-    (button :onclick "eww -c ~/.config/eww open --toggle date" date)
   )
 )
 
@@ -43,23 +27,28 @@
   )
 )
 
-(defwidget powerbutton []
-  (button :class "powerbutton"
-          :onclick "eww -c ~/.config/eww open-many --toggle powermenu-clickhandler powermenu"
-    "⏻"
+(defwidget right []
+  (box :class "left"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+    (actionsbox)
+    (powerbutton)
   )
 )
 
-(defwidget searchbutton []
-  (button :class "searchbutton"
-          :tooltip "Search Applications"
-          :onclick "~/.config/eww/scripts/exec rofi -show drun"
-    (box :class "content"
-         :orientation "h"
-         :space-evenly false
-      (label :text "" :class "icon")
-      (label :text "Search..." :class "placeholder")
-    )
+(defwidget bardate []
+  (box :class "bardatebox"
+       :orientation "h"
+       :space-evenly true
+    (button :onclick "eww -c ~/.config/eww open --toggle date" date)
+  )
+)
+
+(defwidget powerbutton []
+  (button :class "powerbutton"
+          :onclick "eww -c ~/.config/eww open-many --toggle powermenu-clickhandler powermenu"
+    "&62776"
   )
 )
 
@@ -78,17 +67,6 @@
   )
 )
 
-(defwidget right []
-  (box :class "left"
-       :orientation "h"
-       :space-evenly false
-       :halign "end"
-    (searchbutton)
-    (actionsbox)
-    (powerbutton)
-  )
-)
-
 (defwidget bar []
   (box :class "bar"
        :orientation "h"
@@ -102,7 +80,7 @@
 (defwindow bar
   :geometry (geometry :x "0px"
                       :y "-40px"
-                      :width "100%"
+                      :width "99%"
                       :height "40px"
                       :anchor "center top")
   :wm-ignore true

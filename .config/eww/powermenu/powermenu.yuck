@@ -4,16 +4,28 @@
        :space-evenly true
        :spacing 20
     (button :class "shutdown"
-            :onclick "doas poweroff"
-      (label :text "襤" :class "content")
+            :onclick "poweroff"
+      (label :text "" :class "content")
     )
     (button :class "reboot"
-            :onclick "doas reboot"
-      (label :text "勒" :class "content")
+            :onclick "reboot"
+      (label :text "" :class "content")
     )
     (button :class "logout"
-            :onclick "dkcmd exit"
-      (label :text "" :class "content")
+            :onclick ""
+      (label :text "" :class "content")
+    )
+    (button :class "lock"
+            :onclick "swaylock"
+      (label :text "" :class "content")
+    )
+    (button :class "suspend"
+            :onclick "notify-send ' Suspending...'; eww close powermenu"
+      (label :text "" :class "content")
+    )
+    (button :class "cancel"
+            :onclick "eww close powermenu"
+      (label :text "" :class "content")
     )
   )
 )

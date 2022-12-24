@@ -2,22 +2,24 @@
   background-color: $bg;
   color: $fg;
   padding: 20px;
-  font-family: Iosevka Nerd Font;
+  font-family: "Font Awesome 6 Pro";
   font-size: 70px;
-  border-radius: 4px;
+  border-radius: 10px;
   button {
     border-radius: 12px;
     transition: all ease .2s;
     &:hover { background-color: $bgSecondary; }
     &:active { background-color: $bg; }
     .content {
-      border-radius: 4px;
-      padding: 0px 15px 0px 5px;
+      border-radius: 10px;
+      padding: 0px 25px;
     }
   }
   .shutdown { color: $red; }
   .reboot { color: $magenta; }
   .logout { color: $yellow; }
+  .lock { color: $blue; }
+  .cancel { color: $green; }
 }
 
 .powermenu-clickhandler {
