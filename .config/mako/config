@@ -3,8 +3,8 @@ on-button-left=dismiss
 on-button-right=invoke-default-action
 
 font=Iosevka 12
-background-color=#FFD173
-text-color=#1F2430
+background-color=#E6B450
+text-color=#0B0E14
 width=450
 height=300
 margin=15
