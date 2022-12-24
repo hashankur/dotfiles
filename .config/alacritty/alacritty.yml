@@ -630,34 +630,63 @@ key_bindings:
     #cyan:    '#9aedfe'
     #white:   '#eff0eb'
     
-# Colors (Ayu Mirage)
+# # Colors (Ayu Mirage)
+# colors:
+# # Default colors
+#  primary:
+#   background: '#1F2430'
+#   foreground: '#CCCAC2'
+
+# # Normal colors
+#  normal:
+#   black:   '#1F2430'
+#   red:     '#F27983'
+#   green:   '#87D96C'
+#   yellow:  '#FFD173'
+#   blue:    '#80BFFF'
+#   magenta: '#DFBFFF'
+#   cyan:    '#95E6CB'
+#   white:   '#707A8C'
+
+# # Bright colors
+#  bright:
+#   black:   '#565B66'
+#   red:     '#F27983'
+#   green:   '#87D96C'
+#   yellow:  '#FFD173'
+#   blue:    '#59C2FF'
+#   magenta: '#DFBFFF'
+#   cyan:    '#95E6CB'
+#   white:   '#707A8C'
+
+# Colors (Ayu Dark)
 colors:
 # Default colors
  primary:
-  background: '#1F2430'
-  foreground: '#CCCAC2'
+  background: '#0B0E14'
+  foreground: '#BFBDB6'
 
 # Normal colors
  normal:
-  black:   '#1F2430'
-  red:     '#F27983'
-  green:   '#87D96C'
-  yellow:  '#FFD173'
-  blue:    '#80BFFF'
-  magenta: '#DFBFFF'
+  black:   '#0B0E14'
+  red:     '#F26D78'
+  green:   '#7FD962'
+  yellow:  '#FFB454'
+  blue:    '#59C2FF'
+  magenta: '#D2A6FF'
   cyan:    '#95E6CB'
-  white:   '#707A8C'
+  white:   '#BFBDB6'
 
 # Bright colors
  bright:
   black:   '#565B66'
-  red:     '#F27983'
-  green:   '#87D96C'
-  yellow:  '#FFD173'
+  red:     '#F26D78'
+  green:   '#7FD962'
+  yellow:  '#FFB454'
   blue:    '#59C2FF'
-  magenta: '#DFBFFF'
+  magenta: '#D2A6FF'
   cyan:    '#95E6CB'
-  white:   '#707A8C'
+  white:   '#BFBDB6'
 
 # Colors (Catppucin)
 #colors:
