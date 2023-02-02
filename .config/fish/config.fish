@@ -1,6 +1,6 @@
 ﻿## Set environment
 set TERM "xterm-256color"             
-set EDITOR "vim"
+set EDITOR "nvim"
 #set VISUAL "kate"
 set fish_greeting
 
@@ -140,7 +140,7 @@ alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias l.="exa -a | egrep '^\.'"
 
 alias aup="pamac upgrade --aur"
-alias grubup="sudo update-grub"
+alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 alias tarnow='tar -acf '
 alias untar='tar -zxvf '
