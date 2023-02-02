@@ -1,8 +1,8 @@
 {
     "layer": "top",
-    "margin-top": 10,
-    "margin-left": 10,
-    "margin-right": 10,
+    "margin-top": 5,
+    "margin-left": 5,
+    "margin-right": 5,
     "spacing": 30,
 
     "modules-left": [
@@ -79,10 +79,10 @@
         "format-wifi": "",
         "format-ethernet": "  {ifname} ({ipaddr})",
         "format-linked": " {essid}",
-        "format-disconnected": "",
+        "format-disconnected": "",
         // "format-alt": " {ifname} ({ipaddr})",
         "tooltip": true,
-        "tooltip-format": "{essid}"
+        "tooltip-format": "{essid} {ipaddr} {ifname}"
     },
     "bluetooth": {
         "format": "",
@@ -116,12 +116,12 @@
             "Playing": "  ",
             "Paused": "  ",
             },
-        "max-length": 60,
-        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{album}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "max-length": 80,
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(artist)}} - {{markup_escape(title)}}\", \"tooltip\": \"{{album}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
         "on-click": "playerctl play-pause",
     },
     "custom/gpu-usage": {
-        "exec": "cat /sys/class/hwmon/hwmon6/device/gpu_busy_percent",
+        "exec": "cat /sys/class/hwmon/hwmon4/device/gpu_busy_percent",
         "format": " {}%",
         "return-type": "",
         "interval": 3
