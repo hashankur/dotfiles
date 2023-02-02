@@ -1,0 +1,115 @@
+#Han - Ayu Dark Theme
+
+
+#-Backgrounds-----      #backgrounds of several elements
+
+11,14,20        player background (top panel)
+15,19,26        playlist panel
+13,16,23        side panel
+11,14,20        bottom panel
+11,14,20        gallery background
+11,14,20        queue panel
+
+#-Playlist-------       
+
+149,230,203     track line
+191,189,182     track time
+191,189,182     track index
+57,186,230      track artist
+115,208,255     album line
+
+230,182,115     track playing
+230,182,115     index playing
+230,182,115     artist playing
+152,151,26      album playing
+230,182,115     time playing
+
+242,109,120     track missing
+
+191,189,182     fav line
+13,16,23        folder line
+57,186,230      folder title
+
+23,27,36,100    playing highlight
+23,27,36,100    select highlight
+149,230,203     gallery highlight
+
+#-Bottom panel------    
+
+191,189,182,35  buttons off
+255,180,84     buttons over
+255,180,84     buttons active
+
+255,180,84     playing time
+
+230,180,80     seek bar
+255,180,84     volume bar
+191,189,182,35  seek bg
+191,189,182,35  volume bg
+191,189,182,100 scroll bar
+
+191,189,182,35  mode off
+255,180,84     mode over
+255,180,84     mode on
+
+191,189,182     bottom title
+
+#-Top panel---------    #the top panel with the menu button
+
+210,166,255     tab active line
+191,189,182     tab line
+11,14,20        tab background
+15,19,26        tab over
+15,19,26        tab active background
+
+210,166,255     music vis
+
+#13,16,23        window buttons background
+#15,19,26        window buttons over
+#               window buttons icon off
+#               window buttons icon over
+#               window button x on
+#               window button x off
+
+#-Menu-------------     #the right-click menu, and also the menu opened by the settings button
+11,14,20        menu background
+13,16,23        menu border
+15,19,26        menu highlight
+191,189,182     menu text
+86,91,102     menu disable text
+108,115,128     menu icons
+
+#-Dialog box---------
+
+15,19,26        box background
+13,16,23        box border
+
+210,166,255     box title text
+191,189,182     box text label
+
+191,189,182     box text normal
+191,189,182     box sub text
+191,189,182     box input text
+210,166,255     box text border
+
+#-Misc--------------
+
+#               playlist box background
+# 210,166,255     window frame
+13,16,23        artist bio background
+210,166,255     artist bio text
+
+#-Side panel--------    #panel that shows info of currently playing track
+
+191,189,182     title info
+168,153,132     extra info
+210,166,255     art border
+
+#-Mini Mode---------    #mini mode is activated by F8
+
+11,14,20        mini bg
+210,166,255     mini border
+
+210,166,255     mini text 1
+191,189,182     mini text 2
+
