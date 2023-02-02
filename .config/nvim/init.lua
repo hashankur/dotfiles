@@ -1,80 +1,84 @@
--- disable default vimscript bundled plugins, these load very early
+-- Dependencies
+require("plugins")
+require("keybindings")
+require("lsp")
 
-local default_plugins = {
-	"2html_plugin",
-	"getscript",
-	"getscriptPlugin",
-	"gzip",
-	"logipat",
-	"netrw",
-	"netrwPlugin",
-	"netrwSettings",
-	"netrwFileHandlers",
-	"matchit",
-	"tar",
-	"tarPlugin",
-	"rrhelper",
-	"spellfile_plugin",
-	"vimball",
-	"vimballPlugin",
-	"zip",
-	"zipPlugin",
-	"tutor",
-	"rplugin",
-	"syntax",
-	"synmenu",
-	"optwin",
-	"compiler",
-	"bugreport",
-	"ftplugin",
+-- Plugin specific configs
+require("plugins.treesitter")
+require("plugins.cmp")
+require("plugins.telescope")
+require("plugins.gitsigns")
+require("plugins.lualine")
+require("plugins.nvim-scrollbar")
+require("plugins.null-ls")
+require("plugins.prettier")
+
+-- [[ Setting options ]]
+-- See `:help vim.o`
+
+-- Set highlight on search
+vim.o.hlsearch = false
+
+-- Make relative line numbers default
+vim.wo.number = true
+vim.wo.relativenumber = true
+
+-- Enable mouse mode
+vim.o.mouse = 'a'
+
+-- Enable break indent
+vim.o.breakindent = true
+
+-- Save undo history
+vim.o.undofile = true
+
+-- Case insensitive searching UNLESS /C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Decrease update time
+vim.o.updatetime = 250
+vim.wo.signcolumn = 'yes'
+
+-- Set colorscheme
+vim.o.termguicolors = true
+vim.cmd [[colorscheme ayu]]
+
+require('ayu').setup({
+    mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+    overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
+})
+
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
+-- Enable Comment.nvim
+require('Comment').setup()
+
+-- Enable `lukas-reineke/indent-blankline.nvim`
+-- See `:help indent_blankline.txt`
+require('indent_blankline').setup {
+  char = '┊',
+  show_trailing_blankline_indent = false,
 }
 
-for _, plugin in pairs(default_plugins) do
-	vim.g["loaded_" .. plugin] = 1
-end
+-- Enable nvim-toggler
+require('nvim-toggler').setup()
 
-local default_providers = {
-	"node",
-	"perl",
-	"python3",
-	"ruby",
-}
+-- Enable auto tag closing in html, jsx, etc.
+require('nvim-ts-autotag').setup()
 
-for _, provider in ipairs(default_providers) do
-	vim.g["loaded_" .. provider .. "_provider"] = 0
-end
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
 
--- load hotpot
-
-if pcall(require, "hotpot") then
-	-- Setup hotpot.nvim
-	require("hotpot").setup({
-		provide_require_fennel = true,
-		enable_hotpot_diagnostics = false,
-		compiler = {
-			modules = {
-				-- not default but recommended, align lua lines with fnl source
-				-- for more debuggable errors, but less readable lua.
-				correlate = true,
-			},
-			macros = {
-				-- allow macros to access vim global, needed for nyoom modules
-				env = "_COMPILER",
-				compilerEnv = _G,
-				allowGlobals = true,
-				-- plugins = { "core.patch" },
-			},
-		},
-	})
-	-- Load profilers if nyoom is started in profile mode
-	if os.getenv("NYOOM_PROFILE") then
-		require("core.lib.profile").toggle()
-	end
-	local stdlib = require("core.lib")
-	for k, v in pairs(stdlib) do
-		rawset(_G, k, v)
-	end
-	require("core")
-else
-	print("Unable to require hotpot")
-end
