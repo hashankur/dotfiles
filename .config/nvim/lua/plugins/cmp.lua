@@ -30,7 +30,7 @@ local lsp_kinds = {
       TypeParameter = ""
   }
 
-cmp.setup {
+cmp.setup({
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -63,11 +63,19 @@ cmp.setup {
       end
     end, { 'i', 's' }),
   },
+  window = {
+    completion = {
+      winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+      col_offset = -3,
+      side_padding = 0,
+    },
+  },
   formatting = {
       deprecated = true,
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
-        vim_item.kind = lsp_kinds[vim_item.kind]
+        local strings = vim.split(lsp_kinds[vim_item.kind], "%s", { trimempty = true })
+        vim_item.kind = " " .. (strings[1] or "") .. " "
         vim_item.menu = ({
           nvim_lsp = "[LSP]",
           emoji = "[Emoji]",
@@ -79,6 +87,8 @@ cmp.setup {
           buffer = "[Buffer]",
           spell = "[Spell]",
           git = "[VCS]",
+          nvim_lua = "[Lua]",
+          latex_symbols = "[LaTeX]",
         })[entry.source.name]
         return vim_item
       end,
@@ -87,4 +97,4 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
-}
+})

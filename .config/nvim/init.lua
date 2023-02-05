@@ -12,6 +12,7 @@ require("plugins.lualine")
 require("plugins.nvim-scrollbar")
 require("plugins.null-ls")
 require("plugins.prettier")
+require("plugins.ayu")
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -44,13 +45,12 @@ vim.wo.signcolumn = 'yes'
 vim.o.termguicolors = true
 vim.cmd [[colorscheme ayu]]
 
-require('ayu').setup({
-    mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
-    overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
-})
-
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
+
+-- Enable current line highlight
+vim.wo.cursorline = true
+
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -78,6 +78,14 @@ require('nvim-toggler').setup()
 
 -- Enable auto tag closing in html, jsx, etc.
 require('nvim-ts-autotag').setup()
+
+-- Enable cursorline to current file
+require('reticle').setup {
+    -- add options here or leave empty
+}
+
+-- Highlight similar words
+require('illuminate').setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -1,7 +1,8 @@
 local colors = require("ayu.colors")
+colors.generate(false)
 
 require("scrollbar").setup({
-    handle = { color = colors.accent },  -- Not seem to be working
+    handle = { color = colors.line },  -- Not seem to be working
         excluded_filetypes = { "prompt", "TelescopePrompt", "noice", "notify" },
         marks = {
           Search = { color = colors.orange },
@@ -15,7 +16,7 @@ require("scrollbar").setup({
         cursor = true,
         diagnostic = true,
         gitsigns = true, -- Requires gitsigns
-        handle = false,
+        handle = true,
         search = false, -- Requires hlslens
         ale = false, -- Requires ALE
     },

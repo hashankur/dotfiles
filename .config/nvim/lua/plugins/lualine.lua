@@ -28,8 +28,8 @@ require('lualine').setup {
     },
     -- lualine_c = {'encoding', 'fileformat'},
     lualine_x = {'diagnostics', 'filetype'},
-    lualine_y = {},
-    lualine_z = {'diff', 'branch'},
+    lualine_y = {'diff'},
+    lualine_z = {'branch'},
   },
 }
 

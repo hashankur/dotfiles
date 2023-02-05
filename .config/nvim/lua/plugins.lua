@@ -89,4 +89,7 @@ require('lazy').setup({
 
   'nguyenvukhang/nvim-toggler',
   'windwp/nvim-ts-autotag',
+  'tummetott/reticle.nvim',
+  'SmiteshP/nvim-navic',
+  'RRethy/vim-illuminate',
 })

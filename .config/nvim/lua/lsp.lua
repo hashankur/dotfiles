@@ -1,6 +1,9 @@
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+
+local navic = require('nvim-navic')
+
+local on_attach = function(client, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -13,6 +16,13 @@ local on_attach = function(_, bufnr)
     end
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+
+    -- Code symbols in top bar
+    if client.server_capabilities.documentSymbolProvider then
+      navic.attach(client, bufnr)
+    end
+    vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
