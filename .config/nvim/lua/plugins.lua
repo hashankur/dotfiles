@@ -35,12 +35,12 @@ require("lazy").setup({
 
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
-		buid = function()
-			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
-		end,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
+		config = function()
+			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+		end,
 	},
 
 	-- Git related plugins
@@ -58,7 +58,7 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
 
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-	{ "nvim-telescope/telescope-fzf-native.nvim", buid = "make", cond = vim.fn.executable("make") == 1 },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
 
 	-- Projects
 	"nvim-telescope/telescope-project.nvim",
@@ -131,6 +131,20 @@ require("lazy").setup({
 		version = "*",
 		config = function()
 			require("toggleterm").setup()
+		end,
+	},
+	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
+	{
+		"Wansmer/treesj",
+		dependencies = "nvim-treesitter",
+		config = function()
+			require("treesj").setup({})
+		end,
+	},
+	{
+		"ggandor/leap.nvim",
+		config = function()
+			require("leap").add_default_mappings()
 		end,
 	},
 })

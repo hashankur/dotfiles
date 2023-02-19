@@ -28,11 +28,14 @@ vim.keymap.set("n", "<leader>sd", tscope.diagnostics, { desc = "Search Diagnosti
 vim.keymap.set("n", "<leader>sf", tscope.git_files, { desc = "Search current git files" })
 vim.keymap.set("n", "<leader>?", tscope.commands, { desc = "Browse commands" })
 
--- Telescope Git
+-- Git
 vim.keymap.set("n", "<leader>gc", tscope.git_commits, { desc = "Git commits" })
 vim.keymap.set("n", "<leader>gb", tscope.git_bcommits, { desc = "Git buffer commits" })
 vim.keymap.set("n", "<leader>gr", tscope.git_branches, { desc = "Git branches" })
 vim.keymap.set("n", "<leader>gs", tscope.git_status, { desc = "Git status" })
+vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<CR>", { desc = "Diffview Open" })
+vim.keymap.set("n", "<leader>gD", "<cmd>DiffviewClose<CR>", { desc = "Diffview Close" })
+vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory<CR>", { desc = "Diffview History" })
 
 -- File Keymaps
 vim.keymap.set("n", "<leader>fs", "<cmd>w<CR>", { desc = "Write to file" })
@@ -89,3 +92,13 @@ vim.api.nvim_set_keymap(
 vim.keymap.set("n", "<leader>ol", "<cmd>Lazy<CR>", { desc = "Lazy" })
 vim.keymap.set("n", "<leader>om", "<cmd>Mason<CR>", { desc = "Mason" })
 vim.keymap.set("n", "<leader>ot", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })
+vim.keymap.set("n", "<leader>os", "<cmd>TSJToggle<CR>", { desc = "Toggle Split/Join" })
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line(s) down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line(s) up" })
+
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")

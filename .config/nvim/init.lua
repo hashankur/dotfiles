@@ -23,6 +23,13 @@ require("plugins.ayu")
 require("plugins.dashboard")
 require("plugins.nvim-ts-rainbow")
 
+local function list(value, str, sep)
+	sep = sep or ","
+	str = str or ""
+	value = type(value) == "table" and table.concat(value, sep) or value
+	return str ~= "" and table.concat({ value, str }, sep) or value
+end
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
@@ -36,6 +43,11 @@ vim.wo.relativenumber = true
 -- Enable mouse mode
 vim.o.mouse = "a"
 
+-- Sync clipboard between OS and Neovim.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.o.clipboard = "unnamedplus"
+
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -46,9 +58,13 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+-- Keep signcolumn on by default
+vim.wo.signcolumn = "yes"
+
 -- Decrease update time
 vim.o.updatetime = 250
-vim.wo.signcolumn = "yes"
+vim.o.timeout = true
+vim.o.timeoutlen = 300
 
 -- Set colorscheme
 vim.o.termguicolors = true
@@ -65,8 +81,22 @@ vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a T
 vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
 
+vim.o.smartindent = true
+
+vim.o.wrap = false
+
 -- Keep scroll space for context
 vim.o.scrolloff = 5
+
+vim.o.fillchars = list({
+	-- "vert:▏",
+	"vert:│",
+	"diff:╱",
+	"foldclose:",
+	"foldopen:",
+	"fold: ",
+	"msgsep:─",
+})
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
