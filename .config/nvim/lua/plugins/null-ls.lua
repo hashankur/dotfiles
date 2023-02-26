@@ -13,8 +13,7 @@ local sources = {
 	b.completion.luasnip,
 	b.completion.tags,
 
-	b.diagnostics.markdownlint,
-	b.diagnostics.codespell,
+	b.diagnostics.misspell,
 	-- Python
 	b.diagnostics.flake8,
 	-- CSS
@@ -24,7 +23,9 @@ local sources = {
 
 	-- Python formatting
 	b.formatting.black,
-	b.formatting.google_java_format,
+	b.formatting.google_java_format.with({
+		extra_args = { "--aosp" },
+	}),
 	b.formatting.prettierd,
 	b.formatting.rustfmt,
 	b.formatting.stylua,

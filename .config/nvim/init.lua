@@ -5,6 +5,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.o.termguicolors = true
+
 -- Dependencies
 require("plugins")
 require("keybindings")
@@ -16,12 +18,14 @@ require("plugins.cmp")
 require("plugins.telescope")
 require("plugins.gitsigns")
 require("plugins.lualine")
+-- require("plugins.feline")
 require("plugins.nvim-scrollbar")
 require("plugins.null-ls")
 require("plugins.prettier")
 require("plugins.ayu")
 require("plugins.dashboard")
 require("plugins.nvim-ts-rainbow")
+-- require("plugins.incline")
 
 local function list(value, str, sep)
 	sep = sep or ","
@@ -46,7 +50,7 @@ vim.o.mouse = "a"
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = "unnamedplus"
+-- vim.o.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -67,7 +71,6 @@ vim.o.timeout = true
 vim.o.timeoutlen = 300
 
 -- Set colorscheme
-vim.o.termguicolors = true
 vim.cmd([[colorscheme ayu]])
 
 -- Set completeopt to have a better completion experience
@@ -86,7 +89,7 @@ vim.o.smartindent = true
 vim.o.wrap = false
 
 -- Keep scroll space for context
-vim.o.scrolloff = 5
+vim.o.scrolloff = 8
 
 vim.o.fillchars = list({
 	-- "vert:▏",
@@ -109,6 +112,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
+
+-- Global statusline
+vim.o.laststatus = 3
+
 -- Enable Comment.nvim
 require("Comment").setup()
 
@@ -117,17 +127,9 @@ require("Comment").setup()
 require("indent_blankline").setup({
 	char = "▏",
 	show_trailing_blankline_indent = false,
-})
-
--- Enable toggling values (Boolean)
-require("nvim-toggler").setup()
-
--- Enable auto tag closing in html, jsx, etc.
-require("nvim-ts-autotag").setup()
-
--- Enable cursorline only on current file
-require("reticle").setup({
-	-- add options here or leave empty
+	use_treesitter = true,
+	show_current_context = false,
+	show_first_indent_level = false,
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`

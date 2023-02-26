@@ -1,3 +1,8 @@
+local colors = require("ayu.colors")
+colors.generate(false)
+
+local rainbow = { colors.accent, "#D2A6FF", colors.regexp }
+
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require("nvim-treesitter.configs").setup({
@@ -7,18 +12,28 @@ require("nvim-treesitter.configs").setup({
 		"c",
 		"comment",
 		"css",
+		"diff",
+		"fish",
+		"gitcommit",
+		"gitignore",
+		"help",
+		"html",
 		"java",
 		"javascript",
 		"lua",
-		"help",
-		"html",
+		"markdown",
+		"markdown_inline",
 		"python",
 		"rust",
+		"scss",
 		"toml",
 		"tsx",
 		"typescript",
 	},
-	highlight = { enable = true },
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = false,
+	},
 	indent = { enable = true, disable = { "python" } },
 	incremental_selection = {
 		enable = true,
@@ -73,4 +88,17 @@ require("nvim-treesitter.configs").setup({
 			},
 		},
 	},
+	rainbow = {
+		enable = true,
+		disable = { "html" }, -- list of languages you want to disable the plugin for
+		extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+		max_file_lines = nil, -- Do not enable for files with more than n lines, int
+		colors = rainbow, -- table of hex strings
+		-- termcolors = {} -- table of colour name strings
+	},
 })
+
+-- Workaround: https://github.com/p00f/nvim-ts-rainbow/issues/81#issuecomment-1058124957
+for i, c in ipairs(rainbow) do -- p00f/rainbow#81
+	vim.cmd(("hi rainbowcol%d guifg=%s"):format(i, c))
+end

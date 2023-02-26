@@ -9,26 +9,28 @@ require("lualine").setup({
 	},
 	sections = {
 		lualine_a = { "mode" },
-		lualine_b = {},
+		lualine_b = { "branch" },
 		lualine_c = {
-			"filesize",
 			{
 				"filename",
-				newfile_status = true,
-				path = 1,
+				newfile_status = false,
+				path = 0,
 				symbols = {
-					modified = "", -- Text to show when the file is modified.
-					readonly = "", -- Text to show when the file is non-modifiable or readonly.
+					modified = "", -- Text to show when the file is modified.
+					readonly = " ", -- Text to show when the file is non-modifiable or readonly.
 					unnamed = "[No Name]", -- Text to show for unnamed buffers.
 					newfile = "[New]", -- Text to show for newly created file before first write
 				},
 			},
-			"location",
-			"progress",
+			{
+				"diff",
+				symbols = { added = "  ", modified = "  ", removed = "  " },
+				-- symbols = { added = "  ", modified = " 柳", removed = " " },
+			},
 		},
 		-- lualine_c = {'encoding', 'fileformat'},
 		lualine_x = { "diagnostics", "filetype" },
-		lualine_y = { "diff" },
-		lualine_z = { "branch" },
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
 	},
 })

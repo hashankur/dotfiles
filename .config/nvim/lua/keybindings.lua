@@ -19,7 +19,7 @@ vim.keymap.set("n", "<leader>/", function()
 		previewer = false,
 	}))
 end, { desc = "Search in current buffer" })
-vim.keymap.set("n", "<leader><leader>", tscope.find_files, { desc = "Search Files" })
+vim.keymap.set("n", "<leader>sF", tscope.find_files, { desc = "Search Files" })
 
 vim.keymap.set("n", "<leader>sh", tscope.help_tags, { desc = "Search Help" })
 vim.keymap.set("n", "<leader>sw", tscope.grep_string, { desc = "Search current Word" })
@@ -40,6 +40,13 @@ vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory<CR>", { desc = "Diff
 -- File Keymaps
 vim.keymap.set("n", "<leader>fs", "<cmd>w<CR>", { desc = "Write to file" })
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<CR>", { desc = "Write to file" })
+-- open file_browser with the path of the current buffer
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader><leader>",
+	":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+	{ desc = "File Browser", noremap = true }
+)
 
 -- Buffer Keymaps
 vim.keymap.set("n", "<leader>bk", "<cmd>close<CR>", { desc = "Close buffer" })
@@ -89,10 +96,12 @@ vim.api.nvim_set_keymap(
 	{ desc = "Exit without saving" }
 )
 
-vim.keymap.set("n", "<leader>ol", "<cmd>Lazy<CR>", { desc = "Lazy" })
-vim.keymap.set("n", "<leader>om", "<cmd>Mason<CR>", { desc = "Mason" })
-vim.keymap.set("n", "<leader>ot", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })
-vim.keymap.set("n", "<leader>os", "<cmd>TSJToggle<CR>", { desc = "Toggle Split/Join" })
+vim.keymap.set("n", "<leader>ts", "<cmd>TSJToggle<CR>", { desc = "Toggle Split/Join" })
+vim.keymap.set("n", "<leader>te", "<cmd>Lexplore<CR>", { desc = "Toggle explorer" })
+vim.keymap.set("n", "<leader>tu", "<cmd>Telescope undo<cr>", { desc = "Telescope Undo" })
+vim.keymap.set("n", "<leader>tn", "<cmd>ASToggle<CR>", { desc = "Toggle autosave" })
+vim.keymap.set("n", "<leader>tl", "<cmd>Lazy<CR>", { desc = "Lazy" })
+vim.keymap.set("n", "<leader>tm", "<cmd>Mason<CR>", { desc = "Mason" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line(s) down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line(s) up" })
@@ -102,3 +111,90 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
+local keymap = vim.keymap.set
+
+-- LSP finder - Find the symbol's definition
+-- If there is no definition, it will instead be hidden
+-- When you use an action in finder like "open vsplit",
+-- you can use <C-t> to jump back
+keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
+
+-- Code action
+keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+
+-- Rename all occurrences of the hovered word for the entire file
+keymap("n", "gr", "<cmd>Lspsaga rename<CR>")
+
+-- Rename all occurrences of the hovered word for the selected files
+keymap("n", "gr", "<cmd>Lspsaga rename ++project<CR>")
+
+-- Peek definition
+-- You can edit the file containing the definition in the floating window
+-- It also supports open/vsplit/etc operations, do refer to "definition_action_keys"
+-- It also supports tagstack
+-- Use <C-t> to jump back
+keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
+
+-- Go to definition
+keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
+
+-- Peek type definition
+-- You can edit the file containing the type definition in the floating window
+-- It also supports open/vsplit/etc operations, do refer to "definition_action_keys"
+-- It also supports tagstack
+-- Use <C-t> to jump back
+keymap("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
+
+-- Go to type definition
+keymap("n", "gt", "<cmd>Lspsaga goto_type_definition<CR>")
+
+-- Show line diagnostics
+-- You can pass argument ++unfocus to
+-- unfocus the show_line_diagnostics floating window
+keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
+
+-- Show cursor diagnostics
+-- Like show_line_diagnostics, it supports passing the ++unfocus argument
+keymap("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+
+-- Show buffer diagnostics
+keymap("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
+
+-- Diagnostic jump
+-- You can use <C-o> to jump back to your previous location
+keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+
+-- Diagnostic jump with filters such as only jumping to an error
+keymap("n", "[E", function()
+	require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+end)
+keymap("n", "]E", function()
+	require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+end)
+
+-- Toggle outline
+keymap("n", "<leader>to", "<cmd>Lspsaga outline<CR>")
+
+-- Hover Doc
+-- If there is no hover doc,
+-- there will be a notification stating that
+-- there is no information available.
+-- To disable it just use ":Lspsaga hover_doc ++quiet"
+-- Pressing the key twice will enter the hover window
+keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+
+-- If you want to keep the hover window in the top right hand corner,
+-- you can pass the ++keep argument
+-- Note that if you use hover with ++keep, pressing this key again will
+-- close the hover window. If you want to jump to the hover window
+-- you should use the wincmd command "<C-w>w"
+-- keymap("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>")
+
+-- Call hierarchy
+keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
+keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
+
+-- Floating terminal
+keymap({ "n", "t" }, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
