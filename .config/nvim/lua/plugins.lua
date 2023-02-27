@@ -154,7 +154,9 @@ require("lazy").setup({
 		"Wansmer/treesj",
 		dependencies = "nvim-treesitter",
 		config = function()
-			require("treesj").setup({})
+			require("treesj").setup({
+				use_default_keymaps = false,
+			})
 		end,
 	},
 	{
@@ -180,7 +182,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-	"mfussenegger/nvim-jdtls",
 	{
 		"glepnir/lspsaga.nvim",
 		event = "BufRead",
@@ -220,5 +221,19 @@ require("lazy").setup({
 		config = function()
 			require("copilot_cmp").setup()
 		end,
+	},
+	{
+		"akinsho/flutter-tools.nvim",
+		config = function()
+			require("flutter-tools").setup({}) -- use defaults
+		end,
+		dependencies = "nvim-lua/plenary.nvim",
+	},
+	{
+		"ThePrimeagen/refactoring.nvim",
+		dependencies = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
 	},
 })

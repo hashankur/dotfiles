@@ -3,7 +3,7 @@
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = " m"
 
 vim.o.termguicolors = true
 
@@ -24,7 +24,6 @@ require("plugins.null-ls")
 require("plugins.prettier")
 require("plugins.ayu")
 require("plugins.dashboard")
-require("plugins.nvim-ts-rainbow")
 -- require("plugins.incline")
 
 local function list(value, str, sep)

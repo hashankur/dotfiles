@@ -1,13 +1,20 @@
 local null_ls = require("null-ls")
 
-local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
-local event = "BufWritePre" -- or "BufWritePost"
-local async = event == "BufWritePost"
+-- local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+-- local event = "BufWritePre" -- or "BufWritePost"
+-- local async = event == "BufWritePost"
 
 local b = null_ls.builtins
 
 local sources = {
-	b.code_actions.gitsigns,
+	b.code_actions.gitsigns.with({
+		config = {
+			filter_actions = function(title)
+				return title:lower():match("blame") == nil -- filter out blame actions
+			end,
+		},
+	}),
+	b.code_actions.refactoring,
 	b.code_actions.xo,
 
 	b.completion.luasnip,
@@ -20,6 +27,7 @@ local sources = {
 	b.diagnostics.stylelint,
 	-- HTML
 	b.diagnostics.tidy,
+	b.diagnostics.xo,
 
 	-- Python formatting
 	b.formatting.black,
@@ -37,19 +45,23 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
-			vim.keymap.set("n", "<Leader>ff", function()
-				vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-			end, { buffer = bufnr, desc = "Format buffer" })
+			-- vim.keymap.set("n", "<Leader>ff", function()
+			-- 	vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+			-- end, { buffer = bufnr, desc = "Format buffer" })
+			vim.api.nvim_buf_create_user_command(bufnr, "LspFormatting", function()
+				vim.lsp.buf.format({ bufnr = bufnr })
+			end, {})
 
 			-- format on save
 			vim.api.nvim_clear_autocmds({ buffer = bufnr, group = augroup })
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				buffer = bufnr,
 				group = augroup,
-				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr, async = async })
-				end,
-				desc = "[lsp] format on save",
+				-- callback = function()
+				-- 	vim.lsp.buf.format({ bufnr = bufnr, async = async })
+				-- end,
+				-- desc = "[lsp] format on save",
+				command = "undojoin | LspFormatting",
 			})
 		end
 

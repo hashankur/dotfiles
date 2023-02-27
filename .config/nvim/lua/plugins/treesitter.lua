@@ -12,6 +12,7 @@ require("nvim-treesitter.configs").setup({
 		"c",
 		"comment",
 		"css",
+		"dart",
 		"diff",
 		"fish",
 		"gitcommit",
@@ -20,6 +21,7 @@ require("nvim-treesitter.configs").setup({
 		"html",
 		"java",
 		"javascript",
+		"json",
 		"lua",
 		"markdown",
 		"markdown_inline",
@@ -90,7 +92,7 @@ require("nvim-treesitter.configs").setup({
 	},
 	rainbow = {
 		enable = true,
-		disable = { "html" }, -- list of languages you want to disable the plugin for
+		disable = { "html", "tsx" }, -- list of languages you want to disable the plugin for
 		extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
 		max_file_lines = nil, -- Do not enable for files with more than n lines, int
 		colors = rainbow, -- table of hex strings
