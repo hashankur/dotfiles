@@ -119,6 +119,10 @@ vim.g.netrw_winsize = 25
 -- Global statusline
 vim.o.laststatus = 3
 
+-- Spell
+-- vim.opt.spelllang = "en_us"
+-- vim.opt.spell = true
+
 -- Enable Comment.nvim
 require("Comment").setup()
 

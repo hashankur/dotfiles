@@ -31,6 +31,9 @@ local sources = {
 	b.formatting.stylua,
 }
 
+-- if you want to set up formatting on save, you can use this as a callback
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 null_ls.setup({
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
@@ -39,10 +42,10 @@ null_ls.setup({
 			end, { buffer = bufnr, desc = "Format buffer" })
 
 			-- format on save
-			vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-			vim.api.nvim_create_autocmd(event, {
+			vim.api.nvim_clear_autocmds({ buffer = bufnr, group = augroup })
+			vim.api.nvim_create_autocmd("BufWritePre", {
 				buffer = bufnr,
-				group = group,
+				group = augroup,
 				callback = function()
 					vim.lsp.buf.format({ bufnr = bufnr, async = async })
 				end,
