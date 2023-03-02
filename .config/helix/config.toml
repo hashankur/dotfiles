@@ -20,4 +20,4 @@ C-space = "completion"
 
 [editor.indent-guides]
 render = true
-character = "."
+character ="▏"
