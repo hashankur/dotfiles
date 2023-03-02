@@ -83,8 +83,7 @@ cmp.setup({
 	}),
 	window = {
 		completion = {
-			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-			scrollbar = "║",
+			border = "rounded",
 			winhighlight = "Normal:CmpMenu,FloatBorder:CmpMenuBorder,CursorLine:CmpSelection,Search:None",
 			autocomplete = {
 				require("cmp.types").cmp.TriggerEvent.InsertEnter,
@@ -92,9 +91,8 @@ cmp.setup({
 			},
 		},
 		documentation = {
-			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+			border = "rounded",
 			winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-			scrollbar = "║",
 		},
 	},
 	-- formatting = {
@@ -127,18 +125,19 @@ cmp.setup({
 			vim_item.menu = vim_item.kind
 			vim_item.abbr = vim_item.abbr:sub(1, 50)
 			vim_item.kind = symbols[vim_item.kind]
+			vim_item.dup = { buffer = 1, path = 1, nvim_lsp = 0 } -- Deduplication?
 			return vim_item
 		end,
 	},
 	sources = {
-		{ name = "copilot", group_index = 2 },
-		{ name = "luasnip", group_index = 2 },
-		{ name = "nvim_lsp", group_index = 2 },
+		{ name = "nvim_lsp" },
+		{ name = "copilot" },
+		{ name = "luasnip" },
 	},
 	sorting = {
 		--keep priority weight at 2 for much closer matches to appear above copilot
 		--set to 1 to make copilot always appear on top
-		priority_weight = 1,
+		priority_weight = 2,
 		comparators = {
 			-- order matters here
 			cmp.config.compare.exact,
