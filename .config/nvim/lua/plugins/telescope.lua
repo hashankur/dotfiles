@@ -13,7 +13,6 @@ require("telescope").setup({
 		entry_prefix = "   ",
 	},
 	extensions = {
-		project = { base_dirs = { "~/.config/nvim", "~/.config/hypr" } },
 		undo = {
 			side_by_side = true,
 			layout_strategy = "vertical",
@@ -31,9 +30,6 @@ require("telescope").setup({
 
 -- Enable telescope fzf native, if installed
 pcall(require("telescope").load_extension, "fzf")
-
--- Enable telescope project picker
-pcall(require("telescope").load_extension, "projects")
 
 require("telescope").load_extension("undo")
 

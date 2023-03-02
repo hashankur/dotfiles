@@ -68,9 +68,6 @@ require("lazy").setup({
 		cond = vim.fn.executable("make") == 1,
 	},
 
-	-- Projects
-	"nvim-telescope/telescope-project.nvim",
-
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
 		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
@@ -120,13 +117,6 @@ require("lazy").setup({
 	},
 
 	{
-		"folke/persistence.nvim",
-		event = "BufReadPre", -- this will only start session saving when an actual file was opened
-		config = function()
-			require("persistence").setup()
-		end,
-	},
-	{
 		"tzachar/local-highlight.nvim",
 		config = function()
 			require("local-highlight").setup({
@@ -140,7 +130,6 @@ require("lazy").setup({
 			require("colorizer").setup()
 		end,
 	},
-	"ahmedkhalf/project.nvim",
 	"p00f/nvim-ts-rainbow",
 	{
 		"altermo/ultimate-autopair.nvim",
@@ -192,6 +181,7 @@ require("lazy").setup({
 					virtual_text = false,
 				},
 				symbol_in_winbar = {
+					enable = false,
 					separator = " > ",
 				},
 				ui = {
@@ -236,4 +226,5 @@ require("lazy").setup({
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
 	},
+	"gnikdroy/projections.nvim",
 })

@@ -25,6 +25,7 @@ require("plugins.prettier")
 require("plugins.ayu")
 require("plugins.dashboard")
 -- require("plugins.incline")
+require("plugins.projections")
 
 local function list(value, str, sep)
 	sep = sep or ","
