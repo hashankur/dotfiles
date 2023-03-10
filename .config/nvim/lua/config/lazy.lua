@@ -13,7 +13,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{ -- LSP Configuration & Plugins
+	{
+		-- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
@@ -28,12 +29,14 @@ require("lazy").setup({
 		},
 	},
 
-	{ -- Autocompletion
+	{
+		-- Autocompletion
 		"hrsh7th/nvim-cmp",
 		dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
 	},
 
-	{ -- Highlight, edit, and navigate code
+	{
+		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
@@ -111,11 +114,9 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"glepnir/dashboard-nvim",
-		event = "VimEnter",
-		dependencies = { { "nvim-tree/nvim-web-devicons" } },
+		"goolord/alpha-nvim",
+		requires = { "nvim-tree/nvim-web-devicons" },
 	},
-
 	{
 		"tzachar/local-highlight.nvim",
 		config = function()
@@ -130,7 +131,7 @@ require("lazy").setup({
 			require("colorizer").setup()
 		end,
 	},
-	"p00f/nvim-ts-rainbow",
+	"HiPhish/nvim-ts-rainbow2",
 	{
 		"altermo/ultimate-autopair.nvim",
 		event = { "InsertEnter", "CmdlineEnter" },
@@ -227,4 +228,8 @@ require("lazy").setup({
 		},
 	},
 	"gnikdroy/projections.nvim",
+	"famiu/bufdelete.nvim",
+	"elkowar/yuck.vim",
+	"simrat39/rust-tools.nvim",
+	"nanozuki/tabby.nvim",
 })

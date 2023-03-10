@@ -91,3 +91,5 @@ vim.o.laststatus = 3
 -- Spell
 -- vim.opt.spelllang = "en_us"
 -- vim.opt.spell = true
+
+vim.o.showtabline = 1

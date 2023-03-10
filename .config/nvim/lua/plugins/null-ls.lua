@@ -15,7 +15,7 @@ local sources = {
 		},
 	}),
 	b.code_actions.refactoring,
-	b.code_actions.xo,
+	-- b.code_actions.eslint_d,
 
 	b.completion.luasnip,
 	b.completion.tags,
@@ -24,10 +24,10 @@ local sources = {
 	-- Python
 	b.diagnostics.flake8,
 	-- CSS
-	b.diagnostics.stylelint,
+	-- b.diagnostics.stylelint,
 	-- HTML
 	b.diagnostics.tidy,
-	b.diagnostics.xo,
+	-- b.diagnostics.eslint_d,
 
 	-- Python formatting
 	b.formatting.black,

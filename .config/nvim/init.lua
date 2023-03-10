@@ -4,7 +4,7 @@ require("config.lazy")
 require("config.keymaps")
 
 -- Plugin specific configs
-require("plugins.ayu")
+equire("plugins.ayu")
 require("plugins.lsp")
 require("plugins.treesitter")
 require("plugins.cmp")
@@ -14,10 +14,10 @@ require("plugins.lualine")
 -- require("plugins.feline")
 require("plugins.nvim-scrollbar")
 require("plugins.null-ls")
-require("plugins.prettier")
-require("plugins.dashboard")
+require("plugins.alpha")
 -- require("plugins.incline")
 require("plugins.projections")
+require("plugins.tabby")
 
 -- Enable Comment.nvim
 require("Comment").setup()
@@ -26,9 +26,7 @@ require("Comment").setup()
 -- See `:help indent_blankline.txt`
 require("indent_blankline").setup({
 	char = "▏",
-	show_trailing_blankline_indent = false,
-	use_treesitter = true,
-	show_current_context = false,
+	use_treesitter = false, -- Issues with js, css
 	show_first_indent_level = false,
 })
 

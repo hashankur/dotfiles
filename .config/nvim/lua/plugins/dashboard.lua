@@ -1,3 +1,8 @@
+-- local Session = require("projections.session")
+-- restore = function()
+-- 	Session.restore_latest()
+-- end
+
 require("dashboard").setup({
 	theme = "hyper",
 	config = {
@@ -5,12 +10,11 @@ require("dashboard").setup({
 			enable = true,
 		},
 		shortcut = {
-			{ desc = " Update", group = "@property", action = "Lazy update", key = "u" },
 			{
-				desc = " Files",
-				group = "Label",
-				action = "Telescope find_files",
-				key = "f",
+				desc = "  Last session",
+				group = "@property",
+				action = "restore()",
+				key = "r",
 			},
 			{
 				desc = " Apps",

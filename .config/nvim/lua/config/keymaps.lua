@@ -51,8 +51,10 @@ vim.api.nvim_set_keymap(
 -- Buffer Keymaps
 vim.keymap.set("n", "<leader>bk", "<cmd>close<CR>", { desc = "Close buffer" })
 vim.keymap.set("n", "<leader>by", "<cmd>%y+<CR>", { desc = "Yank buffer" })
-vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>bd", "<cmd>Bdelete<CR>", { desc = "Close buffer" })
 vim.keymap.set("n", "<leader>bo", "<cmd>%bd|e#<CR>", { desc = "Close other buffers" })
+-- Delete every buffer from buffer 7 to buffer 30 without force
+vim.keymap.set("n", "<leader>br", ":lua require('bufdelete').bufdelete({ })", { desc = "Close buffer range" })
 
 -- Window Keymaps
 vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Window left" })
@@ -67,6 +69,7 @@ vim.keymap.set("n", "<leader>wx", "<C-w>x", { desc = "Swap windows" })
 vim.keymap.set("n", "<leader>wo", "<C-w>o", { desc = "Enlarge window" })
 vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split vertical" })
 vim.keymap.set("n", "<leader>ws", "<C-w>s", { desc = "Split horizontal" })
+vim.keymap.set("n", "<leader>wc", "<cmd>close<CR>", { desc = "Close window" })
 
 -- Session keymaps
 -- vim.keymap.set("n", "<leader><tab><tab>", tprojects, { desc = "List projects" })
