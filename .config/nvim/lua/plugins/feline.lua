@@ -163,7 +163,7 @@ component.lsp = {
 				local content = string.format("%%<%s", spinners[frame + 1])
 				return content or ""
 			else
-				return "LSP"
+				return " LSP"
 			end
 		end
 		return ""
@@ -278,7 +278,7 @@ component.scroll_bar = {
 
 local left = {
 	component.vim_mode,
-	-- component.git_branch,
+	component.git_branch,
 	-- component.fileinfo,
 	-- component.git_add,
 	-- component.git_delete,

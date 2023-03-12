@@ -11,24 +11,24 @@ local symbols = {
 	Enum = " ",
 	EnumMember = " ",
 	Event = "",
-	Field = " ",
+	Field = " ",
 	File = " ",
 	Folder = " ",
-	Function = "ﬦ",
+	Function = "󰡱 ",
 	Interface = " ",
 	Keyword = " ",
 	Method = " ",
 	Module = "	",
-	Number = " ",
+	Number = " ",
 	Operator = " ",
 	Parameter = " ",
-	Property = "ﰠ ",
-	Reference = " ",
+	Property = " ",
+	Reference = " ",
 	Snippet = " ",
-	String = " ",
-	Struct = " ",
+	String = " ",
+	Struct = " ",
 	Text = " ",
-	TypeParameter = " ",
+	TypeParameter = " ",
 	Unit = " ",
 	Value = " ",
 	Variable = " ",
@@ -84,7 +84,7 @@ cmp.setup({
 	window = {
 		completion = {
 			border = "rounded",
-			winhighlight = "Normal:CmpMenu,FloatBorder:CmpMenuBorder,CursorLine:CmpSelection,Search:None",
+			winhighlight = "NormalFloat:Normal,FloatBorder:FloatBorder",
 			autocomplete = {
 				require("cmp.types").cmp.TriggerEvent.InsertEnter,
 				require("cmp.types").cmp.TriggerEvent.TextChanged,
@@ -92,32 +92,9 @@ cmp.setup({
 		},
 		documentation = {
 			border = "rounded",
-			winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+			winhighlight = "NormalFloat:Normal,FloatBorder:FloatBorder",
 		},
 	},
-	-- formatting = {
-	-- 	deprecated = true,
-	-- 	fields = { "kind", "abbr", "menu" },
-	-- 	format = function(entry, vim_item)
-	-- 		local strings = vim.split(lsp_kinds[vim_item.kind], "%s", { trimempty = true })
-	-- 		vim_item.kind = " " .. (strings[1] or "") .. " "
-	-- 		vim_item.menu = ({
-	-- 			nvim_lsp = "[LSP]",
-	-- 			emoji = "[Emoji]",
-	-- 			path = "[Path]",
-	-- 			calc = "[Calc]",
-	-- 			neorg = "[Neorg]",
-	-- 			orgmode = "[Org]",
-	-- 			luasnip = "[Luasnip]",
-	-- 			buffer = "[Buffer]",
-	-- 			spell = "[Spell]",
-	-- 			git = "[VCS]",
-	-- 			nvim_lua = "[Lua]",
-	-- 			latex_symbols = "[LaTeX]",
-	-- 		})[entry.source.name]
-	-- 		return vim_item
-	-- 	end,
-	-- },
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
@@ -162,6 +139,9 @@ cmp.setup({
 		},
 	},
 	preselect = cmp.PreselectMode.Item,
+	experimental = {
+		ghost_text = true,
+	},
 })
 
 vim.cmd([[ set pumheight=15 ]])
