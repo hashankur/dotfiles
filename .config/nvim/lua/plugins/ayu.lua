@@ -21,3 +21,6 @@ require("ayu").setup({
 		TSRainbowCyan = { fg = "#95e6cb" },
 	}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
 })
+
+-- Set colorscheme
+vim.cmd([[colorscheme ayu]])

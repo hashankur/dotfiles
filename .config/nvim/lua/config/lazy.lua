@@ -21,9 +21,6 @@ require("lazy").setup({
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 
-			-- Useful status updates for LSP
-			"j-hui/fidget.nvim",
-
 			-- Additional lua configuration, makes nvim stuff amazing
 			"folke/neodev.nvim",
 		},
@@ -47,12 +44,13 @@ require("lazy").setup({
 	},
 
 	-- Git related plugins
-	"tpope/vim-fugitive",
-	"tpope/vim-rhubarb",
 	"lewis6991/gitsigns.nvim",
+	{ "TimUntersberger/neogit", dependencies = "nvim-lua/plenary.nvim" },
 
-	"Shatur/neovim-ayu",
-	"nvim-lualine/lualine.nvim", -- Fancier statusline
+	-- "Shatur/neovim-ayu",
+	{ "catppuccin/nvim", name = "catppuccin" },
+	-- "nvim-lualine/lualine.nvim", -- Fancier statusline
+	"freddiehaddad/feline.nvim",
 	"lukas-reineke/indent-blankline.nvim", -- Add indentation guides even on blank lines
 	"numToStr/Comment.nvim", -- "gc" to comment visual regions/lines
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
@@ -82,7 +80,6 @@ require("lazy").setup({
 
 	-- Prettier
 	"jose-elias-alvarez/null-ls.nvim",
-	"MunifTanjim/prettier.nvim",
 
 	-- Lua
 	{
@@ -163,7 +160,7 @@ require("lazy").setup({
 		end,
 	},
 	"rafamadriz/friendly-snippets",
-	-- "b0o/incline.nvim",
+	"b0o/incline.nvim",
 	{
 		"Pocco81/auto-save.nvim",
 		config = function()
@@ -190,6 +187,7 @@ require("lazy").setup({
 					title = true,
 					-- Border type can be single, double, rounded, solid, shadow.
 					border = "rounded",
+					kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
 				},
 			})
 		end,
@@ -232,4 +230,10 @@ require("lazy").setup({
 	"elkowar/yuck.vim",
 	"simrat39/rust-tools.nvim",
 	"nanozuki/tabby.nvim",
+	{
+		"ggandor/flit.nvim",
+		config = function()
+			require("flit").setup()
+		end,
+	},
 })

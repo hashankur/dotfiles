@@ -21,4 +21,7 @@ require("gitsigns").setup({
 	diff_opts = {
 		algorithm = "histogram",
 	},
+	yadm = {
+		enable = true,
+	},
 })

@@ -16,9 +16,6 @@ local on_attach = function(client, bufnr)
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
-	-- nmap("<leader>cn", vim.lsp.buf.rename, "[R]e[n]ame")
-	-- nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-
 	nmap("<leader>cd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 	nmap("<leader>cr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 	nmap("<leader>cI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
@@ -94,9 +91,6 @@ mason_lspconfig.setup_handlers({
 	end,
 })
 
--- Turn on lsp status information
-require("fidget").setup()
-
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
@@ -117,4 +111,10 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 	border = "rounded",
+})
+
+vim.diagnostic.config({
+	virtual_text = false,
+	update_in_insert = true,
+	severity_sort = true,
 })

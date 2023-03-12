@@ -6,6 +6,10 @@ require("telescope").setup({
 			i = {
 				["<C-u>"] = false,
 				["<C-d>"] = false,
+				["<c-d>"] = require("telescope.actions").delete_buffer,
+			},
+			n = {
+				["<c-d>"] = require("telescope.actions").delete_buffer,
 			},
 		},
 		-- prompt_prefix = "  " .. icons.get("telescope") .. "  ",

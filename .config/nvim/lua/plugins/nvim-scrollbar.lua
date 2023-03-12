@@ -1,20 +1,17 @@
-local colors = require("ayu.colors")
-colors.generate(false)
-
 require("scrollbar").setup({
-	handle = { color = "#282C34" },
+	-- handle = { color = "#282C34" },
 	excluded_filetypes = { "prompt", "TelescopePrompt", "noice", "notify" },
 	marks = {
-		Search = { text = { "-", "🬇" }, color = colors.keyword },
-		Error = { text = { "-", "🬇" }, color = colors.warning },
-		Warn = { text = { "-", "🬇" }, color = colors.warning },
-		Info = { text = { "-", "🬇" }, color = colors.entity },
-		Hint = { text = { "-", "🬇" }, color = colors.special },
-		Misc = { text = { "-", "🬇" }, color = "#C99FF4" },
+		Search = { text = { "-", "🬇" } },
+		Error = { text = { "-", "🬇" } },
+		Warn = { text = { "-", "🬇" } },
+		Info = { text = { "-", "🬇" } },
+		Hint = { text = { "-", "🬇" } },
+		Misc = { text = { "-", "🬇" } },
 		Cursor = { text = "∎" },
-		GitAdd = { text = "▏", color = colors.vcs_added },
+		GitAdd = { text = "▏" },
 		GitChange = { text = "▏" },
-		GitDelete = { color = colors.vcs_removed },
+		GitDelete = {},
 	},
 	handlers = {
 		cursor = true,

@@ -1,5 +1,4 @@
-local colors = require("ayu.colors")
-colors.generate(false)
+local clrs = require("catppuccin.palettes").get_palette()
 
 ---depends om https://github.com/feline-nvim/feline.nvim
 local present, feline = pcall(require, "feline")
@@ -9,38 +8,40 @@ if not present then
 end
 
 local theme = {
-	aqua = colors.tag,
-	bg = colors.bg,
-	blue = colors.entity,
-	cyan = colors.regexp,
-	darkred = colors.error,
-	fg = colors.fg,
-	gray = colors.bg,
-	green = colors.string,
+	aqua = clrs.teal,
+	bg = clrs.base,
+	blue = clrs.blue,
+	cyan = clrs.sapphire,
+	darkred = clrs.maroon,
+	fg = clrs.fg,
+	gray = clrs.crust,
+	green = clrs.green,
 	lime = "#54CED6",
-	orange = colors.keyword,
-	pink = colors.operator,
-	purple = "#D2A6FF",
-	red = colors.markup,
-	yellow = colors.accent,
+	orange = clrs.peach,
+	pink = clrs.pink,
+	purple = clrs.mauve,
+	red = clrs.red,
+	yellow = clrs.yellow,
 }
 
 local mode_theme = {
-	["NORMAL"] = theme.blue,
-	["OP"] = theme.cyan,
-	["INSERT"] = theme.aqua,
-	["VISUAL"] = theme.yellow,
-	["LINES"] = theme.yellow,
-	["BLOCK"] = theme.orange,
-	["REPLACE"] = theme.red,
-	["V-REPLACE"] = theme.pink,
-	["ENTER"] = theme.pink,
-	["MORE"] = theme.pink,
-	["SELECT"] = theme.darkred,
-	["SHELL"] = theme.cyan,
-	["TERM"] = theme.purple,
-	["NONE"] = theme.bg,
-	["COMMAND"] = theme.blue,
+	["NORMAL"] = clrs.lavender,
+	["N-PENDING"] = clrs.lavender,
+	["INSERT"] = clrs.green,
+	["TERMINAL"] = clrs.green,
+	["VISUAL"] = clrs.flamingo,
+	["V-LINE"] = clrs.flamingo,
+	["V-BLOCK"] = clrs.flamingo,
+	["REPLACE"] = clrs.maroon,
+	["V-REPLACE"] = clrs.maroon,
+	["SELECT"] = clrs.maroon,
+	["S-LINE"] = clrs.maroon,
+	["S-BLOCK"] = clrs.maroon,
+	["COMMAND"] = clrs.peach,
+	["PROMPT"] = clrs.teal,
+	["MORE"] = clrs.teal,
+	["CONFIRM"] = clrs.mauve,
+	["SHELL"] = clrs.green,
 }
 
 local component = {}
@@ -171,7 +172,7 @@ component.lsp = {
 		local progress = vim.lsp.util.get_progress_messages()[1]
 		return {
 			fg = progress and "yellow" or "green",
-			bg = "gray",
+			bg = "bg",
 			style = "bold",
 		}
 	end,
@@ -188,7 +189,7 @@ component.file_type = {
 	},
 	hl = {
 		fg = "fg",
-		bg = "gray",
+		bg = "bg",
 	},
 	left_sep = "block",
 	right_sep = "block",
@@ -277,20 +278,20 @@ component.scroll_bar = {
 
 local left = {
 	component.vim_mode,
-	component.git_branch,
-	component.fileinfo,
-	component.git_add,
-	component.git_delete,
-	component.git_change,
+	-- component.git_branch,
+	-- component.fileinfo,
+	-- component.git_add,
+	-- component.git_delete,
+	-- component.git_change,
 }
 local middle = {}
 local right = {
 	component.lsp,
-	component.separator,
-	component.diagnostic_errors,
-	component.diagnostic_warnings,
-	component.diagnostic_info,
-	component.diagnostic_hints,
+	-- component.separator,
+	-- component.diagnostic_errors,
+	-- component.diagnostic_warnings,
+	-- component.diagnostic_info,
+	-- component.diagnostic_hints,
 	component.scroll_bar,
 	component.file_type,
 }

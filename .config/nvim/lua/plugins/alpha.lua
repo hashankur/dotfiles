@@ -19,8 +19,8 @@ dashboard.section.header.val = {
 	[[                        ████  ██▒▒██  ██▒▒▒▒██  ██▒▒██                        ]],
 	[[                        ██      ██      ████      ████                        ]],
 	[[                                                                              ]],
-	[[                                                                              ]],
 }
+
 dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
 	dashboard.button("p", "  Open project", ":Telescope projects <CR>"),
@@ -42,9 +42,9 @@ end
 
 dashboard.section.footer.val = footer()
 
-dashboard.section.footer.opts.hl = "Type"
-dashboard.section.header.opts.hl = "Include"
-dashboard.section.buttons.opts.hl = "Keyword"
+-- dashboard.section.footer.opts.hl = "Type"
+-- dashboard.section.header.opts.hl = "Include"
+-- dashboard.section.buttons.opts.hl = "Keyword"
 
 dashboard.opts.opts.noautocmd = true
 -- vim.cmd([[autocmd User AlphaReady echo 'ready']])
