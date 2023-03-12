@@ -92,8 +92,6 @@ alias egrep='egrep --color=auto'
 alias hw='hwinfo --short'                                   #Hardware Info
 alias big="expac -H M '%m\t%n' | sort -h | nl"              #Sort installed packages according to size in MB (expac must be installed)
 
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
 #get fastest mirrors 
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist" 
 alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist" 
