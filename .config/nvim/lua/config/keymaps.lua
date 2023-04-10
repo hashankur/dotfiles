@@ -56,6 +56,10 @@ vim.keymap.set("n", "<leader>bo", "<cmd>%bd|e#<CR>", { desc = "Close other buffe
 -- Delete every buffer from buffer 7 to buffer 30 without force
 vim.keymap.set("n", "<leader>br", ":lua require('bufdelete').bufdelete({ })", { desc = "Close buffer range" })
 
+-- Tab Keymaps
+vim.keymap.set("n", "<leader><tab>n", "<cmd>tabnew<CR>", { desc = "New tab" })
+vim.keymap.set("n", "<leader><tab>c", "<cmd>tabclose<CR>", { desc = "Close tab" })
+
 -- Window Keymaps
 vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Window left" })
 vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Window bottom" })
@@ -71,36 +75,8 @@ vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split vertical" })
 vim.keymap.set("n", "<leader>ws", "<C-w>s", { desc = "Split horizontal" })
 vim.keymap.set("n", "<leader>wc", "<cmd>close<CR>", { desc = "Close window" })
 
--- Session keymaps
--- vim.keymap.set("n", "<leader><tab><tab>", tprojects, { desc = "List projects" })
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader><tab><tab>",
-	[[<cmd>lua require("telescope").extensions.project.project({})<cr>]],
-	{ desc = "List projects" }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader><tab>r",
-	[[<cmd>lua require("persistence").load()<cr>]],
-	{ desc = "Restore session CWD" }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader><tab>l",
-	[[<cmd>lua require("persistence").load({ last = true })<cr>]],
-	{ desc = "Restore last session" }
-)
--- stop Persistence => session won't be saved on exit
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader><tab>d",
-	[[<cmd>lua require("persistence").stop()<cr>]],
-	{ desc = "Exit without saving" }
-)
-
+-- Toggle
 vim.keymap.set("n", "<leader>ts", "<cmd>TSJToggle<CR>", { desc = "Toggle Split/Join" })
-vim.keymap.set("n", "<leader>te", "<cmd>Lexplore<CR>", { desc = "Toggle explorer" })
 vim.keymap.set("n", "<leader>tu", "<cmd>Telescope undo<cr>", { desc = "Telescope Undo" })
 vim.keymap.set("n", "<leader>tn", "<cmd>ASToggle<CR>", { desc = "Toggle autosave" })
 vim.keymap.set("n", "<leader>tl", "<cmd>Lazy<CR>", { desc = "Lazy" })
