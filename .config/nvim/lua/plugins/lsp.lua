@@ -16,6 +16,8 @@ local on_attach = function(client, bufnr)
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
+	require("jdtls").setup_dap({ hotcodereplace = "auto" })
+
 	nmap("<leader>cd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 	nmap("<leader>cr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 	nmap("<leader>cI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
@@ -98,7 +100,8 @@ vim.keymap.set("n", "<leader>de", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist)
 
 -- Diagnostic symbols in sign column
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+-- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = "", Warn = "", Info = "", Hint = "" }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

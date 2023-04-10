@@ -64,6 +64,7 @@ component.vim_mode = {
 
 component.git_branch = {
 	provider = "git_branch",
+	icon = " ",
 	hl = {
 		fg = "fg",
 		bg = "bg",
@@ -292,8 +293,8 @@ local right = {
 	-- component.diagnostic_warnings,
 	-- component.diagnostic_info,
 	-- component.diagnostic_hints,
-	component.scroll_bar,
 	component.file_type,
+	component.scroll_bar,
 }
 
 local components = {

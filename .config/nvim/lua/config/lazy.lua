@@ -125,7 +125,20 @@ require("lazy").setup({
 	{
 		"NvChad/nvim-colorizer.lua",
 		config = function()
-			require("colorizer").setup()
+			require("colorizer").setup({
+				user_default_options = {
+					RGB = true, -- #RGB hex codes
+					RRGGBB = true, -- #RRGGBB hex codes
+					names = false, -- "Name" codes like Blue or blue
+					RRGGBBAA = true, -- #RRGGBBAA hex codes
+					AARRGGBB = true, -- 0xAARRGGBB hex codes
+					css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+					css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+					-- Available methods are false / true / "normal" / "lsp" / "both"
+					-- True is same as normal
+					tailwind = false, -- Enable tailwind colors
+				},
+			})
 		end,
 	},
 	"HiPhish/nvim-ts-rainbow2",
@@ -181,6 +194,7 @@ require("lazy").setup({
 				symbol_in_winbar = {
 					enable = false,
 					separator = " > ",
+					color_mode = true,
 				},
 				ui = {
 					-- This option only works in Neovim 0.9
@@ -188,6 +202,7 @@ require("lazy").setup({
 					-- Border type can be single, double, rounded, solid, shadow.
 					border = "rounded",
 					kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+					code_action = "",
 				},
 			})
 		end,
@@ -237,6 +252,11 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"karb94/neoscroll.nvim",
+		config = function()
+			require("neoscroll").setup()
+		end,
+	},
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = { "mfussenegger/nvim-dap" },

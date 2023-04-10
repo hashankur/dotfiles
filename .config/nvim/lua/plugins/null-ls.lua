@@ -29,6 +29,9 @@ local sources = {
 	b.diagnostics.tidy,
 	-- b.diagnostics.eslint_d,
 
+	b.formatting.astyle.with({
+		filetypes = { "c", "cpp", "cs" },
+	}),
 	-- Python formatting
 	b.formatting.black,
 	b.formatting.google_java_format.with({

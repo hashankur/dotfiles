@@ -7,7 +7,7 @@ require("catppuccin").setup({
 	},
 	transparent_background = false,
 	show_end_of_buffer = false, -- show the '~' characters after the end of buffers
-	term_colors = false,
+	term_colors = true,
 	dim_inactive = {
 		enabled = false,
 		shade = "dark",
@@ -31,6 +31,20 @@ require("catppuccin").setup({
 	},
 	color_overrides = {
 		mocha = {
+			-- rosewater = "#ff8f40",
+			-- flamingo = "#f29668",
+			-- pink = "#f07178",
+			-- mauve = "#d2a6ff",
+			-- red = "#d95757",
+			-- maroon = "#f26d78",
+			-- peach = "#e6b673",
+			-- yellow = "#ffb454",
+			-- green = "#aad94c",
+			-- teal = "#95e6cb",
+			-- sky = "#73b8ff",
+			-- sapphire = "#59c2ff",
+			-- blue = "#39bae6",
+			-- lavender = "#6c5980",
 			base = "#0b0e14",
 			mantle = "#11151c",
 			crust = "#131721",
