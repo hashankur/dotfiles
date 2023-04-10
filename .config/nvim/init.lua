@@ -19,6 +19,7 @@ require("plugins.alpha")
 require("plugins.incline")
 require("plugins.projections")
 require("plugins.tabby")
+require("plugins.dap")
 
 -- Enable Comment.nvim
 require("Comment").setup()

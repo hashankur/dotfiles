@@ -238,6 +238,14 @@ require("lazy").setup({
 	},
 	{
 	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = { "mfussenegger/nvim-dap" },
+		config = function()
+			require("dapui").setup()
+		end,
+	},
+	"mfussenegger/nvim-jdtls",
+	{
 		"lervag/vimtex",
 		config = function()
 			vim.g.vimtex_view_method = "zathura"
