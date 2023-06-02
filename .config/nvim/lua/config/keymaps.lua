@@ -177,3 +177,7 @@ keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
 
 -- Floating terminal
 keymap({ "n", "t" }, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
+
+-- Overseer
+vim.keymap.set("n", "<leader>rr", "<cmd>OverseerRun<CR>", { desc = "Lazy" })
+vim.keymap.set("n", "<leader>ri", "<cmd>OverseerToggle<CR>", { desc = "Mason" })

@@ -1,4 +1,5 @@
-local clrs = require("catppuccin.palettes").get_palette()
+local clrs = require("ayu.colors")
+clrs.generate(false)
 
 ---depends om https://github.com/feline-nvim/feline.nvim
 local present, feline = pcall(require, "feline")
@@ -8,40 +9,40 @@ if not present then
 end
 
 local theme = {
-	aqua = clrs.teal,
-	bg = clrs.base,
-	blue = clrs.blue,
-	cyan = clrs.sapphire,
-	darkred = clrs.maroon,
+	aqua = clrs.tag,
+	bg = clrs.bg,
+	blue = clrs.enitity,
+	cyan = clrs.regexp,
+	darkred = clrs.markup,
 	fg = clrs.fg,
-	gray = clrs.crust,
-	green = clrs.green,
+	gray = clrs.ui,
+	green = clrs.string,
 	lime = "#54CED6",
-	orange = clrs.peach,
-	pink = clrs.pink,
-	purple = clrs.mauve,
-	red = clrs.red,
-	yellow = clrs.yellow,
+	orange = clrs.keyword,
+	pink = clrs.operator,
+	purple = clrs.lsp_parameter,
+	red = clrs.error,
+	yellow = clrs.accent,
 }
 
 local mode_theme = {
-	["NORMAL"] = clrs.lavender,
-	["N-PENDING"] = clrs.lavender,
-	["INSERT"] = clrs.green,
-	["TERMINAL"] = clrs.green,
-	["VISUAL"] = clrs.flamingo,
-	["V-LINE"] = clrs.flamingo,
-	["V-BLOCK"] = clrs.flamingo,
-	["REPLACE"] = clrs.maroon,
-	["V-REPLACE"] = clrs.maroon,
-	["SELECT"] = clrs.maroon,
-	["S-LINE"] = clrs.maroon,
-	["S-BLOCK"] = clrs.maroon,
-	["COMMAND"] = clrs.peach,
-	["PROMPT"] = clrs.teal,
-	["MORE"] = clrs.teal,
-	["CONFIRM"] = clrs.mauve,
-	["SHELL"] = clrs.green,
+	["NORMAL"] = theme.blue,
+	["N-PENDING"] = theme.blue,
+	["INSERT"] = theme.green,
+	["TERMINAL"] = theme.green,
+	["VISUAL"] = theme.purple,
+	["V-LINE"] = theme.purple,
+	["V-BLOCK"] = theme.purple,
+	["REPLACE"] = theme.darkred,
+	["V-REPLACE"] = theme.darkred,
+	["SELECT"] = theme.darkred,
+	["S-LINE"] = theme.darkred,
+	["S-BLOCK"] = theme.darkred,
+	["COMMAND"] = theme.pink,
+	["PROMPT"] = theme.lime,
+	["MORE"] = theme.lime,
+	["CONFIRM"] = theme.yellow,
+	["SHELL"] = theme.green,
 }
 
 local component = {}
@@ -164,7 +165,7 @@ component.lsp = {
 				local content = string.format("%%<%s", spinners[frame + 1])
 				return content or ""
 			else
-				return " LSP"
+				return " LSP"
 			end
 		end
 		return ""

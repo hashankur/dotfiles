@@ -47,8 +47,29 @@ require("lazy").setup({
 	"lewis6991/gitsigns.nvim",
 	{ "TimUntersberger/neogit", dependencies = "nvim-lua/plenary.nvim" },
 
-	-- "Shatur/neovim-ayu",
+	"Shatur/neovim-ayu",
 	{ "catppuccin/nvim", name = "catppuccin" },
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		config = function()
+			require("rose-pine").setup({
+				-- Load the colorscheme
+				variant = "moon", -- Set the theme variant
+				dim_nc_background = false,
+				disable_background = true,
+				disable_float_background = true,
+				disable_italics = true,
+				highlight_groups = {
+					-- Blend colours against the "base" background
+					CursorLine = { bg = "highlight_low", blend = 90 },
+					-- StatusLine = { fg = "love", bg = "love", blend = 10 },
+				},
+			})
+			vim.cmd("colorscheme rose-pine")
+		end,
+	},
+
 	-- "nvim-lualine/lualine.nvim", -- Fancier statusline
 	"freddiehaddad/feline.nvim",
 	"lukas-reineke/indent-blankline.nvim", -- Add indentation guides even on blank lines
@@ -252,12 +273,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"karb94/neoscroll.nvim",
-		config = function()
-			require("neoscroll").setup()
-		end,
-	},
-	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = { "mfussenegger/nvim-dap" },
 		config = function()
@@ -275,5 +290,11 @@ require("lazy").setup({
 			vim.g.vimtex_view_general_options = [[--unique file:@pdf\#src:@line@tex]]
 		end,
 		ft = "tex",
+	},
+	{
+		"stevearc/overseer.nvim",
+		config = function()
+			require("overseer").setup()
+		end,
 	},
 })

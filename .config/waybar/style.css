@@ -33,7 +33,7 @@ window#waybar.hidden {
 
 window > box {
   /* border-radius: 10px; */
-  padding: 12px 30px;
+  padding: 1px 20px;
   background-color: rgba(9, 12, 16, 1);
 }
 

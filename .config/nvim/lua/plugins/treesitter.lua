@@ -91,14 +91,14 @@ require("nvim-treesitter.configs").setup({
 	},
 	rainbow = {
 		enable = true,
-		disable = { "html" },
+		-- disable = { "html" },
 		-- Which query to use for finding delimiters
 		query = "rainbow-parens",
 		strategy = {
 			-- Use global strategy by default
 			rainbow.strategy["global"],
 			-- Use local for HTML
-			-- html = rainbow.strategy["local"],
+			html = rainbow.strategy["local"],
 			tsx = rainbow.strategy["local"],
 		},
 		hlgroups = {

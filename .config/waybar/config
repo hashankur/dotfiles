@@ -19,7 +19,7 @@
         "temperature",
         "network",
         "bluetooth",
-        "pulseaudio",
+        "wireplumber",
         "idle_inhibitor",
         "battery",
         "clock"
@@ -37,25 +37,24 @@
         "format": "{icon}",
         "format-icons": ["", ""]
     },
-    "pulseaudio": {
+    "wireplumber": {
         "format": "{icon}",
         "format-muted": " Muted",
-        "format-icons": {
-            "default": ["", "", "", ""]
-        },
+        "on-click": "helvum",
+        "format-icons": ["", "", "", ""],
         "states": {
-            "warning": 85,
+            "warning": 100,
         },
     },
     "battery": {
         "interval": 10,
         "states": {
             "warning": 20,
-            "critical": 10
+            "critical": 10,
         },
         "format": "{icon} {capacity}%",
         "format-icons": ["", "", "", "", ""],
-        "format-full": "{icon} {capacity}%",
+        "format-full": "{icon} Full",
         "format-charging": " {capacity}%",
         "tooltip": true
     },
