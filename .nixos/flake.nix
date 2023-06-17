@@ -6,30 +6,13 @@
   inputs = {
     # Nixpkgs, NixOS's official repo
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprpicker = {
-      url = "github:hyprwm/hyprpicker";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   # Output config, or config for NixOS system
-  outputs = { self, nixpkgs, hyprland, hyprpicker, emacs-overlay }@inputs:
+  outputs = { self, nixpkgs }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
-        overlays = [
-          hyprland.overlays.default
-          hyprpicker.overlays.default
-          (import self.inputs.emacs-overlay)
-        ];
         inherit system;
         config.allowUnfree = true;
       };
@@ -40,15 +23,6 @@
         inherit system;
         modules = [
           ./configuration.nix
-          hyprland.nixosModules.default
-          {
-            environment.systemPackages = with pkgs; [
-              waybar-hyprland
-              inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
-              ((emacsPackagesFor emacsPgtk).emacsWithPackages
-                (epkgs: [ epkgs.vterm epkgs.ccls ]))
-            ];
-          }
         ];
       };
 

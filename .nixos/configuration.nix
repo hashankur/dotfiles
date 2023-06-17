@@ -25,13 +25,12 @@
     systemd-boot.enable = true;
     efi = {
       canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
     };
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    # kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
+    kernelPackages = pkgs.linuxPackages_zen;
+    kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate=active" ];
     # kernelModules = [ "amd-pstate" ];
     supportedFilesystems = [ "btrfs" "ntfs" ];
     # extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
@@ -105,21 +104,10 @@
     users.han = {
       isNormalUser = true;
       description = "Hashan";
-      extraGroups = [ "networkmanager" "wheel" "video" ];
+      extraGroups = [ "networkmanager" "wheel" "video" "docker" ];
       shell = pkgs.fish;
     };
   };
-
-  # users.extraUsers.han = {
-  #   subUidRanges = [{
-  #     startUid = 100000;
-  #     count = 65536;
-  #   }];
-  #   subGidRanges = [{
-  #     startGid = 100000;
-  #     count = 65536;
-  #   }];
-  # };
 
   # Fonts
   fonts = {
@@ -139,139 +127,120 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    ## CLI apps
-    helix # Do not forget to add an editor to edit configuration.nix!
-    neovim
-    wget
-    powertop
-    killall
-    nixfmt
-    unrar
-    hyprpaper
-
-    firefox
+    firefox-devedition-bin
     obsidian
     tdesktop
     transmission-gtk
     zotero
 
     ## Games
-    # lutris
     gamemode
-    # bottles
+    bottles
     mangohud
     gamescope
 
     ## Media
     tauon
-    (wrapOBS.override { obs-studio = pkgs.obs-studio; } {
-      plugins = with pkgs.obs-studio-plugins; [ wlrobs ];
-    })
     gimp
     inkscape
     foliate
     mpv
     # pitivi
     # handbrake
-    gnome.gnome-sound-recorder
 
     ## Office
-    pdfslicer
     libreoffice-fresh
     zathura
-    rnote
+    typst
 
     ## Programming
-    vscode
+    # vscode
     nodejs
-    yarn
-    rustup
-    rust-analyzer
-    python3Full
-    (python3.withPackages (ps:
-      with ps; [
-        pip
-        black
-        flake8
-        ipython
-        mypy
-        pylint
-        pytest
-        yapf
-        python-lsp-server
-        pillow
-      ]))
-    contrast
-    gaphor
-    gcc
+    # yarn
+    # rustup
+    # rust-analyzer
+    # python3Full
+    # (python3.withPackages (ps:
+    #   with ps; [
+    #     pip
+    #     black
+    #     flake8
+    #     ipython
+    #     mypy
+    #     pylint
+    #     pytest
+    #     yapf
+    #     python-lsp-server
+    #     pillow
+    #   ]))
+    # contrast
+    # gaphor
+    # gcc
     # flutter
     # scrcpy
+    nixfmt
 
     ## Terminal
-    alacritty
+    # alacritty
     starship
     exa
     tealdeer
     btop
     neofetch
     ranger
-    # kitty
+    kitty
+    helix # Do not forget to add an editor to edit configuration.nix!
+    neovim
+    wget
+    killall
+    unrar
+    yadm
 
     ## Other
+    ripgrep
+    fd
+    gnome.gnome-tweaks
+    pavucontrol
+    capitaine-cursors
+    cloudflare-warp
+    distrobox
+
+    # swaylock
+    swayidle
+    wlsunset
+    mako # notification system developed by swaywm maintainer
+    rofi-wayland
+    wob
+    swayosd
+    playerctl
+    libnotify
+    pamixer
+    hyprpaper
+    waybar
+    hyprpicker
+
+    # Screenshot
+    grim
+    sway-contrib.grimshot
+    slurp
+
+    # Clipboard
+    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    clipman
+    bemenu # wayland clone of dmenu
+
     eww-wayland
     encfs
     sshfs
-    ripgrep
-    fd
     jq
-    # imagemagick
     socat
-    pandoc
-    gnome.gnome-tweaks
-    pavucontrol
-    steam-run
-    capitaine-cursors
-    cloudflare-warp
-
-    distrobox
-    crun
   ];
 
   # Enable sway window manager
   programs = {
-    sway = {
+    hyprland = {
       enable = true;
-      wrapperFeatures.gtk = true;
-      extraSessionCommands = ''
-        export SDL_VIDEODRIVER=wayland
-        export QT_QPA_PLATFORM=wayland
-        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-        export _JAVA_AWT_WM_NONREPARENTING=1
-      '';
-      extraPackages = with pkgs; [
-        swaylock
-        swayidle
-        wlsunset
-        mako # notification system developed by swaywm maintainer
-        rofi-wayland
-        wob
-        playerctl
-        libnotify
-        pamixer
-
-        # Screenshot
-        grim
-        sway-contrib.grimshot
-        slurp
-
-        # Clipboard
-        wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-        clipman
-        bemenu # wayland clone of dmenu
-      ];
     };
-
-    hyprland.enable = true;
 
     git = {
       enable = true;
@@ -305,16 +274,7 @@
 
     # Power savings
     power-profiles-daemon.enable = false;
-    tlp = {
-      enable = true;
-      settings = {
-        PCIE_ASPM_ON_BAT = "powersupersave";
-        # DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth";
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "conservative";
-        NMI_WATCHDOG = 0;
-      };
-    };
+    auto-cpufreq.enable = true;
 
     # Syncthing
     syncthing = {
@@ -326,12 +286,9 @@
       openDefaultPorts = true;
     };
 
-    # languagetool.enable = true;
-    # flatpak.enable = true;
-
   };
 
-  virtualisation.podman.enable = true;
+  virtualisation.docker.enable = true;
 
   #virtualisation.waydroid.enable = true;
 
@@ -348,5 +305,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 }
