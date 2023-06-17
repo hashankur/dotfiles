@@ -5,7 +5,7 @@ require("config.keymaps")
 
 -- Plugin specific configs
 -- require("plugins.ayu")
--- require("plugins.catppuccin")
+require("plugins.catppuccin")
 require("plugins.lsp")
 require("plugins.treesitter")
 require("plugins.cmp")

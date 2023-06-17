@@ -49,26 +49,26 @@ require("lazy").setup({
 
 	"Shatur/neovim-ayu",
 	{ "catppuccin/nvim", name = "catppuccin" },
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		config = function()
-			require("rose-pine").setup({
-				-- Load the colorscheme
-				variant = "moon", -- Set the theme variant
-				dim_nc_background = false,
-				disable_background = true,
-				disable_float_background = true,
-				disable_italics = true,
-				highlight_groups = {
-					-- Blend colours against the "base" background
-					CursorLine = { bg = "highlight_low", blend = 90 },
-					-- StatusLine = { fg = "love", bg = "love", blend = 10 },
-				},
-			})
-			vim.cmd("colorscheme rose-pine")
-		end,
-	},
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	config = function()
+	-- 		require("rose-pine").setup({
+	-- 			-- Load the colorscheme
+	-- 			variant = "moon", -- Set the theme variant
+	-- 			dim_nc_background = false,
+	-- 			disable_background = true,
+	-- 			disable_float_background = true,
+	-- 			disable_italics = true,
+	-- 			highlight_groups = {
+	-- 				-- Blend colours against the "base" background
+	-- 				CursorLine = { bg = "highlight_low", blend = 90 },
+	-- 				-- StatusLine = { fg = "love", bg = "love", blend = 10 },
+	-- 			},
+	-- 		})
+	-- 		vim.cmd("colorscheme rose-pine")
+	-- 	end,
+	-- },
 
 	-- "nvim-lualine/lualine.nvim", -- Fancier statusline
 	"freddiehaddad/feline.nvim",
