@@ -204,6 +204,8 @@
     capitaine-cursors
     cloudflare-warp
     distrobox
+    gradience
+    adw-gtk3
 
     # swaylock
     swayidle
