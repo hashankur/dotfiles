@@ -179,6 +179,18 @@
     # flutter
     # scrcpy
     nixfmt
+    
+    # vscode-css-languageserver-bin
+    # vscode-html-language-server
+    nodePackages_latest.vscode-langservers-extracted
+    # jdtls
+    nodePackages_latest.typescript-language-server
+    # vscode-json-language-server
+    marksman
+    nil
+    rust-analyzer
+
+    # lldb-vscode
 
     ## Terminal
     # alacritty
