@@ -22,6 +22,23 @@ formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
+name = "tsx"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
 name = "python"
 formatter = { command = "black", args = ["--quiet", "-"] }
 auto-format = true
+
+[[language]]
+name = "svelte"
+# language-servers = ["svelteserver", "tailwindcss"]
+roots = ["tailwind.config.cjs", "tailwind.config.js"]
+formatter = { command = 'prettier', args = ["--plugin-search-dir", ".", "--write", "."] }
+auto-format = false
+
+# [language-server.tailwindcss]
+# args = ["--stdio"]
+# command = "tailwindcss-language-server"
+

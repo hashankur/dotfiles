@@ -1,23 +1,46 @@
-theme = "ayu_dark"
+theme = "ayu_evolve"
 
 [editor]
 line-number = "relative"
 cursorline = true
 color-modes = true
+scroll-lines = 1
+auto-save = true
+completion-trigger-len = 1
+true-color = true
+auto-pairs = true
+rulers = [120]
+idle-timeout = 50
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
 
-[editor.statusline]
-left = ["mode", "diagnostics", "spinner", "selections"]
-center = ["file-name"]
-right = ["file-encoding", "spacer", "position", "position-percentage", "file-type"]
+# [editor.statusline]
+# left = ["mode", "diagnostics", "spinner", "selections"]
+# center = ["file-name"]
+# right = ["file-encoding", "spacer", "position", "position-percentage", "file-type"]
 
-[keys.insert]
-C-space = "completion"
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "file-name", "file-encoding"]
+center = []
+right = ["diagnostics", "workspace-diagnostics", "selections", "primary-selection-length", "position", "total-line-numbers", "position-percentage", "spacer", "file-type"]
 
 [editor.indent-guides]
 render = true
 character ="▏"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[keys.normal]
+"esc" = ["collapse_selection", ":w"]
+
+[keys.select]
+"esc" = ["collapse_selection", "normal_mode", ":w"]
+
+[keys.insert]
+C-space = "completion"
+"esc" = ["normal_mode", ":w"]
