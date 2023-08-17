@@ -5,6 +5,7 @@
   color: #bfbdb6;
   transition-property: background-color;
   transition-duration: 0.5s;
+  min-height: 0;
 }
 
 @keyframes blink_red {
@@ -31,9 +32,9 @@ window#waybar.hidden {
   opacity: 0.5;
 }
 
-window > box {
+window>box {
   /* border-radius: 10px; */
-  padding: 1px 20px;
+  padding: 0px 20px;
   background-color: rgba(9, 12, 16, 1);
 }
 
@@ -43,4 +44,35 @@ tooltip {
 
 tooltip label {
   color: #bfbdb6;
+}
+
+#workspaces {
+  margin: 0px 0px;
+  border: 11px solid rgba(9, 12, 16, 1);
+}
+
+#workspaces button {
+  padding: 0px 2px;
+  margin: 0px 5px;
+  border-radius: 20px;
+  background-color: #565b66;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+  background-color: #bfbdb6;
+  border-radius: 20px;
+  min-width: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:hover {
+  border-radius: 16px;
+  min-width: 50px;
+}
+
+#workspaces button.persistent {
+  background-color: #131721;
+  min-width: 50px;
+
 }

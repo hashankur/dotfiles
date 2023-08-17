@@ -10,9 +10,11 @@
         "cpu",
         "memory",
         "custom/gpu-usage",
+        "disk",
         "custom/media",
     ],
     "modules-center": [
+        "hyprland/workspaces",
     ],
     "modules-right": [
         "tray",
@@ -49,12 +51,14 @@
     "battery": {
         "interval": 10,
         "states": {
+            "good": 95,
             "warning": 20,
             "critical": 10,
         },
         "format": "{icon} {capacity}%",
         "format-icons": ["", "", "", "", ""],
         "format-full": "{icon} Full",
+        "format-plugged": "{icon} Plugged",
         "format-charging": " {capacity}%",
         "tooltip": true
     },
@@ -132,5 +136,19 @@
             "activated": "",
             "deactivated": ""
         }
-    }
+    },
+    "hyprland/workspaces": {
+    	"format": "{icon}",
+    	"format-icons": {
+    		"default": "",
+    	},
+       "persistent_workspaces": {
+             "*": 10, // workspaces by default on every monitor
+       },
+    },
+    "disk": {
+      "format": " {}%",
+      "interval": 60,
+      "path": "/home",
+    },
 }
