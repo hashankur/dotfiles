@@ -52,7 +52,7 @@
   # Set your time zone.
   time = {
     timeZone = "Asia/Colombo";
-    hardwareClockInLocalTime = true;
+    hardwareClockInLocalTime = false; # Fix: Messy system time jumps
   };
 
   # Select internationalisation properties.
@@ -104,14 +104,14 @@
     users.han = {
       isNormalUser = true;
       description = "Hashan";
-      extraGroups = [ "networkmanager" "wheel" "video" "docker" ];
+      extraGroups = [ "networkmanager" "wheel" "video" "docker" "adbusers" ];
       shell = pkgs.fish;
     };
   };
 
   # Fonts
   fonts = {
-    fonts = with pkgs; [ iosevka-bin ibm-plex ];
+    packages = with pkgs; [ iosevka-bin ];
 
     # fontconfig.defaultFonts = {
     #   serif = [ "IBM Plex Serif" "Noto Serif" "Noto Color Emoji" ];
@@ -138,6 +138,7 @@
     bottles
     mangohud
     gamescope
+    gnome.aisleriot
 
     ## Media
     tauon
@@ -146,7 +147,8 @@
     foliate
     mpv
     # pitivi
-    # handbrake
+    handbrake
+    kooha
 
     ## Office
     libreoffice-fresh
@@ -154,11 +156,12 @@
     typst
 
     ## Programming
-    # vscode
+    vscode
     nodejs
-    # yarn
-    # rustup
-    # rust-analyzer
+    yarn
+    bun
+    rustup
+    rust-analyzer
     # python3Full
     # (python3.withPackages (ps:
     #   with ps; [
@@ -175,11 +178,16 @@
     #   ]))
     # contrast
     # gaphor
-    # gcc
-    # flutter
+    gcc
+    llvm
+    flutter
     # scrcpy
-    nixfmt
+    cmake
+    clang
+    ninja
+    pkg-config
     
+    nixfmt
     # vscode-css-languageserver-bin
     # vscode-html-language-server
     nodePackages_latest.vscode-langservers-extracted
@@ -189,6 +197,8 @@
     marksman
     nil
     rust-analyzer
+    nodePackages_latest.svelte-language-server
+    nodePackages_latest.tailwindcss
 
     # lldb-vscode
 
@@ -207,6 +217,8 @@
     killall
     unrar
     yadm
+    zellij
+    gitui
 
     ## Other
     ripgrep
@@ -232,6 +244,8 @@
     hyprpaper
     waybar
     hyprpicker
+    networkmanagerapplet
+    blueman
 
     # Screenshot
     grim
@@ -264,6 +278,7 @@
     light.enable = true;
     kdeconnect.enable = false;
     fish.enable = true;
+    adb.enable = true;
   };
 
   # ZRAM
@@ -300,6 +315,10 @@
       openDefaultPorts = true;
     };
 
+    mysql = {
+      enable = true;
+      package = pkgs.mariadb;
+    };
   };
 
   virtualisation.docker.enable = true;
