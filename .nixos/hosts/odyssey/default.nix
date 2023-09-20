@@ -11,37 +11,39 @@
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
-      auto-optimise-store = true;
+      # Slows down write operations considerably?
+      auto-optimise-store = false;
     };
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than-7d";
-    };
-  };
-
-  # Bootloader.
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi = {
-      canTouchEfiVariables = true;
+      options = "--delete-older-than-1w";
     };
   };
 
   boot = {
+    loader = {
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 10;
+      };
+      efi = { canTouchEfiVariables = true; };
+    };
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate=active" ];
+    kernelParams =
+      [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate=active" ];
     # kernelModules = [ "amd-pstate" ];
     supportedFilesystems = [ "btrfs" "ntfs" ];
     # extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
   };
 
-  networking.hostName = "odyssey"; # Define your hostname.
-  networking.wireless.enable =
-    false; # Enables wireless support via wpa_supplicant.
-
-  # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "odyssey"; # Define your hostname.
+    # Enables wireless support via wpa_supplicant.
+    wireless.enable = false;
+    # Enable networking
+    networkmanager.enable = true;
+  };
 
   # Bluetooth battery
   hardware.bluetooth = {
@@ -111,7 +113,13 @@
 
   # Fonts
   fonts = {
-    packages = with pkgs; [ iosevka-bin ];
+    packages = with pkgs; [
+      iosevka-bin
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    ];
 
     # fontconfig.defaultFonts = {
     #   serif = [ "IBM Plex Serif" "Noto Serif" "Noto Color Emoji" ];
@@ -131,20 +139,20 @@
     obsidian
     tdesktop
     transmission-gtk
-    zotero
+    # zotero
 
     ## Games
-    gamemode
-    bottles
-    mangohud
-    gamescope
+    # gamemode
+    # bottles
+    # mangohud
+    # gamescope
     gnome.aisleriot
 
     ## Media
     tauon
-    gimp
-    inkscape
-    foliate
+    # gimp
+    # inkscape
+    # foliate
     mpv
     # pitivi
     handbrake
@@ -159,7 +167,7 @@
     vscode
     nodejs
     yarn
-    bun
+    # bun
     rustup
     rust-analyzer
     # python3Full
@@ -178,15 +186,11 @@
     #   ]))
     # contrast
     # gaphor
-    gcc
-    llvm
-    flutter
+    # gcc
+    # llvm
+    # flutter
     # scrcpy
-    cmake
-    clang
-    ninja
-    pkg-config
-    
+
     nixfmt
     # vscode-css-languageserver-bin
     # vscode-html-language-server
@@ -198,14 +202,15 @@
     nil
     rust-analyzer
     nodePackages_latest.svelte-language-server
-    nodePackages_latest.tailwindcss
+    # nodePackages_latest.tailwindcss
+    nodePackages_latest.prisma
 
     # lldb-vscode
 
     ## Terminal
     # alacritty
     starship
-    exa
+    exa # eza
     tealdeer
     btop
     neofetch
@@ -217,7 +222,7 @@
     killall
     unrar
     yadm
-    zellij
+    # zellij
     gitui
 
     ## Other
@@ -266,9 +271,7 @@
 
   # Enable sway window manager
   programs = {
-    hyprland = {
-      enable = true;
-    };
+    hyprland = { enable = true; };
 
     git = {
       enable = true;
@@ -325,8 +328,22 @@
 
   #virtualisation.waydroid.enable = true;
 
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      serviceConfig = {
+        Type = "simple";
+        ExecStart =
+          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+  };
+
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 8081 ];

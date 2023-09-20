@@ -5,7 +5,8 @@
   # Input config, or package repos
   inputs = {
     # Nixpkgs, NixOS's official repo
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url =
+      "github:NixOS/nixpkgs/4e752282c65b3930cdfaa11c4c2a7a188352eb80";
   };
 
   # Output config, or config for NixOS system
@@ -16,24 +17,41 @@
         inherit system;
         config.allowUnfree = true;
       };
-      lib = nixpkgs.lib; # Is it really necessary?
+      lib = nixpkgs.lib;
+
     in {
-      # Define a system called "nixos"
-      nixosConfigurations."odyssey" = lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./configuration.nix
-        ];
+      nixosConfigurations = {
+        odyssey = lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/odyssey ];
+        };
+
+        perseus = lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/perseus ];
+        };
       };
 
-      # You can define many systems in one Flake file.
-      # NixOS will choose one based on your hostname.
-      #
-      # nixosConfigurations."nixos2" = nixpkgs.lib.nixosSystem {
-      #   system = "x86_64-linux";
-      #   modules = [
-      #     ./configuration2.nix
-      #   ];
-      # };
+      # Add this output, colmena will read its contents for remote deployment
+      colmena = {
+        meta = {
+          nixpkgs = pkgs;
+
+          # This parameter functions similarly to `sepcialArgs` in `nixosConfigurations.xxx`,
+          # used for passing custom arguments to all submodules.
+          specialArgs = { inherit nixpkgs; };
+        };
+
+        "perseus" = { name, nodes, ... }: {
+          # Parameters related to remote deployment
+          deployment.targetHost = "perseus.local"; # Remote host's IP address
+          deployment.targetUser = "root"; # Remote host's username
+          deployment.buildOnTarget = true;
+
+          # This parameter functions similarly to `modules` in `nixosConfigurations.xxx`,
+          # used for importing all submodules.
+          imports = [ ./hosts/perseus ];
+        };
+      };
     };
 }
