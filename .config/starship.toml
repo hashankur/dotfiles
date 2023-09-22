@@ -30,12 +30,19 @@ disabled = true
 
 [memory_usage]
 disabled = true
+symbol = "󰍛 "
 
 [battery]
 disabled = true
 
 [aws]
-symbol = " "
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
 
 [conda]
 symbol = " "
@@ -44,10 +51,10 @@ symbol = " "
 symbol = " "
 
 [directory]
-read_only = " "
+read_only = " 󰌾"
 
-#[docker]
-#symbol = " "
+[docker_context]
+symbol = " "
 
 [elixir]
 symbol = " "
@@ -55,17 +62,29 @@ symbol = " "
 [elm]
 symbol = " "
 
-#[git_branch]
-#symbol = " "
+[fossil_branch]
+symbol = " "
+
+[git_branch]
+symbol = " "
 
 [golang]
 symbol = " "
 
+[guix_shell]
+symbol = " "
+
 [haskell]
-symbol = " "
+symbol = " "
+
+[haxe]
+symbol = " "
 
 [hg_branch]
 symbol = " "
+
+[hostname]
+ssh_symbol = " "
 
 [java]
 symbol = " "
@@ -73,32 +92,89 @@ symbol = " "
 [julia]
 symbol = " "
 
+[lua]
+symbol = " "
+
+[meson]
+symbol = "󰔷 "
+
 [nim]
-symbol = " "
+symbol = "󰆥 "
 
 [nix_shell]
-symbol = " "
+symbol = " "
 
 [nodejs]
-symbol = " "
+symbol = " "
+
+[sudo]
+style = 'bold red'
+symbol = '󰒃  '
+disabled = false
+
+[os]
+# format = "[($name )]($style)"
+# style = "bold blue"
+disabled = true
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "
 
 [package]
-symbol = " "
+symbol = "󰏗 "
 
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
+[pijul_channel]
+symbol = " "
 
 [python]
-symbol = " "
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
 
 [ruby]
-symbol = " "
+symbol = " "
 
 [rust]
 symbol = " "
 
-[swift]
-symbol = "ﯣ "
+[scala]
+symbol = " "
