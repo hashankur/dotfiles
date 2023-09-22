@@ -10,7 +10,7 @@
   };
 
   # Output config, or config for NixOS system
-  outputs = { self, nixpkgs }@inputs:
+  outputs = { self, nixpkgs }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {

@@ -1,8 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, lib, pkgs, inputs, ... }@args: {
+{ pkgs, ... }: {
 
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -26,6 +22,7 @@
       systemd-boot = {
         enable = true;
         configurationLimit = 10;
+        consoleMode = "max";
       };
       efi = { canTouchEfiVariables = true; };
     };
@@ -251,6 +248,7 @@
     hyprpicker
     networkmanagerapplet
     blueman
+    swaynotificationcenter
 
     # Screenshot
     grim
@@ -290,14 +288,6 @@
     memoryPercent = 100;
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
   # List services that you want to enable:
   services = {
     # SSD TRIM
@@ -322,11 +312,20 @@
       enable = true;
       package = pkgs.mariadb;
     };
+
+    # Enable the OpenSSH daemon.
+    openssh.enable = false;
+
+    # High CPU usage for extended periods of time
+    gnome.tracker.enable = false;
+    gnome.tracker-miners.enable = false;
   };
 
   virtualisation.docker.enable = true;
 
   #virtualisation.waydroid.enable = true;
+
+  fileSystems."/".options = [ "noatime" "compress=zstd" ];
 
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
@@ -342,11 +341,8 @@
     };
   };
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8081 ];
+  networking.firewall.allowedTCPPorts = [ ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
   # This value determines the NixOS release from which the default
