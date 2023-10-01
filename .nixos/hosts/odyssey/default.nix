@@ -236,9 +236,8 @@
     # swaylock
     swayidle
     wlsunset
-    mako # notification system developed by swaywm maintainer
+    dunst
     rofi-wayland
-    wob
     swayosd
     playerctl
     libnotify
