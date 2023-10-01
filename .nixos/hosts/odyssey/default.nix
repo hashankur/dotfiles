@@ -207,7 +207,7 @@
     ## Terminal
     # alacritty
     starship
-    exa # eza
+    eza
     tealdeer
     btop
     neofetch
