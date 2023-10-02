@@ -1,0 +1,3 @@
+(defwidget tray []
+    (systray :pack-direction "ttb")
+)

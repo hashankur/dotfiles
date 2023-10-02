@@ -1,40 +1,49 @@
-(defpoll network_status :interval "1s" "~/.config/eww/scripts/network.sh status")
-(defpoll network_icon :interval "1s" "~/.config/eww/scripts/network.sh icon")
-(defpoll network_radio :interval "1s" "~/.config/eww/scripts/network.sh radio-status")
-(defpoll network_ssid :interval "1s" "~/.config/eww/scripts/network.sh ssid")
+; VARS
 
-(defpoll date :interval "1s" "date '+%d %b, %I:%M %p'")
-(defpoll completeday :interval "1h" "date '+%A, %d %B'")
+(defvar open_control_center false)
+(defvar open_powermenu false)
+(defvar open_osd false)
 
-(defpoll volume_icon :interval "1s" "~/.config/eww/scripts/volume.sh icon")
-(defpoll volume :interval "1s" "~/.config/eww/scripts/volume.sh percentage")
-(defpoll volume_value :interval "1s" "~/.config/eww/scripts/volume.sh vol")
-(defpoll is_muted :interval "1s" "~/.config/eww/scripts/volume.sh muted")
+(defvar do-not-disturb false)
+(deflisten workspaces :initial "[{'window'}]"
+"scripts/workspaces.sh")
+(defvar apps "{}")
+(defvar clipboard "[]")
+(deflisten notifications :initial '{"count": 0, "notifications": [], "popups": []}'
+"scripts/notifications.py")
 
-(defpoll lithour :interval "30m" "date +%H")
-(defpoll litmin :interval "30s" "date +%M")
 
-(defpoll br_icon :interval "1s" "~/.config/eww/scripts/brightness.sh icon")
-(defpoll br :interval "1s" "~/.config/eww/scripts/brightness.sh percent")
+; POLLS
 
-(defpoll music_pic :interval "2s" "~/.config/eww/scripts/music/songart.sh get")
-(defpoll music_url :interval "1s" "~/.config/eww/scripts/music/songart.sh echo")
+(defpoll recording :interval "1s"
+"pgrep 'wf-recorder' || echo false")
 
-(defpoll music_title :interval "1s" "~/.config/eww/scripts/music/songdata.sh title")
-(defpoll music_artist :interval "1s" "~/.config/eww/scripts/music/songdata.sh artist")
-(defpoll music_album :interval "1s" "~/.config/eww/scripts/music/songdata.sh album")
-(defpoll music_status :interval "1s" "~/.config/eww/scripts/music/songdata.sh status")
+(defpoll username :interval "10h"
+"whoami")
 
-(defpoll calendar_day :interval "10h" "date '+%d'")
-(defpoll calendar_month :interval "10h" "date '+%m")
-(defpoll calendar_year :interval "10h" "date '+%Y'")
+(deflisten weather :initial "null"
+"scripts/weather.py")
 
-(defpoll pfp :interval "1s" "~/.config/eww/scripts/pfp.sh")
-(defpoll username :interval "1s" "~/.config/eww/scripts/user.sh")
+(deflisten current_theme :initial "dark" 
+"scripts/generate_colors.py --current-scheme")
 
-;;(defpoll br_icon :interval "1s" "~/.config/dk/eww/scripts/brightness.sh icon")
-;;(defpoll br :interval "1s" "~/.config/dk/eww/scripts/brightness.sh br")
+; LISTENS
 
-(defpoll bluetooth_state :interval "1s" "~/.config/eww/scripts/bluetooth state")
-(defpoll redshift_state :interval "1s" "~/.config/eww/scripts/redshift state")
-(defpoll mic_status :interval "1s" "~/.config/eww/scripts/mic status")
+(deflisten network :initial '{"essid": "lo", "signal": ""}'
+"scripts/network.sh")
+
+(deflisten kb_layout :initial "en"
+"scripts/get_kb_layout.sh")
+
+(deflisten volume :initial "0"
+"scripts/volume.sh")
+
+(deflisten current_workspace :initial "1"
+"scripts/get_active_workspace.sh")
+
+(deflisten mpris :initial "{}"
+"scripts/mpris.sh")
+
+(deflisten mpris_positions :initial "{}"
+"scripts/positions.sh")
+

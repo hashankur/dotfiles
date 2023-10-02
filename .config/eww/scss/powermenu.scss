@@ -1,0 +1,25 @@
+.powermenu {
+    @include window;
+    min-width: 20rem;
+}
+
+.powermenu-button {
+    background-color: $surfaceVariant;
+    color: $onSurface;
+    padding: 0.25rem;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    border-radius: 10px;
+    min-height: 2rem;
+    transition: 0.3s;
+}
+
+.powermenu-button:hover {
+    background-color: $primary;
+    color: $surface;
+}
+
+.powermenu-icon {
+    min-width: 2.5rem;
+    font-size: 1.3rem;
+}

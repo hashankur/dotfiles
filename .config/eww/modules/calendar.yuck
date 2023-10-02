@@ -1,0 +1,7 @@
+(defwidget cal []
+    (box :class "calendar-frame"
+      (box :class "calendar"
+        (calendar)
+      )
+  )
+)

@@ -242,6 +242,7 @@
     playerctl
     libnotify
     pamixer
+    pulseaudio
     hyprpaper
     waybar
     hyprpicker
@@ -264,6 +265,7 @@
     sshfs
     jq
     socat
+    bc
   ];
 
   # Enable sway window manager

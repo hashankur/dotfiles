@@ -1,10 +1,31 @@
 * {
-  all: unset;
+    all: unset;
+    font-family: Iosevka;
+    font-weight: bold;
 }
+@import "scripts/colors/colors.scss";
+@import "scss/lib.scss";
 
-@import "colors.scss";
-@import "bar/bar.scss";
-@import "powermenu/powermenu.scss";
-@import "date/date.scss";
-@import "actions/actions.scss";
-@import "music/music.scss";
+@import "scss/bar.scss";
+@import "scss/powermenu.scss";
+@import "scss/launcher.scss";
+@import "scss/clipboard.scss";
+
+@import "scss/control_center.scss";
+@import "scss/notifications_popup.scss";
+
+
+
+@import "scss/calendar.scss";
+@import "scss/clock.scss";
+@import "scss/logo.scss";
+@import "scss/quick_settings.scss";
+@import "scss/user.scss";
+@import "scss/volume.scss";
+@import "scss/workspaces.scss";
+@import "scss/tray.scss";
+@import "scss/weather.scss";
+@import "scss/music.scss";
+@import "scss/bar_state.scss";
+@import "scss/notifications.scss";
+@import "scss/monitoring.scss";
