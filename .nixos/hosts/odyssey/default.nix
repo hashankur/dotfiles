@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, anyrun, ... }: {
 
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -9,6 +9,13 @@
       experimental-features = [ "nix-command" "flakes" ];
       # Slows down write operations considerably?
       auto-optimise-store = false;
+
+      builders-use-substitutes = true;
+      # substituters to use
+      substituters = [ "https://anyrun.cachix.org" ];
+
+      trusted-public-keys =
+        [ "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s=" ];
     };
     gc = {
       automatic = true;
@@ -148,12 +155,14 @@
     ## Media
     tauon
     # gimp
-    # inkscape
+    inkscape
     # foliate
     mpv
     # pitivi
     handbrake
     kooha
+    youtube-dl
+    tartube
 
     ## Office
     libreoffice-fresh
@@ -221,6 +230,7 @@
     yadm
     # zellij
     gitui
+    colmena
 
     ## Other
     ripgrep
@@ -248,7 +258,7 @@
     hyprpicker
     networkmanagerapplet
     blueman
-    swaynotificationcenter
+    anyrun.packages.${pkgs.system}.anyrun-with-all-plugins
 
     # Screenshot
     grim
@@ -268,7 +278,11 @@
     bc
   ];
 
-  # Enable sway window manager
+  environment.sessionVariables = {
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
+  };
+
   programs = {
     hyprland = { enable = true; };
 
@@ -278,7 +292,6 @@
     };
 
     light.enable = true;
-    kdeconnect.enable = false;
     fish.enable = true;
     adb.enable = true;
   };
