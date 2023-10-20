@@ -35,11 +35,11 @@ window#waybar.hidden {
 window>box {
   /* border-radius: 10px; */
   padding: 0px 20px;
-  background-color: rgba(9, 12, 16, 1);
+  background-color: #0b0e14;
 }
 
 tooltip {
-  background-color: rgb(9, 12, 16);
+  background-color: #0b0e14;
 }
 
 tooltip label {
@@ -48,7 +48,7 @@ tooltip label {
 
 #workspaces {
   margin: 0px 0px;
-  border: 11px solid rgba(9, 12, 16, 1);
+  border: 11px solid #0b0e14;
 }
 
 #workspaces button {
