@@ -6,13 +6,17 @@
   inputs = {
     # Nixpkgs, NixOS's official repo
     nixpkgs.url =
-      "github:NixOS/nixpkgs/4e752282c65b3930cdfaa11c4c2a7a188352eb80";
+      "github:NixOS/nixpkgs/nixos-unstable";
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-gaming.inputs.nixpkgs.follows = "nixpkgs";
+
     anyrun.url = "github:Kirottu/anyrun";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # Output config, or config for NixOS system
-  outputs = { self, nixpkgs, anyrun, ... }@inputs:
+  outputs = { self, nixpkgs, nix-gaming, anyrun, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -26,7 +30,10 @@
         odyssey = lib.nixosSystem {
           inherit system;
           specialArgs = inputs;
-          modules = [ ./hosts/odyssey ];
+          modules = [
+            ./hosts/odyssey
+            ./modules/cloudflare-warp.nix
+          ];
         };
 
         perseus = lib.nixosSystem {

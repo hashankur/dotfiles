@@ -1,4 +1,4 @@
-{ pkgs, anyrun, ... }: {
+{ pkgs, nix-gaming, anyrun, ... }: {
 
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -8,14 +8,19 @@
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       # Slows down write operations considerably?
-      auto-optimise-store = false;
+      auto-optimise-store = true;
 
       builders-use-substitutes = true;
       # substituters to use
-      substituters = [ "https://anyrun.cachix.org" ];
+      substituters = [
+        "https://nix-gaming.cachix.org"
+        "https://anyrun.cachix.org"  
+      ];
 
-      trusted-public-keys =
-        [ "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s=" ];
+      trusted-public-keys = [ 
+        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+      ];
     };
     gc = {
       automatic = true;
@@ -34,8 +39,7 @@
       efi = { canTouchEfiVariables = true; };
     };
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelParams =
-      [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate=active" ];
+    # kernelParams = [ "amd_pstate=active" ];
     # kernelModules = [ "amd-pstate" ];
     supportedFilesystems = [ "btrfs" "ntfs" ];
     # extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
@@ -144,13 +148,16 @@
     tdesktop
     transmission-gtk
     # zotero
+    thunderbird-bin
 
     ## Games
-    # gamemode
-    # bottles
-    # mangohud
-    # gamescope
+    gamemode
+    bottles
+    mangohud
+    gamescope
+    nix-gaming.packages.${pkgs.system}.wine-tkg
     gnome.aisleriot
+    gnome.gnome-chess
 
     ## Media
     tauon
@@ -163,11 +170,13 @@
     kooha
     youtube-dl
     tartube
+    obs-studio
 
     ## Office
     libreoffice-fresh
     zathura
     typst
+    staruml
 
     ## Programming
     vscode
@@ -196,6 +205,7 @@
     # llvm
     # flutter
     # scrcpy
+    jetbrains.idea-community
 
     nixfmt
     # vscode-css-languageserver-bin
@@ -238,14 +248,18 @@
     gnome.gnome-tweaks
     pavucontrol
     capitaine-cursors
-    cloudflare-warp
+    # cloudflare-warp
     distrobox
     gradience
     adw-gtk3
 
     # swaylock
+    # gtklock
     swayidle
-    wlsunset
+    # wlsunset
+    gammastep
+    wluma
+    wlogout
     dunst
     rofi-wayland
     swayosd
@@ -253,7 +267,8 @@
     libnotify
     pamixer
     pulseaudio
-    hyprpaper
+    # hyprpaper
+    swww
     waybar
     hyprpicker
     networkmanagerapplet
@@ -294,6 +309,7 @@
     light.enable = true;
     fish.enable = true;
     adb.enable = true;
+    java.enable = true;
   };
 
   # ZRAM
@@ -333,6 +349,13 @@
     # High CPU usage for extended periods of time
     gnome.tracker.enable = false;
     gnome.tracker-miners.enable = false;
+
+    cloudflare-warp = {
+      enable = true;
+      # certificate = ./modules/Cloudflare_CA.pem; # download here https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/install-cloudflare-cert/
+    };
+
+    # clight.enable = true;
   };
 
   virtualisation.docker.enable = true;
