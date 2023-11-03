@@ -1,4 +1,4 @@
-{ pkgs, nix-gaming, anyrun, ... }: {
+{ pkgs, nix-gaming, ... }: {
 
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -14,12 +14,10 @@
       # substituters to use
       substituters = [
         "https://nix-gaming.cachix.org"
-        "https://anyrun.cachix.org"  
       ];
 
       trusted-public-keys = [ 
         "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       ];
     };
     gc = {
@@ -38,7 +36,7 @@
       };
       efi = { canTouchEfiVariables = true; };
     };
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     # kernelParams = [ "amd_pstate=active" ];
     # kernelModules = [ "amd-pstate" ];
     supportedFilesystems = [ "btrfs" "ntfs" ];
@@ -161,9 +159,8 @@
 
     ## Media
     tauon
-    # gimp
+    gimp
     inkscape
-    # foliate
     mpv
     # pitivi
     handbrake
@@ -171,6 +168,8 @@
     youtube-dl
     tartube
     obs-studio
+    xournalpp
+    drawio
 
     ## Office
     libreoffice-fresh
@@ -185,7 +184,7 @@
     # bun
     rustup
     rust-analyzer
-    # python3Full
+    python3Full
     # (python3.withPackages (ps:
     #   with ps; [
     #     pip
@@ -208,17 +207,15 @@
     jetbrains.idea-community
 
     nixfmt
-    # vscode-css-languageserver-bin
-    # vscode-html-language-server
     nodePackages_latest.vscode-langservers-extracted
     # jdtls
     nodePackages_latest.typescript-language-server
-    # vscode-json-language-server
+    # nodePackages_latest.vscode-json-languageserver
     marksman
     nil
     rust-analyzer
     nodePackages_latest.svelte-language-server
-    # nodePackages_latest.tailwindcss
+    nodePackages_latest."@tailwindcss/language-server"
     nodePackages_latest.prisma
 
     # lldb-vscode
@@ -267,13 +264,10 @@
     libnotify
     pamixer
     pulseaudio
-    # hyprpaper
     swww
     waybar
     hyprpicker
     networkmanagerapplet
-    blueman
-    anyrun.packages.${pkgs.system}.anyrun-with-all-plugins
 
     # Screenshot
     grim

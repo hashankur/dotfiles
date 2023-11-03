@@ -10,13 +10,10 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-gaming.inputs.nixpkgs.follows = "nixpkgs";
-
-    anyrun.url = "github:Kirottu/anyrun";
-    anyrun.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # Output config, or config for NixOS system
-  outputs = { self, nixpkgs, nix-gaming, anyrun, ... }@inputs:
+  outputs = { self, nixpkgs, nix-gaming, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
