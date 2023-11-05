@@ -4,40 +4,40 @@
 }
 
 .calendar {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
+  background-color: $surface;
+  border-radius: 1rem;
+  padding: 1rem 1rem 0 1rem;
+  color: $secondary;
+
+  calendar {
+    padding: .5rem;
     background-color: $surface;
-    border-radius: 1rem;
-    padding: 1rem 1rem 0 1rem;
-    color: $secondary;
 
-    calendar {
-      padding: .5rem;
-      background-color: $surface;
+    &.button {
+      color: $onSurface;
 
-      &.button {
-        color: $onSurface;
-
-        &:hover {
-          background-color: $primary;
-          border-radius: 10px;
-        }
-      }
-
-      &:selected {
-        color: $primary;
-      }
-
-      &.header {
-        background-color: transparent;
-        border: none;
-      }
-
-      &.highlight {
-        color: $secondary;
-      }
-
-      &:indeterminate {
-        color: $shadow;
+      &:hover {
+        background-color: $primary;
+        border-radius: 10px;
       }
     }
+
+    &:selected {
+      color: $primary;
+    }
+
+    &.header {
+      background-color: transparent;
+      border: none;
+    }
+
+    &.highlight {
+      color: $secondary;
+    }
+
+    &:indeterminate {
+      color: $shadow;
+    }
   }
+}

@@ -256,7 +256,6 @@
     # wlsunset
     gammastep
     wluma
-    wlogout
     dunst
     rofi-wayland
     swayosd

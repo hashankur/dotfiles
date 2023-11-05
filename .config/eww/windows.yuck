@@ -48,7 +48,7 @@
     :monitor 0
     :stacking "fg"
     :geometry (geometry 
-                    :anchor "top center")
+                    :anchor "bottom center")
     (volume_osd)
 )
 
@@ -64,6 +64,17 @@
     :monitor 0
     :stacking "fg"
     :geometry (geometry 
-                    :anchor "center center")
+                    :anchor "center")
     (media)
+)
+
+(defwindow powermenu
+    :monitor 0
+    :stacking "overlay"
+    :geometry (geometry 
+                    :anchor "center"
+                    :width "100%"
+                    :height "120%")
+    :namespace "eww-blur"
+    (powermenu)
 )
