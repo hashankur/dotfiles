@@ -5,8 +5,7 @@
   # Input config, or package repos
   inputs = {
     # Nixpkgs, NixOS's official repo
-    nixpkgs.url =
-      "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-gaming.inputs.nixpkgs.follows = "nixpkgs";
@@ -29,13 +28,15 @@
           specialArgs = inputs;
           modules = [
             ./hosts/odyssey
-            ./modules/cloudflare-warp.nix
+            ./modules/core.nix
+            ./modules/desktop.nix
+            ./modules/dev.nix
+            ./modules/gaming.nix
+            ./modules/hyprland.nix
+            ./modules/nix.nix
+            ./modules/ssd.nix
+            ./modules/terminal.nix
           ];
-        };
-
-        perseus = lib.nixosSystem {
-          inherit system;
-          modules = [ ./hosts/perseus ];
         };
       };
 
@@ -57,7 +58,12 @@
 
           # This parameter functions similarly to `modules` in `nixosConfigurations.xxx`,
           # used for importing all submodules.
-          imports = [ ./hosts/perseus ];
+          imports = [
+            ./hosts/perseus
+            ./modules/core.nix
+            ./modules/desktop.nix
+            ./modules/nix.nix
+          ];
         };
       };
     };
