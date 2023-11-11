@@ -181,7 +181,7 @@
     vscode
     nodejs
     yarn
-    # bun
+    bun
     rustup
     rust-analyzer
     python3Full
@@ -201,16 +201,14 @@
     # contrast
     # gaphor
     # gcc
-    # llvm
+    lldb
     # flutter
     # scrcpy
     jetbrains.idea-community
 
     nixfmt
     nodePackages_latest.vscode-langservers-extracted
-    # jdtls
     nodePackages_latest.typescript-language-server
-    # nodePackages_latest.vscode-json-languageserver
     marksman
     nil
     rust-analyzer
@@ -302,7 +300,8 @@
     light.enable = true;
     fish.enable = true;
     adb.enable = true;
-    java.enable = true;
+    java = { enable = true; package = pkgs.temurin-bin; };
+    kdeconnect.enable = true;
   };
 
   # ZRAM
