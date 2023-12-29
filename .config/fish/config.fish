@@ -110,3 +110,5 @@ alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pac
 #end
 
 starship init fish | source
+navi widget fish | source
+zoxide init fish | source

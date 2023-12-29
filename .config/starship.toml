@@ -103,6 +103,7 @@ symbol = "󰆥 "
 
 [nix_shell]
 symbol = " "
+format = 'via [$symbol](bold blue) '
 
 [nodejs]
 symbol = " "

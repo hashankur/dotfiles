@@ -141,7 +141,7 @@
     	"format-icons": {
     		"default": "",
     	},
-       "persistent_workspaces": {
+       "persistent-workspaces": {
              "*": 10, // workspaces by default on every monitor
        },
     },
