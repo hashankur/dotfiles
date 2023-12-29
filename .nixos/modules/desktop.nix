@@ -23,7 +23,6 @@
     gnome.gnome-tweaks
     pavucontrol
     capitaine-cursors
-    gradience
     adw-gtk3
   ];
 	

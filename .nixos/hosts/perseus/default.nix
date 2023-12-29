@@ -17,7 +17,7 @@
     users = {
       merina = {
         isNormalUser = true;
-        description = "Maraine Kelsey";
+        description = "Merina";
         extraGroups = [ "networkmanager" "wheel" "video" ];
         shell = pkgs.fish;
       };

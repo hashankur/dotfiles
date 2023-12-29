@@ -25,11 +25,13 @@
 
     # Clipboard
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    clipman
+    cliphist
     bemenu # wayland clone of dmenu
 
     eww-wayland
     encfs
+    gocryptfs
+    gnome.zenity
     sshfs
     jq
     socat
@@ -41,6 +43,9 @@
   environment.sessionVariables = {
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "1";
+
+    # Java issues
+    # _JAVA_OPTIONS= "-Dawt.useSystemAAFontSettings=lcd -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
   };
 
   fonts = {

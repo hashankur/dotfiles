@@ -9,6 +9,9 @@
     yadm
     # zellij
     gitui
-    colmena
+    navi
+    wezterm
+    yazi
+    zoxide
   ];
 }

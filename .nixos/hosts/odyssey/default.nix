@@ -22,14 +22,19 @@
     };
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    firefox-devedition-bin
+    firefox-devedition
     obsidian
     transmission-gtk
     # zotero
-    thunderbird-bin
+    # thunderbird-bin
+    brave
 
     ## Media
     # pitivi
@@ -40,6 +45,7 @@
     obs-studio
     xournalpp
     drawio
+    basex
 
     ## Office
     zathura
@@ -47,6 +53,14 @@
     staruml
 
     distrobox
+    megasync
+    colmena
+    mission-center
+
+    # temp
+    brightnessctl
+    sassc
+    material-symbols
   ];
 
   # List services that you want to enable:
@@ -60,6 +74,11 @@
       guiAddress = "127.0.0.1:5050";
       openDefaultPorts = true;
     };
+
+    tailscale.enable = true;
+
+    # Enable the OpenSSH daemon.
+    openssh.enable = true;
 
     # cloudflare-warp = {
       # enable = true;

@@ -1,11 +1,8 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    vscode
+    vscode.fhs
     nodejs
     yarn
-    bun
-    rustup
-    rust-analyzer
     python3Full
     # (python3.withPackages (ps:
     #   with ps; [
@@ -19,24 +16,26 @@
     #     yapf
     #     python-lsp-server
     #     pillow
-    #   ]))
+    #     jupyter
+    # ]))
     # contrast
     # gaphor
-    # gcc
-    lldb
-    # flutter
+    gcc
+    flutter
     # scrcpy
     jetbrains.idea-community
+    maven
 
     nixfmt
     nodePackages_latest.vscode-langservers-extracted
     nodePackages_latest.typescript-language-server
     marksman
     nil
-    rust-analyzer
     nodePackages_latest.svelte-language-server
     nodePackages_latest."@tailwindcss/language-server"
     nodePackages_latest.prisma
+    lldb
+    lua-language-server
   ];
 
   programs = {
@@ -51,11 +50,13 @@
       enable = true;
       package = pkgs.temurin-bin;
     };
+
+    direnv.enable = true;
   };
 
   services = {
     mysql = {
-      enable = true;
+      enable = false;
       package = pkgs.mariadb;
     };
   };
