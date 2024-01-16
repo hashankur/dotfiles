@@ -32,25 +32,25 @@
     firefox-devedition
     obsidian
     transmission-gtk
-    # zotero
     # thunderbird-bin
     brave
 
     ## Media
-    # pitivi
+    pitivi
     handbrake
     kooha
     youtube-dl
     tartube
     obs-studio
+
+    ## Office
     xournalpp
     drawio
     basex
-
-    ## Office
     zathura
     typst
     staruml
+    zotero
 
     distrobox
     megasync
@@ -61,6 +61,7 @@
     brightnessctl
     sassc
     material-symbols
+    anydesk
   ];
 
   # List services that you want to enable:
