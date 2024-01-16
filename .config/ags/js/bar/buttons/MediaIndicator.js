@@ -36,9 +36,12 @@ const Indicator = ({ player, direction = 'right' }) => HoverRevealer({
 
             current = player.track_title;
             self.reveal_child = true;
-            Utils.timeout(3000, () => {
+            // print(player.play_back_status)
+            // if (player.play_back_status != 'Playing') {
+            Utils.timeout(5000, () => {
                 self.reveal_child = false;
-            });
+            })
+            // };
         });
     },
 });

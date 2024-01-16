@@ -14,7 +14,7 @@ export function init() {
     notificationBlacklist();
     warnOnLowBattery();
     globals();
-    tmux();
+    // tmux();
     gsettigsColorScheme();
     gtkFontSettings();
     scssWatcher();
@@ -23,8 +23,8 @@ export function init() {
     reloadScss();
     hyprlandInit();
     setupHyprland();
-    wallpaper();
-    showAbout();
+    // wallpaper();
+    // showAbout();
 }
 
 function dependandOptions() {

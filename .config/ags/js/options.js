@@ -18,9 +18,9 @@ export default {
     apply: apply,
     list: getOptions,
 
-    spacing: Option(9),
-    padding: Option(8),
-    radii: Option(9),
+    spacing: Option(10),
+    padding: Option(15), // ???
+    radii: Option(10),
 
     popover_padding_multiplier: Option(1.4, {
         'category': 'General',
@@ -30,12 +30,12 @@ export default {
     }),
 
     color: {
-        red: Option('#e55f86', { 'scss': 'red' }),
-        green: Option('#00D787', { 'scss': 'green' }),
-        yellow: Option('#EBFF71', { 'scss': 'yellow' }),
-        blue: Option('#51a4e7', { 'scss': 'blue' }),
-        magenta: Option('#9077e7', { 'scss': 'magenta' }),
-        teal: Option('#51e6e6', { 'scss': 'teal' }),
+        red: Option('#f26d78', { 'scss': 'red' }),
+        green: Option('#7fd962', { 'scss': 'green' }),
+        yellow: Option('#ffb454', { 'scss': 'yellow' }),
+        blue: Option('#59c2ff', { 'scss': 'blue' }),
+        magenta: Option('#d2a6ff', { 'scss': 'magenta' }),
+        teal: Option('#95e6cb', { 'scss': 'teal' }),
         orange: Option('#E79E64', { 'scss': 'orange' }),
     },
 
@@ -57,22 +57,22 @@ export default {
             'title': 'Color Scheme',
             'scss': 'color-scheme',
         }),
-        bg: Option('#171717', {
+        bg: Option('#0b0e14', {
             'title': 'Background Color',
             'scss': 'bg-color',
         }),
-        fg: Option('#eeeeee', {
+        fg: Option('#bfbfb6', {
             'title': 'Foreground Color',
             'scss': 'fg-color',
         }),
 
         accent: {
-            accent: Option('$blue', {
+            accent: Option('$yellow', {
                 'category': 'Theme',
                 'title': 'Accent Color',
                 'scss': 'accent',
             }),
-            fg: Option('#141414', {
+            fg: Option('#0b0e14', {
                 'category': 'Theme',
                 'title': 'Accent Foreground Color',
                 'scss': 'accent-fg',
@@ -110,7 +110,7 @@ export default {
             'title': 'Border Opacity',
             'unit': '',
         }),
-        width: Option(1, {
+        width: Option(0, {
             'category': 'Border',
             'title': 'Border Width',
         }),
@@ -122,7 +122,7 @@ export default {
             'title': 'Border on Inactive Windows',
             'scss': 'exclude',
         }),
-        wm_gaps_multiplier: Option(2.4, {
+        wm_gaps_multiplier: Option(1, {
             'category': 'General',
             'scss': 'wm-gaps-multiplier',
             'note': 'wm-gaps: padding × this',
@@ -132,23 +132,23 @@ export default {
     },
 
     // TODO: use this on revealers
-    transition: Option(200, {
+    transition: Option(500, {
         'category': 'exclude',
         'note': 'Transition time on aminations in ms, e.g on hover',
         'unit': 'ms',
     }),
 
     font: {
-        font: Option('Ubuntu Nerd Font', {
+        font: Option('Iosevka Regular', {
             'type': 'font',
             'title': 'Font',
             'scss': 'font',
         }),
-        mono: Option('Mononoki Nerd Font', {
+        mono: Option('Symbols Nerd Font', {
             'title': 'Monospaced Font',
             'scss': 'mono-font',
         }),
-        size: Option(13, {
+        size: Option(11, {
             'scss': 'font-size',
             'unit': 'pt',
         }),
@@ -157,7 +157,7 @@ export default {
     applauncher: {
         width: Option(500),
         height: Option(500),
-        icon_size: Option(52),
+        icon_size: Option(32),
     },
 
     bar: {
@@ -165,13 +165,13 @@ export default {
             'enums': ['top', 'bottom'],
             'type': 'enum',
         }),
-        style: Option('normal', {
+        style: Option('separated', {
             'enums': ['floating', 'normal', 'separated'],
             'type': 'enum',
         }),
         flat_buttons: Option(true, { 'scss': 'bar-flat-buttons' }),
-        separators: Option(true),
-        icon: Option('distro-icon', {
+        separators: Option(false),
+        icon: Option('󰫢', {
             'note': '"distro-icon" or a single font',
         }),
     },
@@ -205,17 +205,17 @@ export default {
             'type': 'img',
             'note': 'displayed in quicksettings and locksreen',
         }),
-        screen_corners: Option(true, { 'scss': 'screen-corners' }),
+        screen_corners: Option(false, { 'scss': 'screen-corners' }),
         clock: {
             enable: Option(true),
             position: Option('center center', {
                 'note': 'halign valign',
             }),
         },
-        drop_shadow: Option(true, { 'scss': 'drop-shadow' }),
+        drop_shadow: Option(false, { 'scss': 'drop-shadow' }),
         shadow: Option('rgba(0, 0, 0, .6)', { 'scss': 'shadow' }),
         dock: {
-            icon_size: Option(56),
+            icon_size: Option(32),
             pinned_apps: Option([
                 'firefox',
                 'org.wezfurlong.wezterm',
@@ -258,7 +258,7 @@ export default {
         }),
     },
 
-    workspaces: Option(7, {
+    workspaces: Option(10, {
         'category': 'Bar',
         'title': 'No. workspaces on bar and overview',
         'note': 'Set it to 0 to make it dynamic',
@@ -271,23 +271,25 @@ export default {
         icons: [
             ['transmission-gtk', 'transmission'],
             ['blueberry.py', 'bluetooth'],
-            ['Caprine', 'facebook-messenger'],
             ['', 'preferences-desktop-display'],
+            // ['firefox-devedition', 'firefox'],
         ],
         titles: [
             ['com.github.Aylur.ags', 'AGS'],
             ['transmission-gtk', 'Transmission'],
-            ['com.obsproject.Studio', 'OBS'],
+            ['com.obsproject.Studio', 'OBS Studio'],
             ['com.usebottles.bottles', 'Bottles'],
             ['com.github.wwmm.easyeffects', 'Easy Effects'],
             ['org.gnome.TextEditor', 'Text Editor'],
+            ['org.gnome.Loupe', 'Image Viewer'],
             ['org.gnome.design.IconLibrary', 'Icon Library'],
             ['blueberry.py', 'Blueberry'],
             ['org.wezfurlong.wezterm', 'Wezterm'],
             ['com.raggesilver.BlackBox', 'BlackBox'],
-            ['firefox', 'Firefox'],
+            ['firefox-devedition', 'Firefox Developer Edition'],
             ['org.gnome.Nautilus', 'Files'],
             ['libreoffice-writer', 'Writer'],
+            ['io.missioncenter.MissionCenter', 'Mission Center'],
             ['', 'Desktop'],
         ],
     },

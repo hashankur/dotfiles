@@ -60,6 +60,14 @@ export default () => PanelButton({
         options.battery.show_percentage.value = !v;
     },
     content: Widget.Box({
+        // Check resource efficiency
+        tooltip_text: Battery.bind('time_remaining').transform(s => {
+            const date = new Date(0);
+            date.setSeconds(s);
+            const hours = date.getUTCHours();
+            const minutes = date.getUTCMinutes();
+            return `${hours}h ${minutes}m remaining`;
+        }),
         visible: Battery.bind('available'),
         children: options.battery.bar.full.bind('value').transform(full => full
             ? [WholeButton()] : [

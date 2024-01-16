@@ -6,9 +6,12 @@ import { Theme, WP, lightColors } from './settings/theme.js';
 
 export default [
     Theme({
-        name: 'Kitty Dark',
-        icon: '󰄛',
-        'desktop.wallpaper.img': WP + 'kittybl.jpeg',
+        name: 'Ayu Dark Neue',
+        icon: '󰫢',
+        'bar.icon': '󰫢',
+        'bar.style': 'separated',
+        'bar.separators': false,
+        // 'desktop.wallpaper.img': WP + 'kittybl.jpeg',
     }),
     Theme({
         name: 'Kitty Light',

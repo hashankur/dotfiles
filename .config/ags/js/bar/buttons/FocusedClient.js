@@ -8,7 +8,8 @@ import { substitute } from '../../utils.js';
 export const ClientLabel = () => Widget.Label({
     label: Hyprland.active.client.bind('class').transform(c => {
         const { titles } = options.substitutions;
-        return substitute(titles, c);
+        const label = substitute(titles, c);
+        return label.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
     }),
 });
 

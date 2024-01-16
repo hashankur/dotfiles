@@ -17,7 +17,7 @@ import { forMonitors } from './utils.js';
 import { initWallpaper } from './settings/wallpaper.js';
 import options from './options.js';
 
-initWallpaper();
+// initWallpaper();
 
 const windows = () => [
     forMonitors(Desktop),
@@ -25,7 +25,7 @@ const windows = () => [
     forMonitors(Lockscreen),
     forMonitors(Notifications),
     forMonitors(OSD),
-    forMonitors(ScreenCorners),
+    // forMonitors(ScreenCorners),
     forMonitors(TopBar),
     Applauncher(),
     Dashboard(),
@@ -33,7 +33,7 @@ const windows = () => [
     PowerMenu(),
     QuickSettings(),
     Verification(),
-    About(),
+    // About(),
 ];
 
 export default {

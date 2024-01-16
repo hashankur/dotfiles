@@ -56,28 +56,27 @@ const Start = () => Widget.Box({
     class_name: 'start',
     children: [
         OverviewButton(),
-        SeparatorDot(),
-        Workspaces(),
-        SeparatorDot(),
+        // SeparatorDot(),
+        // SeparatorDot(),
         FocusedClient(),
         Widget.Box({ hexpand: true }),
-        NotificationIndicator(),
-        SeparatorDot(Notifications, n => n.notifications.length > 0 || n.dnd),
+        // SeparatorDot(Notifications, n => n.notifications.length > 0 || n.dnd),
+        MediaIndicator(),
     ],
 });
 
 const Center = () => Widget.Box({
     class_name: 'center',
     children: [
-        DateButton(),
+        Workspaces(),
     ],
 });
 
 const End = () => Widget.Box({
     class_name: 'end',
     children: [
-        SeparatorDot(Mpris, m => m.players.length > 0),
-        MediaIndicator(),
+        // SeparatorDot(Mpris, m => m.players.length > 0),
+        NotificationIndicator(),
         Widget.Box({ hexpand: true }),
 
         SubMenu({
@@ -95,7 +94,8 @@ const End = () => Widget.Box({
         SeparatorDot(Battery, b => b.available),
         BatteryBar(),
         SeparatorDot(),
-        PowerMenu(),
+        // PowerMenu(),
+        DateButton(),
     ],
 });
 

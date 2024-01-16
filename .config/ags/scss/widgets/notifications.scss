@@ -1,9 +1,9 @@
 @mixin notification() {
-    &.critical > box {
+    &.critical>box {
         box-shadow: inset 0 0 .5em 0 $red;
     }
 
-    &:hover button.close-button{
+    &:hover button.close-button {
         @include button-hover;
         background-color: transparentize($red, .5);
     }
@@ -69,7 +69,7 @@ window.notifications {
     .notification {
         @include notification;
 
-        > box {
+        >box {
             @include floating-widget;
             border-radius: $radii;
         }
