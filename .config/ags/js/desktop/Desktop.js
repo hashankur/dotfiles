@@ -10,7 +10,7 @@ const DesktopClock = () => Widget.Box({
         start_widget: Clock({
             class_name: 'clock',
             hpack: 'center',
-            format: '%H',
+            format: '%I',
         }),
         center_widget: Widget.Box({
             class_name: 'separator-box',
@@ -47,7 +47,7 @@ const Desktop = () => Widget.EventBox({
         }),
         children: [
             DesktopClock(),
-            Clock({ format: '%B %e. %A', class_name: 'date' }),
+            Clock({ format: '%A, %B %e', class_name: 'date' }),
         ],
     }),
 });

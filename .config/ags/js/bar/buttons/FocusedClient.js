@@ -18,8 +18,8 @@ export const ClientIcon = () => Widget.Icon({
         const { icons } = options.substitutions;
         const { client } = Hyprland.active;
 
-        const classIcon = substitute(icons, client.class) + '-symbolic';
-        const titleIcon = substitute(icons, client.class) + '-symbolic';
+        const classIcon = substitute(icons, client.class);
+        const titleIcon = substitute(icons, client.title) + '-symbolic';
 
         const hasTitleIcon = Utils.lookUpIcon(titleIcon);
         const hasClassIcon = Utils.lookUpIcon(classIcon);

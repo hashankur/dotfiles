@@ -5,7 +5,9 @@
         }
 
         .loop {
-            &.playlist, &.track {
+
+            &.playlist,
+            &.track {
                 color: $color;
             }
         }
@@ -32,7 +34,8 @@
         text-shadow: $text-shadow;
     }
 
-    .blurred-cover, .cover {
+    .blurred-cover,
+    .cover {
         background-size: cover;
         background-position: center;
         border-radius: $radii*0.8;
@@ -86,7 +89,8 @@
             color: transparentize($shader-fg, 0.2);
             transition: $transition;
 
-            &.shuffle, &.loop {
+            &.shuffle,
+            &.loop {
                 font-size: 1.4em;
 
             }
@@ -101,7 +105,15 @@
         }
     }
 
-    &.spotify { @include player-color($green); }
-    &.firefox { @include player-color($orange); }
-    &.mpv { @include player-color($magenta); }
+    &.spotify {
+        @include player-color($green);
+    }
+
+    &.firefox {
+        @include player-color($cyan);
+    }
+
+    &.mpv {
+        @include player-color($magenta);
+    }
 }

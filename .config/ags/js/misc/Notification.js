@@ -14,8 +14,8 @@ const NotificationIcon = ({ app_entry, app_icon, image }) => {
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
-                min-width: 78px;
-                min-height: 78px;
+                min-width: 64px;
+                min-height: 64px;
             `,
         });
     }
@@ -32,11 +32,11 @@ const NotificationIcon = ({ app_entry, app_icon, image }) => {
         hexpand: false,
         class_name: 'icon',
         css: `
-            min-width: 78px;
-            min-height: 78px;
+            min-width: 64px;
+            min-height: 64px;
         `,
         child: Widget.Icon({
-            icon, size: 58,
+            icon, size: 32,
             hpack: 'center', hexpand: true,
             vpack: 'center', vexpand: true,
         }),
@@ -69,7 +69,7 @@ export default notification => {
                             Widget.Label({
                                 class_name: 'time',
                                 vpack: 'start',
-                                label: GLib.DateTime.new_from_unix_local(notification.time).format('%H:%M'),
+                                label: GLib.DateTime.new_from_unix_local(notification.time).format('%I:%M %p'),
                             }),
                             Widget.Button({
                                 class_name: 'close-button',
