@@ -6,7 +6,6 @@
     # wlsunset
     gammastep
     wluma
-    dunst
     rofi-wayland
     swayosd
     playerctl
@@ -40,13 +39,10 @@
     fd
   ];
 
-  environment.sessionVariables = {
-    # Hint electron apps to use wayland
-    NIXOS_OZONE_WL = "1";
-
-    # Java issues
-    # _JAVA_OPTIONS= "-Dawt.useSystemAAFontSettings=lcd -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
-  };
+  # environment.sessionVariables = {
+  #   # Hint electron apps to use wayland
+  #   NIXOS_OZONE_WL = "1";
+  # };
 
   fonts = {
     packages = with pkgs; [

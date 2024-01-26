@@ -22,7 +22,6 @@
 
     gnome.gnome-tweaks
     pavucontrol
-    capitaine-cursors
     adw-gtk3
   ];
 	
@@ -31,14 +30,15 @@
       iosevka-bin
       noto-fonts
       noto-fonts-cjk
-      noto-fonts-emoji
+      # noto-fonts-color-emoji
+      twitter-color-emoji
     ];
 
     # fontconfig.defaultFonts = {
-    #   serif = [ "IBM Plex Serif" "Noto Serif" "Noto Color Emoji" ];
-    #   sansSerif = [ "IBM Plex Sans" "Noto Sans" "Noto Color Emoji" ];
-    #   monospace = [ "Iosevka" "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
-    #   emoji = [ "Noto Color Emoji" ];
+    #   serif = [ "Noto Serif" ];
+    #   sansSerif = [ "Twitter Color Emoji" "Noto Sans" "Noto Sans Sinhala" "Symbols Nerd Font"];
+    #   # monospace = [ "Iosevka" ];
+    #   emoji = [ "Twitter Color Emoji" ];
     # };
   };
 

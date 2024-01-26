@@ -21,10 +21,10 @@
     # contrast
     # gaphor
     gcc
-    flutter
+    # flutter
     # scrcpy
-    jetbrains.idea-community
-    maven
+    # jetbrains.idea-community
+    # maven
 
     nixfmt
     nodePackages_latest.vscode-langservers-extracted
