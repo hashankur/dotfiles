@@ -24,9 +24,7 @@
   outputs = { self, nixpkgs, home-manager, chaotic, ... }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-      };
+      pkgs = import nixpkgs { inherit system; };
       lib = nixpkgs.lib;
       conf = self.nixosConfigurations;
 
@@ -47,7 +45,8 @@
             ./modules/terminal.nix
             chaotic.nixosModules.default
 
-            home-manager.nixosModules.home-manager {
+            home-manager.nixosModules.home-manager
+            {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
@@ -57,13 +56,13 @@
         };
       };
 
-
       # Add this output, colmena will read its contents for remote deployment
       colmena = {
         meta = {
           nixpkgs = pkgs;
           nodeNixpkgs = builtins.mapAttrs (name: value: value.pkgs) conf;
-          nodeSpecialArgs = builtins.mapAttrs (name: value: value._module.specialArgs) conf;
+          nodeSpecialArgs =
+            builtins.mapAttrs (name: value: value._module.specialArgs) conf;
 
           # This parameter functions similarly to `sepcialArgs` in `nixosConfigurations.xxx`,
           # used for passing custom arguments to all submodules.

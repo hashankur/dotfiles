@@ -1,0 +1,24 @@
+inherits = "ayu_evolve"
+
+"constructor" = "cyan"
+"function.special" = "red"
+"punctuation.special" = "orange"
+"type.builtin" = { fg = "blue", modifiers = ["normal"] }
+"variable.builtin" = { fg = "red", modifiers = ["italic"] }
+"variable.parameter" = { fg = "magenta", modifiers = ["italic"] }
+
+# Gutters and editing area
+"warning" = "orange"
+"diagnostic.warning" = { underline = { color = "orange", style = "curl" } }
+"hint" = "yellow"
+"diagnostic.hint" = { underline = { color = "yellow", style = "curl" } }
+"info" = "white"
+"diagnostic.info" = { underline = { color = "white", style = "curl" } }
+
+"ui.cursor.primary" = { fg = "dark_gray", bg = "yellow" }
+"ui.virtual.inlay-hint" = { fg = "gray" }
+
+[palette]
+background = "#0b0e14"
+black = "#0f131a"
+red = "#d95757"

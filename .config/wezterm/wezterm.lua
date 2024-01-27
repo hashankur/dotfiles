@@ -15,9 +15,9 @@ return {
 	default_cursor_style = "BlinkingUnderline",
 
 	window_padding = {
-		top = "0cell",
+		top = "10px",
 		right = "1cell",
-		bottom = "0",
+		bottom = "0px",
 		left = "1cell",
 	},
 

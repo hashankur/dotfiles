@@ -7,24 +7,30 @@ name = "json"
 formatter = { command = 'prettier', args = ["--parser", "json"] }
 
 [[language]]
-name = "css"
-formatter = { command = 'prettier', args = ["--parser", "css"] }
+name = "scss"
+formatter = { command = 'prettier', args = ["--parser", "scss"] }
 auto-format = true
+indent = { tab-width = 4, unit = "  " }
 
 [[language]]
 name = "javascript"
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
+indent = { tab-width = 4, unit = "  " }
+language-servers = ["typescript-language-server", "tailwindcss-ls", "gpt"]
 
 [[language]]
 name = "typescript"
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
+language-servers = ["typescript-language-server", "gpt"]
 
 [[language]]
 name = "tsx"
+roots = ["tailwind.config.cjs", "tailwind.config.js"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
+language-servers = ["typescript-language-server", "tailwindcss-ls", "gpt"]
 
 [[language]]
 name = "python"
@@ -33,12 +39,35 @@ auto-format = true
 
 [[language]]
 name = "svelte"
-# language-servers = ["svelteserver", "tailwindcss"]
-roots = ["tailwind.config.cjs", "tailwind.config.js"]
-formatter = { command = 'prettier', args = ["--plugin-search-dir", ".", "--write", "."] }
-auto-format = false
+formatter = { command = 'prettier', args = [
+  "--plugin-search-dir",
+  ".",
+  "--write",
+  ".",
+] }
+auto-format = true
+language-servers = ["svelteserver", "tailwindcss-ls", "gpt"]
 
-# [language-server.tailwindcss]
-# args = ["--stdio"]
-# command = "tailwindcss-language-server"
+[[language]]
+name = "nix"
+formatter = { command = "nixfmt" }
+auto-format = true
 
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer", "tailwindcss-ls", "gpt"]
+
+[[language]]
+name = "toml"
+formatter = { command = "taplo", args = ["fmt", "-"] }
+auto-format = true
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[language-server.tailwindcss-ls]
+config = { userLanguages = { rust = "html", "*.rs" = "html" } }
+
+[language-server.gpt]
+command = "helix-gpt"
+args = ["--handler", "copilot"] # API key in environment.d/*.conf

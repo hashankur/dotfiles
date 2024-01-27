@@ -1,39 +1,49 @@
-theme = "ayu_evolve"
+theme = "ayu_neue"
 
 [editor]
 line-number = "relative"
 cursorline = true
 color-modes = true
-scroll-lines = 1
 auto-save = true
 completion-trigger-len = 1
 true-color = true
 auto-pairs = true
-rulers = [120]
+rulers = [100]
 idle-timeout = 50
+gutters = ["diagnostics", "spacer", "line-numbers", "spacer", "diff", "spacer"]
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
 
-# [editor.statusline]
-# left = ["mode", "diagnostics", "spinner", "selections"]
-# center = ["file-name"]
-# right = ["file-encoding", "spacer", "position", "position-percentage", "file-type"]
-
-[editor.statusline]
-left = ["mode", "spinner", "version-control", "file-name", "file-encoding"]
-center = []
-right = ["diagnostics", "workspace-diagnostics", "selections", "primary-selection-length", "position", "total-line-numbers", "position-percentage", "spacer", "file-type"]
+[editor.file-picker]
+hidden = false
 
 [editor.indent-guides]
 render = true
-character ="▏"
+character = "▏"
 
 [editor.lsp]
 display-messages = true
 display-inlay-hints = true
+
+[editor.soft-wrap]
+enable = true
+wrap-indicator = "↪  "
+
+[editor.statusline]
+left = ["mode", "spinner", "spacer", "version-control", "workspace-diagnostics"]
+center = ["file-name"]
+right = [
+  "diagnostics",
+  "file-encoding",
+  "position",
+  "total-line-numbers",
+  "position-percentage",
+  "spacer",
+  "file-type",
+]
 
 [keys.normal]
 "esc" = ["collapse_selection", ":w"]

@@ -16,7 +16,6 @@
     #     yapf
     #     python-lsp-server
     #     pillow
-    #     jupyter
     # ]))
     # contrast
     # gaphor
@@ -26,16 +25,17 @@
     # jetbrains.idea-community
     # maven
 
+    nil
     nixfmt
     nodePackages_latest.vscode-langservers-extracted
     nodePackages_latest.typescript-language-server
-    marksman
-    nil
     nodePackages_latest.svelte-language-server
     nodePackages_latest."@tailwindcss/language-server"
-    nodePackages_latest.prisma
+    marksman
     lldb
     lua-language-server
+    (callPackage ../pkgs/helix-gpt/package.nix { })
+    taplo
   ];
 
   programs = {
