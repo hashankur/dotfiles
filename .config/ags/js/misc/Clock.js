@@ -1,5 +1,5 @@
+import { clock } from '../variables.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import GLib from 'gi://GLib';
 
 /**
  * @param {import('types/widgets/label').Props & {
@@ -13,8 +13,8 @@ export default ({
     ...rest
 } = {}) => Widget.Label({
     class_name: 'clock',
-    ...rest,
-    setup: self => self.poll(interval, () => {
-        self.label = GLib.DateTime.new_now_local().format(format) || 'wrong format';
+    label: clock.bind('value').transform(time => {
+        return time.format(format) || 'wrong format';
     }),
+    ...rest,
 });
