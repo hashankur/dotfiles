@@ -67,7 +67,7 @@ export default {
         }),
 
         accent: {
-            accent: Option('$yellow', {
+            accent: Option('$blue', {
                 'category': 'Theme',
                 'title': 'Accent Color',
                 'scss': 'accent',
@@ -270,7 +270,7 @@ export default {
             ['blueberry.py', 'bluetooth'],
             ['', 'preferences-desktop-display'],
             ['firefox', 'firefox-devedition'],
-            ['code', 'code'],
+            ['code', 'vscode'],
             ['xdg-desktop-portal-gtk', 'user-desktop-symbolic'],
         ],
         titles: [

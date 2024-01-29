@@ -14,7 +14,6 @@
     pulseaudio
     swww
     waybar
-    hyprpicker
     networkmanagerapplet
 
     # Screenshot
@@ -45,9 +44,8 @@
   # };
 
   fonts = {
-    packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
-    ];
+    packages = with pkgs;
+      [ (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; }) ];
   };
 
   programs = {

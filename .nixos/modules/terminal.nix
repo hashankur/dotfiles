@@ -7,7 +7,7 @@
     kitty
     helix
     yadm
-    # zellij
+    zellij
     gitui
     navi
     wezterm

@@ -14,6 +14,8 @@
     extraPackages = [ pkgs.libsoup_3 ];
   };
 
+  home.packages = with pkgs; [ hyprpicker ];
+
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
@@ -23,20 +25,20 @@
   };
 
   # gtk = {
-    # enable = true;
-    # theme = {
-    #   package = pkgs.adw-gtk3;
-    #   name = "Adwaita GTK3";
-    # };
+  # enable = true;
+  # theme = {
+  #   package = pkgs.adw-gtk3;
+  #   name = "Adwaita GTK3";
+  # };
 
-    # iconTheme = {
-    #   package = pkgs.gnome.adwaita-icon-theme;
-    #   name = "Adwaita";
-    # };
+  # iconTheme = {
+  #   package = pkgs.gnome.adwaita-icon-theme;
+  #   name = "Adwaita";
+  # };
 
-    # font = {
-    #   name = "Sans";
-    #   size = 11;
-    # };
+  # font = {
+  #   name = "Sans";
+  #   size = 11;
+  # };
   # };
 }

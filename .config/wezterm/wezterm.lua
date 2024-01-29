@@ -7,7 +7,7 @@ return {
 		["Ayu Dark Nue"] = require("colors")
 	},
 	color_scheme = 'Ayu Dark Nue',
-	font = wt.font { family = 'Iosevka', weight = 'Medium' },
+	font = wt.font { family = 'Iosevka', weight = 500 },
 	font_size = 12,
 
 	use_fancy_tab_bar = true,
@@ -22,8 +22,8 @@ return {
 	},
 
 	window_frame = {
-		font = wt.font { family = 'Roboto', weight = 'Bold' },
-		font_size = 12.0,
+		font = wt.font { family = 'Iosevka', weight = 600 },
+		font_size = 10,
 
 		active_titlebar_bg = colors.background,
 		inactive_titlebar_bg = colors.background,
