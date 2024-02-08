@@ -24,6 +24,8 @@
     # scrcpy
     # jetbrains.idea-community
     # maven
+    android-studio
+    kotlin
 
     nil
     nixfmt
@@ -36,6 +38,9 @@
     lua-language-server
     (callPackage ../pkgs/helix-gpt/package.nix { })
     taplo
+    # black
+    # python-lsp-ruff
+    kotlin-language-server
   ];
 
   programs = {

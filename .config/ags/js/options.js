@@ -272,6 +272,7 @@ export default {
             ['firefox', 'firefox-devedition'],
             ['code', 'vscode'],
             ['xdg-desktop-portal-gtk', 'user-desktop-symbolic'],
+            ['jetbrains-studio', 'android-studio'],
         ],
         titles: [
             ['', 'Desktop'],
@@ -295,6 +296,7 @@ export default {
             ['brave-browser', 'brave browser'],
             ['tauonmb', 'tauon music box'],
             ['xdg-desktop-portal-gtk', 'portal'],
+            ['jetbrains-studio', 'android studio'],
         ],
     },
 };

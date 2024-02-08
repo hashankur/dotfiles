@@ -36,6 +36,7 @@ language-servers = ["typescript-language-server", "tailwindcss-ls", "gpt"]
 name = "python"
 formatter = { command = "black", args = ["--quiet", "-"] }
 auto-format = true
+language-servers = ["pyright", "ruff", "gpt"]
 
 [[language]]
 name = "svelte"
@@ -51,6 +52,7 @@ language-servers = ["svelteserver", "tailwindcss-ls", "gpt"]
 [[language]]
 name = "nix"
 formatter = { command = "nixfmt" }
+language-servers = ["nil", "gpt"]
 auto-format = true
 
 [[language]]
@@ -71,3 +73,12 @@ config = { userLanguages = { rust = "html", "*.rs" = "html" } }
 [language-server.gpt]
 command = "helix-gpt"
 args = ["--handler", "copilot"] # API key in environment.d/*.conf
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+
+[language-server.ruff]
+command = "ruff-lsp"
+
+[language-server.ruff.config.settings]
+args = ["--ignore", "E501"]

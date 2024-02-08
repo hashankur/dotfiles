@@ -5,7 +5,7 @@ let
     owner = "leona";
     repo = "helix-gpt";
     rev = pin.version;
-    hash = "sha256-EN8I3vWp9XKesExSGQOQTuXyDnDdyrjbkRxblmzKxtA=";
+    hash = "sha256-EZ8waJiLHfButE/rI0EEwZ3VF5dwdgFQ4FBLebhyP2o=";
   };
   node_modules = stdenv.mkDerivation {
     pname = "helix-gpt-node_modules";
