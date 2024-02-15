@@ -166,7 +166,7 @@ export default {
             'enums': ['top', 'bottom'],
             'type': 'enum',
         }),
-        style: Option('separated', {
+        style: Option('floating', {
             'enums': ['floating', 'normal', 'separated'],
             'type': 'enum',
         }),
@@ -213,7 +213,7 @@ export default {
                 'note': 'halign valign',
             }),
         },
-        drop_shadow: Option(false, { 'scss': 'drop-shadow' }),
+        drop_shadow: Option(true, { 'scss': 'drop-shadow' }),
         shadow: Option('rgba(0, 0, 0, .6)', { 'scss': 'shadow' }),
         dock: {
             icon_size: Option(32),
@@ -273,6 +273,7 @@ export default {
             ['code', 'vscode'],
             ['xdg-desktop-portal-gtk', 'user-desktop-symbolic'],
             ['jetbrains-studio', 'android-studio'],
+            ['org.telegram.desktop', 'telegram'],
         ],
         titles: [
             ['', 'Desktop'],
@@ -283,6 +284,7 @@ export default {
             ['com.github.wwmm.easyeffects', 'Easy Effects'],
             ['org.gnome.TextEditor', 'Text Editor'],
             ['org.gnome.Loupe', 'Image Viewer'],
+            ['org.gnome.Calculator', 'calculator'],
             ['org.gnome.Settings', 'Settings'],
             ['org.gnome.design.IconLibrary', 'Icon Library'],
             ['blueberry.py', 'Blueberry'],
@@ -297,6 +299,7 @@ export default {
             ['tauonmb', 'tauon music box'],
             ['xdg-desktop-portal-gtk', 'portal'],
             ['jetbrains-studio', 'android studio'],
+            ['org.telegram.desktop', 'telegram desktop'],
         ],
     },
 };

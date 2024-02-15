@@ -237,9 +237,9 @@ const searchEntry = Widget.Revealer({
 
 const categoriesStack = Widget.Stack({
     transition: 'slide_left_right',
-    items: categories.map(name => [name, Page(name)]),
-    shown: currentPage.bind(),
-    visible: search.bind().transform(v => !v),
+    children: categories.reduce((obj, name) => { obj[name] = Page(name); return obj }, {},
+        shown: currentPage.bind(),
+        visible: search.bind().transform(v => !v),
 });
 
 const searchPage = Widget.Box({
