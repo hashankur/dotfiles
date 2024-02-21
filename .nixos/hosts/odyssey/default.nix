@@ -22,9 +22,7 @@
     };
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
+  nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -34,6 +32,8 @@
     transmission-gtk
     # thunderbird-bin
     brave
+    spotify
+    spicetify-cli
 
     ## Media
     pitivi
@@ -45,10 +45,8 @@
 
     ## Office
     xournalpp
-    drawio
-    basex
     zathura
-    typst
+    # typst
     staruml
     zotero
 
@@ -58,8 +56,6 @@
     mission-center
 
     # temp
-    brightnessctl
-    sassc
     material-symbols
     anydesk
   ];
@@ -80,11 +76,6 @@
 
     # Enable the OpenSSH daemon.
     openssh.enable = true;
-
-    # cloudflare-warp = {
-      # enable = true;
-      # certificate = ./modules/Cloudflare_CA.pem; # download here https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/install-cloudflare-cert/
-    # };
   };
 
   virtualisation.docker.enable = true;

@@ -2,7 +2,7 @@ local wt = require("wezterm")
 local colors = require("colors")
 
 return {
-	enable_wayland = false,
+	enable_wayland = true,
 	color_schemes = {
 		["Ayu Dark Nue"] = require("colors")
 	},

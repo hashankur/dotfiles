@@ -1,20 +1,24 @@
-{ pkgs, ... }: {
+{ hyprland, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     # swaylock
     # gtklock
     swayidle
     # wlsunset
     gammastep
-    wluma
+    # wluma
     rofi-wayland
-    swayosd
     playerctl
     libnotify
     pamixer
     pulseaudio
     swww
     waybar
-    networkmanagerapplet
+    brightnessctl
+
+    # AGS
+    typescript
+    dart-sass
+    bun
 
     # Screenshot
     grim
@@ -49,8 +53,10 @@
   };
 
   programs = {
-    hyprland = { enable = true; };
-    light.enable = true;
+    hyprland = {
+      enable = true;
+      package = hyprland.packages.${pkgs.system}.hyprland;
+    };
   };
 
   services = {

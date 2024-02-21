@@ -1,4 +1,4 @@
-{pkgs, ...}:{
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     tdesktop
 
@@ -24,7 +24,7 @@
     pavucontrol
     adw-gtk3
   ];
-	
+
   fonts = {
     packages = with pkgs; [
       iosevka-bin
@@ -42,11 +42,8 @@
     # };
   };
 
-  programs = {
-    kdeconnect.enable = true;
-    fish.enable = true;
-  };
-  
+  programs = { fish.enable = true; };
+
   services = {
     # Power savings
     auto-cpufreq.enable = true;

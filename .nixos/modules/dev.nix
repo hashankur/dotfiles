@@ -26,6 +26,7 @@
     # maven
     android-studio
     kotlin
+    jdt-language-server
 
     nil
     nixfmt
