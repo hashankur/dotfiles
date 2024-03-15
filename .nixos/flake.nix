@@ -7,6 +7,8 @@
     # Nixpkgs, NixOS's official repo
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
 
   # Output config, or config for NixOS system
@@ -89,6 +91,7 @@
             ./modules/core.nix
             ./modules/desktop.nix
             ./modules/nix.nix
+            chaotic.nixosModules.default
           ];
         };
       };

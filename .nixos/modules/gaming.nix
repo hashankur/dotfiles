@@ -6,5 +6,6 @@
     gamescope
     gnome.aisleriot
     gnome.gnome-chess
+    ryujinx
   ];
 }

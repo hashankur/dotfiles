@@ -2,12 +2,12 @@ local wt = require("wezterm")
 local colors = require("colors")
 
 return {
-	enable_wayland = true,
+	enable_wayland = false,
 	color_schemes = {
 		["Ayu Dark Nue"] = require("colors")
 	},
 	color_scheme = 'Ayu Dark Nue',
-	font = wt.font { family = 'Iosevka', weight = 500 },
+	font = wt.font { family = 'Iosevka', weight = 400 },
 	font_size = 12,
 
 	use_fancy_tab_bar = true,

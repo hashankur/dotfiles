@@ -39,6 +39,14 @@
   services = {
     # Enable the OpenSSH daemon.
     openssh.enable = true;
+    syncthing = {
+      enable = true;
+      user = "merina";
+      configDir = "/home/merina/.config/syncthing";
+      overrideFolders = false;
+      guiAddress = "127.0.0.1:5050";
+      openDefaultPorts = true;
+    };
   };
 
   # Open ports in the firewall.

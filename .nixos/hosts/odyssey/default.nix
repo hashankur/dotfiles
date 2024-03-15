@@ -17,12 +17,14 @@
     users.han = {
       isNormalUser = true;
       description = "Hashan";
-      extraGroups = [ "networkmanager" "wheel" "video" "docker" "adbusers" ];
+      extraGroups =
+        [ "networkmanager" "wheel" "video" "docker" "adbusers" "vboxusers" ];
       shell = pkgs.fish;
     };
   };
 
-  nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
+  nixpkgs.config.permittedInsecurePackages =
+    [ "electron-25.9.0" "freeimage-unstable-2021-11-01" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -33,7 +35,6 @@
     # thunderbird-bin
     brave
     spotify
-    spicetify-cli
 
     ## Media
     pitivi
@@ -64,7 +65,7 @@
   services = {
     # Syncthing
     syncthing = {
-      enable = false;
+      enable = true;
       user = "han";
       configDir = "/home/han/.config/syncthing";
       overrideFolders = false;
@@ -79,6 +80,8 @@
   };
 
   virtualisation.docker.enable = true;
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.guest.enable = true;
 
   #virtualisation.waydroid.enable = true;
 

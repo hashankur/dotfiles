@@ -30,7 +30,7 @@
     cliphist
     bemenu # wayland clone of dmenu
 
-    eww-wayland
+    # eww-wayland
     encfs
     gocryptfs
     gnome.zenity

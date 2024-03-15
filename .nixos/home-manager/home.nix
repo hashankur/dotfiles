@@ -2,19 +2,34 @@
   home.stateVersion = "24.05";
 
   # add the home manager module
-  imports = [ inputs.ags.homeManagerModules.default ];
+  imports = [ inputs.ags.homeManagerModules.default ./spicetify.nix ];
 
   programs.ags = {
     enable = true;
-
     # null or path, leave as null if you don't want hm to manage the config
     configDir = null;
-
-    # packages to add to gjs's runtime
-    extraPackages = [ pkgs.libsoup_3 ];
+    extraPackages = with pkgs; [
+      libsoup_3
+      gtksourceview
+      gtksourceview4
+      ollama
+      python311Packages.material-color-utilities
+      python311Packages.pywayland
+      pywal
+      sassc
+      webkitgtk
+      webp-pixbuf-loader
+      ydotool
+    ];
   };
 
-  home.packages = with pkgs; [ hyprpicker ];
+  home.packages = with pkgs; [
+    hyprpicker
+    ollama
+    pywal
+    sassc
+    (python311.withPackages (p: [ p.material-color-utilities p.pywayland ]))
+  ];
 
   home.pointerCursor = {
     gtk.enable = true;
