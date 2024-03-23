@@ -25,14 +25,12 @@
     # jetbrains.idea-community
     # maven
     android-studio
-    kotlin
     jdt-language-server
 
     nil
     nixfmt
     nodePackages_latest.vscode-langservers-extracted
     nodePackages_latest.typescript-language-server
-    nodePackages_latest.svelte-language-server
     nodePackages_latest."@tailwindcss/language-server"
     marksman
     lldb
@@ -41,7 +39,6 @@
     taplo
     # black
     # python-lsp-ruff
-    kotlin-language-server
   ];
 
   programs = {

@@ -31,7 +31,7 @@
       noto-fonts
       noto-fonts-cjk
       # noto-fonts-color-emoji
-      twitter-color-emoji
+      # twitter-color-emoji
     ];
 
     # fontconfig.defaultFonts = {

@@ -29,7 +29,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    firefox-devedition
     obsidian
     transmission-gtk
     # thunderbird-bin
@@ -37,21 +36,17 @@
     spotify
 
     ## Media
-    pitivi
     handbrake
-    kooha
-    youtube-dl
-    tartube
     obs-studio
 
     ## Office
     xournalpp
     zathura
     # typst
-    staruml
+    # staruml
     zotero
 
-    distrobox
+    # distrobox
     megasync
     colmena
     mission-center
@@ -79,9 +74,7 @@
     openssh.enable = true;
   };
 
-  virtualisation.docker.enable = true;
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.docker.enable = false;
 
   #virtualisation.waydroid.enable = true;
 

@@ -7,5 +7,6 @@
     gnome.aisleriot
     gnome.gnome-chess
     ryujinx
+    # lutris
   ];
 }

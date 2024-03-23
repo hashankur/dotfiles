@@ -1,10 +1,10 @@
 { hyprland, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    # swaylock
-    # gtklock
-    swayidle
-    # wlsunset
-    gammastep
+    hyprlock
+    hypridle
+    hyprpicker
+    wlsunset
+    # gammastep
     # wluma
     rofi-wayland
     playerctl
@@ -12,13 +12,8 @@
     pamixer
     pulseaudio
     swww
-    waybar
+    # waybar
     brightnessctl
-
-    # AGS
-    typescript
-    dart-sass
-    bun
 
     # Screenshot
     grim
@@ -29,6 +24,7 @@
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     cliphist
     bemenu # wayland clone of dmenu
+    clipse
 
     # eww-wayland
     encfs
@@ -42,10 +38,10 @@
     fd
   ];
 
-  # environment.sessionVariables = {
-  #   # Hint electron apps to use wayland
-  #   NIXOS_OZONE_WL = "1";
-  # };
+  environment.sessionVariables = {
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
+  };
 
   fonts = {
     packages = with pkgs;
