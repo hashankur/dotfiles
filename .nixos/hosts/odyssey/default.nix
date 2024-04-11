@@ -38,6 +38,7 @@
     ## Media
     handbrake
     obs-studio
+    pitivi
 
     ## Office
     xournalpp
@@ -47,7 +48,7 @@
     zotero
 
     # distrobox
-    megasync
+    # megasync
     colmena
     mission-center
 

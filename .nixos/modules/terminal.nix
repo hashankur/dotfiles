@@ -13,6 +13,6 @@
     wezterm
     yazi
     zoxide
-    # warp-terminal
+    warp-terminal
   ];
 }

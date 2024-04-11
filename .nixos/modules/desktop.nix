@@ -42,12 +42,15 @@
     # };
   };
 
-  programs = { fish.enable = true; };
-
-  services = {
-    # Power savings
+  programs = {
+    fish.enable = true;
     auto-cpufreq.enable = true;
   };
+
+  # services = {
+  #   # Power savings
+  #   auto-cpufreq.enable = true;
+  # };
 
   # ZRAM
   zramSwap = {

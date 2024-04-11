@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     vscode.fhs
     nodejs
@@ -28,7 +29,7 @@
     jdt-language-server
 
     nil
-    nixfmt
+    nixfmt-rfc-style
     nodePackages_latest.vscode-langservers-extracted
     nodePackages_latest.typescript-language-server
     nodePackages_latest."@tailwindcss/language-server"
@@ -44,7 +45,11 @@
   programs = {
     git = {
       enable = true;
-      config = { init = { defaultBranch = "main"; }; };
+      config = {
+        init = {
+          defaultBranch = "main";
+        };
+      };
     };
 
     adb.enable = true;
@@ -55,6 +60,12 @@
     };
 
     direnv.enable = true;
+
+    nix-ld = {
+      enable = true;
+      package = pkgs.nix-ld-rs;
+      # libraries = with pkgs; [ stdenv.cc.cc.lib ];
+    };
   };
 
   services = {

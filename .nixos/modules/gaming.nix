@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, umu, ... }: {
   environment.systemPackages = with pkgs; [
     gamemode
     bottles
@@ -8,5 +8,6 @@
     gnome.gnome-chess
     ryujinx
     # lutris
+    umu.packages.${pkgs.system}.umu
   ];
 }

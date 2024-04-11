@@ -3,7 +3,8 @@
     hyprlock
     hypridle
     hyprpicker
-    wlsunset
+    hyprshade
+    # wlsunset
     # gammastep
     # wluma
     rofi-wayland
