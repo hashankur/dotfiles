@@ -2,9 +2,13 @@
 {
   environment.systemPackages = with pkgs; [
     vscode.fhs
+    zed-editor
     nodejs
     yarn
+    bun
     python3Full
+    rustup
+    # python3
     # (python3.withPackages (ps:
     #   with ps; [
     #     pip
@@ -20,13 +24,13 @@
     # ]))
     # contrast
     # gaphor
-    gcc
+    # gcc
     # flutter
     # scrcpy
     # jetbrains.idea-community
-    # maven
-    android-studio
-    jdt-language-server
+    # android-studio
+    # jdt-language-server
+    jetbrains-toolbox
 
     nil
     nixfmt-rfc-style
@@ -34,12 +38,14 @@
     nodePackages_latest.typescript-language-server
     nodePackages_latest."@tailwindcss/language-server"
     marksman
-    lldb
+    # lldb
     lua-language-server
-    (callPackage ../pkgs/helix-gpt/package.nix { })
+    helix-gpt
     taplo
     # black
-    # python-lsp-ruff
+    ruff-lsp
+    pyright
+    nodePackages_latest.vls
   ];
 
   programs = {
@@ -59,7 +65,7 @@
       package = pkgs.temurin-bin;
     };
 
-    direnv.enable = true;
+    direnv.enable = false;
 
     nix-ld = {
       enable = true;
@@ -68,10 +74,10 @@
     };
   };
 
-  services = {
-    mysql = {
-      enable = false;
-      package = pkgs.mariadb;
-    };
-  };
+  # services = {
+  #   mysql = {
+  #     enable = false;
+  #     package = pkgs.mariadb;
+  #   };
+  # };
 }

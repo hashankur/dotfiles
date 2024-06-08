@@ -1,6 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -18,13 +20,21 @@
       merina = {
         isNormalUser = true;
         description = "Merina";
-        extraGroups = [ "networkmanager" "wheel" "video" ];
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+          "video"
+        ];
         shell = pkgs.fish;
       };
       anne = {
         isNormalUser = true;
         description = "Anne K";
-        extraGroups = [ "networkmanager" "wheel" "video" ];
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+          "video"
+        ];
         shell = pkgs.fish;
       };
       root = {
@@ -34,7 +44,11 @@
       };
     };
   };
-  environment.systemPackages = with pkgs; [ firefox ];
+  environment.systemPackages = with pkgs; [
+    firefox
+    python3Full
+    vscode.fhs
+  ];
 
   services = {
     # Enable the OpenSSH daemon.
@@ -46,6 +60,11 @@
       overrideFolders = false;
       guiAddress = "127.0.0.1:5050";
       openDefaultPorts = true;
+    };
+
+    mysql = {
+      enable = true;
+      package = pkgs.mariadb;
     };
   };
 

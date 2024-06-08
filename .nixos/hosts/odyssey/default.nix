@@ -1,6 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -17,35 +19,38 @@
     users.han = {
       isNormalUser = true;
       description = "Hashan";
-      extraGroups =
-        [ "networkmanager" "wheel" "video" "docker" "adbusers" "vboxusers" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "video"
+        "docker"
+        "adbusers"
+        "vboxusers"
+      ];
       shell = pkgs.fish;
     };
   };
 
-  nixpkgs.config.permittedInsecurePackages =
-    [ "electron-25.9.0" "freeimage-unstable-2021-11-01" ];
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    obsidian
+    # obsidian
     transmission-gtk
     # thunderbird-bin
     brave
     spotify
 
     ## Media
-    handbrake
+    # handbrake
     obs-studio
-    pitivi
+    # pitivi
 
     ## Office
-    xournalpp
-    zathura
+    # xournalpp
+    # zathura
     # typst
     # staruml
-    zotero
+    # zotero
 
     # distrobox
     # megasync
@@ -55,7 +60,14 @@
     # temp
     material-symbols
     anydesk
+
+    waybar
+    dunst
+    # onagre
+    gammastep
   ];
+
+  programs.niri.enable = true;
 
   # List services that you want to enable:
   services = {
@@ -75,7 +87,8 @@
     openssh.enable = true;
   };
 
-  virtualisation.docker.enable = false;
+  # virtualisation.docker.enable = false;
+  # virtualisation.virtualbox.host.enable = true;
 
   #virtualisation.waydroid.enable = true;
 

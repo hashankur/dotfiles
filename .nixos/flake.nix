@@ -14,7 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland/?submodules=1";
 
     ags = {
       url = "github:Aylur/ags";
@@ -32,6 +32,11 @@
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # Output config, or config for NixOS system
@@ -43,6 +48,7 @@
       chaotic,
       umu,
       auto-cpufreq,
+      niri,
       ...
     }@inputs:
     let
@@ -68,6 +74,7 @@
             ./modules/terminal.nix
             chaotic.nixosModules.default
             auto-cpufreq.nixosModules.default
+            niri.nixosModules.niri
 
             home-manager.nixosModules.home-manager
             {
@@ -78,6 +85,18 @@
               };
               home-manager.users.han = import ./home-manager/home.nix;
             }
+          ];
+        };
+
+        perseus = lib.nixosSystem {
+          inherit system;
+          specialArgs = inputs;
+          modules = [
+            ./hosts/perseus
+            ./modules/core.nix
+            ./modules/desktop.nix
+            ./modules/nix.nix
+            chaotic.nixosModules.default
           ];
         };
       };

@@ -1,8 +1,12 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   home.stateVersion = "24.05";
 
   # add the home manager module
-  imports = [ inputs.ags.homeManagerModules.default ./spicetify.nix ];
+  imports = [
+    inputs.ags.homeManagerModules.default
+    ./spicetify.nix
+  ];
 
   programs.ags = {
     enable = true;
@@ -31,7 +35,6 @@
     (python311.withPackages (p: [
       p.material-color-utilities
       p.pywayland
-      # (p.callPackage ../pkgs/materialyoucolor.nix { })
       p.setproctitle
     ]))
   ];
@@ -44,26 +47,26 @@
   #   size = 20;
   # };
 
-  gtk = {
-    enable = true;
-    # cursorTheme = {
-    #   package = pkgs.capitaine-cursors;
-    #   name = "Capitaine-cursors";
-    #   size = 8;
-    # };
-    # theme = {
-    #   package = pkgs.adw-gtk3;
-    #   name = "Adwaita GTK3";
-    # };
+  # gtk = {
+  # enable = true;
+  # cursorTheme = {
+  #   package = pkgs.capitaine-cursors;
+  #   name = "Capitaine-cursors";
+  #   size = 8;
+  # };
+  # theme = {
+  #   package = pkgs.adw-gtk3;
+  #   name = "Adwaita GTK3";
+  # };
 
-    # iconTheme = {
-    #   package = pkgs.gnome.adwaita-icon-theme;
-    #   name = "Adwaita";
-    # };
+  # iconTheme = {
+  #   package = pkgs.gnome.adwaita-icon-theme;
+  #   name = "Adwaita";
+  # };
 
-    # font = {
-    #   name = "Sans";
-    #   size = 11;
-    # };
-  };
+  # font = {
+  #   name = "Sans";
+  #   size = 11;
+  # };
+  # };
 }

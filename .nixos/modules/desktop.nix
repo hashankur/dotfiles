@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     tdesktop
 
@@ -15,7 +16,7 @@
     tealdeer
     btop
     neofetch
-    wget
+    wget2
     killall
     unrar
     libnotify
@@ -44,7 +45,6 @@
 
   programs = {
     fish.enable = true;
-    auto-cpufreq.enable = true;
   };
 
   # services = {

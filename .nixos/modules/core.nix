@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   boot = {
     loader = {
@@ -7,19 +8,28 @@
         configurationLimit = 10;
         consoleMode = "max";
       };
-      efi = { canTouchEfiVariables = true; };
+      efi = {
+        canTouchEfiVariables = true;
+      };
     };
     kernelPackages = pkgs.linuxPackages_cachyos;
     # kernelParams = [ "amd_pstate=active" ];
     # kernelModules = [ "amd-pstate" ];
-    supportedFilesystems = [ "btrfs" "ntfs" ];
+    supportedFilesystems = [
+      "btrfs"
+      "ntfs"
+    ];
     # extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
   };
 
   # Bluetooth battery
   hardware.bluetooth = {
     enable = true;
-    settings = { General = { Experimental = true; }; };
+    settings = {
+      General = {
+        Experimental = true;
+      };
+    };
   };
 
   # Set your time zone.

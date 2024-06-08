@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     # alacritty
     starship
@@ -9,9 +10,9 @@
     yadm
     zellij
     gitui
-    navi
+    # navi
     wezterm
-    yazi
+    # yazi
     zoxide
     warp-terminal
   ];

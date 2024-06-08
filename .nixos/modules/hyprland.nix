@@ -1,4 +1,5 @@
-{ hyprland, pkgs, ... }: {
+{ hyprland, pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     hyprlock
     hypridle
@@ -45,15 +46,16 @@
   };
 
   fonts = {
-    packages = with pkgs;
-      [ (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; }) ];
+    packages = with pkgs; [ (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; }) ];
   };
 
   programs = {
     hyprland = {
       enable = true;
-      package = hyprland.packages.${pkgs.system}.hyprland;
+      # package = hyprland.packages.${pkgs.system}.hyprland;
     };
+
+    auto-cpufreq.enable = true;
   };
 
   services = {
@@ -71,8 +73,7 @@
       description = "polkit-gnome-authentication-agent-1";
       serviceConfig = {
         Type = "simple";
-        ExecStart =
-          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
