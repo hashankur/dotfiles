@@ -1,8 +1,9 @@
+import { type Application } from "types/service/applications"
+
 const { query } = await Service.import("applications")
 const WINDOW_NAME = "applauncher"
 
-/** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
-const AppItem = app => Widget.Button({
+const AppItem = (app: Application) => Widget.Button({
     on_clicked: () => {
         App.closeWindow(WINDOW_NAME)
         app.launch()
