@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     vscode.fhs
-    zed-editor
+    zed-editor_git
     nodejs
     yarn
     bun
@@ -31,6 +31,7 @@
     # android-studio
     # jdt-language-server
     jetbrains-toolbox
+    # volta
 
     nil
     nixfmt-rfc-style
@@ -45,7 +46,7 @@
     # black
     ruff-lsp
     pyright
-    nodePackages_latest.vls
+    # nodePackages_latest.vls
   ];
 
   programs = {
@@ -61,7 +62,7 @@
     adb.enable = true;
 
     java = {
-      enable = true;
+      enable = false;
       package = pkgs.temurin-bin;
     };
 

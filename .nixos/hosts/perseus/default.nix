@@ -48,6 +48,9 @@
     firefox
     python3Full
     vscode.fhs
+
+    gnomeExtensions.pano # Needs v23 for gnome 46
+    gnomeExtensions.clipboard-indicator
   ];
 
   services = {

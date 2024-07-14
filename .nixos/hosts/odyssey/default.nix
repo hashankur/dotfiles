@@ -34,8 +34,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # obsidian
-    transmission-gtk
+    obsidian
+    transmission_4-gtk
     # thunderbird-bin
     brave
     spotify
@@ -54,20 +54,18 @@
 
     # distrobox
     # megasync
-    colmena
+    # colmena
     mission-center
 
     # temp
     material-symbols
     anydesk
 
-    waybar
-    dunst
-    # onagre
-    gammastep
+    # emacs29-pgtk
+    # nushell
+    fractal
+    cinny-desktop
   ];
-
-  programs.niri.enable = true;
 
   # List services that you want to enable:
   services = {

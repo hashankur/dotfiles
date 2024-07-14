@@ -14,8 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hyprland.url = "git+https://github.com/hyprwm/Hyprland/?submodules=1";
-
     ags = {
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -68,7 +66,7 @@
             ./modules/desktop.nix
             ./modules/dev.nix
             ./modules/gaming.nix
-            ./modules/hyprland.nix
+            ./modules/wm.nix
             ./modules/nix.nix
             ./modules/ssd.nix
             ./modules/terminal.nix

@@ -4,15 +4,15 @@
     # alacritty
     starship
     eza
-    ranger
-    kitty
+    # ranger
+    # kitty
     helix
     yadm
     zellij
     gitui
     # navi
     wezterm
-    # yazi
+    yazi
     zoxide
     warp-terminal
   ];

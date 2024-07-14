@@ -1,32 +1,34 @@
-{ hyprland, pkgs, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    hyprlock
+    # hyprlock
     hypridle
-    hyprpicker
-    hyprshade
+    # hyprpicker
+    # hyprshade
     # wlsunset
-    # gammastep
+    gammastep
     # wluma
-    rofi-wayland
+    # rofi-wayland
     playerctl
     libnotify
-    pamixer
-    pulseaudio
+    # pamixer
+    # pulseaudio
     swww
-    # waybar
+    waybar
     brightnessctl
+    # dunst
 
     # Screenshot
-    grim
-    sway-contrib.grimshot
-    slurp
+    # grim
+    # sway-contrib.grimshot
+    # slurp
 
     # Clipboard
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     cliphist
+    fzf
     bemenu # wayland clone of dmenu
-    clipse
+    # clipse
 
     # eww-wayland
     encfs
@@ -38,7 +40,11 @@
     bc
     ripgrep
     fd
+    (callPackage ../pkgs/xwayland-satellite { })
+    # xwayland-satellite
   ];
+
+  # stylix.image = "../../assets/wallhaven-kxvqp7.jpg";
 
   environment.sessionVariables = {
     # Hint electron apps to use wayland
@@ -51,8 +57,11 @@
 
   programs = {
     hyprland = {
+      enable = false;
+    };
+
+    niri = {
       enable = true;
-      # package = hyprland.packages.${pkgs.system}.hyprland;
     };
 
     auto-cpufreq.enable = true;
@@ -60,8 +69,8 @@
 
   services = {
     # High CPU usage for extended periods of time
-    gnome.tracker.enable = false;
-    gnome.tracker-miners.enable = false;
+    # gnome.tracker.enable = false;
+    # gnome.tracker-miners.enable = false;
 
     power-profiles-daemon.enable = false;
 
@@ -79,5 +88,6 @@
         TimeoutStopSec = 10;
       };
     };
+    user.services.niri-flake-polkit.enable = false;
   };
 }
