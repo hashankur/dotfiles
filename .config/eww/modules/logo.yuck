@@ -1,5 +1,0 @@
-(defwidget logo []
-    (box :class "logo" :orientation "h" :space-evenly false :halign "center"
-        (label :text "󰣇")
-    )
-)
