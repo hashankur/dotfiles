@@ -1,4 +1,5 @@
-local bg = "#0b0e14"
+-- local bg = "#0b0e14"
+local bg = "#091613"
 local fg = "#bfbfb6"
 
 local black = "#0b0e14"

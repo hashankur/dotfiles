@@ -37,4 +37,6 @@ return {
 			inactive_tab_edge = colors.foreground,
 		},
 	},
+
+	-- default_prog = { 'nu' }
 }

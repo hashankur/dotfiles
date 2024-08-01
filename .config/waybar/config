@@ -14,7 +14,6 @@
         "custom/media",
     ],
     "modules-center": [
-        "hyprland/workspaces",
     ],
     "modules-right": [
         "tray",
@@ -64,7 +63,7 @@
     "clock": {
         "interval": 1,
         "format": "{:%a %d %b  %I:%M %p}",
-        "on-click": "eww open date --toggle"
+        "on-click": "gnome-calendar"
     },
     "memory": {
         "interval": 2,
@@ -150,4 +149,19 @@
       "interval": 60,
       "path": "/home",
     },
+    "wlr/workspaces": {
+      "format": "{icon}",
+      "on-click": "activate",
+      "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "urgent": "",
+        "active": "",
+        "default": ""
+      },
+      "sort-by-number": true
+    }
 }

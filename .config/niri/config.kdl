@@ -38,7 +38,7 @@ input {
     }
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
-    // warp-mouse-to-focus
+    warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // focus-follows-mouse
@@ -52,7 +52,7 @@ input {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-/-output "eDP-1" {
+output "eDP-1" {
     // Uncomment this line to disable this output.
     // off
 
@@ -62,7 +62,7 @@ input {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
+    mode "1920x1080@60.004"
 
     // Scale is a floating-point number, but at the moment only integer values work.
     scale 1.0
@@ -80,7 +80,9 @@ input {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1280 y=0
+    position x=0 y=0
+
+    variable-refresh-rate
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -96,25 +98,25 @@ layout {
     // - "always", the focused column will always be centered.
     // - "on-overflow", focusing a column will center it if it doesn't fit
     //   together with the previously focused column.
-    center-focused-column "never"
+    center-focused-column "on-overflow"
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
         // Proportion sets the width as a fraction of the output width, taking gaps into account.
         // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
         // The default preset widths are 1/3, 1/2 and 2/3 of the output.
-        proportion 0.33333
         proportion 0.5
         proportion 0.66667
+        proportion 0.33333
 
         // Fixed sets the width in logical pixels exactly.
         // fixed 1920
     }
 
     // You can change the default width of the new windows.
-    default-column-width { proportion 0.5; }
+    // default-column-width { proportion 0.5; }
     // If you leave the brackets empty, the windows themselves will decide their initial width.
-    // default-column-width {}
+    default-column-width {}
 
     // By default focus ring and border are rendered as a solid background rectangle
     // behind windows. That is, they will show up through semitransparent windows.
@@ -141,7 +143,8 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#00dfc0"
+        // active-color "#3b818c"
+        active-color "#1e4e4d"
 
         // Color of the ring on inactive monitors.
         inactive-color "#505050"
@@ -191,12 +194,13 @@ layout {
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
-// spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "swww-daemon"
-// spawn-at-startup "hypridle"
-spawn-at-startup "clipse -listen"
-spawn-at-startup "waybar"
-spawn-at-startup "gammastep -l 22.6:88.4"
+spawn-at-startup "gammastep" "-l" "22.6:88.4"
+// spawn-at-startup "clipse" "-listen"
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+spawn-at-startup "ags"
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "hypridle"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -220,6 +224,14 @@ animations {
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
+
+     workspace-switch {
+        spring damping-ratio=0.9 stiffness=1000 epsilon=0.0001
+    }
+
+    horizontal-view-movement {
+        spring damping-ratio=0.9 stiffness=800 epsilon=0.0001
+    }
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -237,17 +249,29 @@ window-rule {
 }
 
 window-rule {
-    match at-startup=true app-id="nautilus"
+    match app-id="nautilus"
+    match app-id="brave"
     open-on-workspace "1"
 }
 
 window-rule {
-    match app-id="brave"
-    open-on-workspace "2"
+    match app-id="bottles"
+    open-on-workspace "4"
+}
+
+window-rule {
+    match app-id="obsidian"
+    open-on-workspace "7"
 }
 
 window-rule {
     match app-id="spotify"
+    open-on-workspace "8"
+}
+
+window-rule {
+    match app-id="cinny"
+    match app-id="geary"
     open-on-workspace "9"
 }
 
@@ -302,11 +326,20 @@ binds {
     Mod+Shift+N { spawn "nautilus"; }
     Mod+Shift+C { spawn "gnome-calculator"; }
     Mod+Shift+V { spawn "code"; }
+    Mod+Shift+O { spawn "obsidian"; }
+    Mod+Shift+M { spawn "spotify"; }
+    Mod+Shift+I { spawn "sh" "-c" "XDG_CURRENT_DESKTOP=gnome gnome-control-center"; }
+    Mod+Escape { spawn "missioncenter"; }
+
 
     Alt+Shift+N { spawn "sh" "-c" "wezterm start hx ~/.nixos"; }
     Alt+Shift+C { spawn "sh" "-c" "wezterm start hx ~/.config"; }
-    Mod+V { spawn "sh" "-c" "wezterm start clipse"; }
-    Mod+D { spawn "sh" "-c" "rofi -dmenu -theme ~/.config/rofi/launcher.rasi"; }
+    // Mod+V { spawn "sh" "-c" "wezterm start clipse"; }
+    Mod+V { spawn "sh" "-c" "wezterm start sh -c cliphist list | fzf | cliphist decode | wl-copy"; }
+
+    Mod+D { spawn "ags" "-t" "applauncher"; }
+    Mod+M { spawn "ags" "-t" "mpris"; }
+    Mod+Alt+R { spawn "sh" "-c" "ags -q; ags"; }
 
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
@@ -321,32 +354,29 @@ binds {
     XF86MonBrightnessUp allow-when-locked=true { spawn "sh" "-c" "brightnessctl s $(brightnessctl g | awk '{ print int(($1 + .72) * 1.4) }')"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "sh" "-c" "brightnessctl s $(brightnessctl g | awk '{ print int($1 / 1.4) }')"; }
 
+    XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }
+
     Mod+Q { close-window; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
+    Mod+H     { focus-column-left-or-last; }
+    Mod+J     { focus-window-or-workspace-down; }
+    Mod+K     { focus-window-or-workspace-up; }
+    Mod+L     { focus-column-right-or-first; }
 
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down; }
     Mod+Ctrl+Up    { move-window-up; }
     Mod+Ctrl+Right { move-column-right; }
     Mod+Ctrl+H     { move-column-left; }
-    Mod+Ctrl+J     { move-window-down; }
-    Mod+Ctrl+K     { move-window-up; }
+    Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+    Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
     Mod+Ctrl+L     { move-column-right; }
-
-    // Alternative commands that move across workspaces when reaching
-    // the first or last window in a column.
-    // Mod+J     { focus-window-or-workspace-down; }
-    // Mod+K     { focus-window-or-workspace-up; }
-    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
 
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
@@ -381,8 +411,8 @@ binds {
 
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
-    Mod+U              { focus-workspace-down; }
-    Mod+I              { focus-workspace-up; }
+    // Mod+U              { focus-workspace-down; }
+    // Mod+I              { focus-workspace-up; }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }
@@ -394,8 +424,8 @@ binds {
 
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+U         { move-workspace-down; }
-    Mod+Shift+I         { move-workspace-up; }
+    // Mod+Shift+U         { move-workspace-down; }
+    // Mod+Shift+I         { move-workspace-up; }
 
     // You can bind mouse wheel scroll ticks using the following syntax.
     // These binds will change direction based on the natural-scroll setting.
@@ -518,4 +548,9 @@ cursor {
 
 hotkey-overlay {
     skip-at-startup
+}
+
+environment {
+    QT_QPA_PLATFORM "wayland"
+    DISPLAY ":0" // Xwayland support through xwayland-satellite
 }
