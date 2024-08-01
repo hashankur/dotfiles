@@ -48,6 +48,3 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
-
-(package! yuck-mode
-  :recipe (:host github :repo "mmcjimsey26/yuck-mode" :files ("yuck-mode.el")))
