@@ -47,6 +47,10 @@
     ruff-lsp
     pyright
     # nodePackages_latest.vls
+
+    php83
+    php83Packages.composer
+    laravel
   ];
 
   programs = {

@@ -21,16 +21,6 @@
 
     spicetify-nix.url = "github:the-argus/spicetify-nix";
 
-    umu = {
-      url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix&submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,8 +34,6 @@
       nixpkgs,
       home-manager,
       chaotic,
-      umu,
-      auto-cpufreq,
       niri,
       ...
     }@inputs:
@@ -71,7 +59,6 @@
             ./modules/ssd.nix
             ./modules/terminal.nix
             chaotic.nixosModules.default
-            auto-cpufreq.nixosModules.default
             niri.nixosModules.niri
 
             home-manager.nixosModules.home-manager
@@ -93,6 +80,18 @@
             ./hosts/perseus
             ./modules/core.nix
             ./modules/desktop.nix
+            ./modules/nix.nix
+            chaotic.nixosModules.default
+          ];
+        };
+
+        calypso = lib.nixosSystem {
+          inherit system;
+          specialArgs = inputs;
+          modules = [
+            ./hosts/calypso
+            ./modules/core.nix
+            # ./modules/desktop.nix
             ./modules/nix.nix
             chaotic.nixosModules.default
           ];

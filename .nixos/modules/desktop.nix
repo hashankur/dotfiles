@@ -47,11 +47,6 @@
     fish.enable = true;
   };
 
-  # services = {
-  #   # Power savings
-  #   auto-cpufreq.enable = true;
-  # };
-
   # ZRAM
   zramSwap = {
     enable = true;

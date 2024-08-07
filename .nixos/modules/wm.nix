@@ -63,8 +63,6 @@
     niri = {
       enable = true;
     };
-
-    auto-cpufreq.enable = true;
   };
 
   services = {
@@ -74,7 +72,8 @@
 
     power-profiles-daemon.enable = false;
 
-    # clight.enable = true;
+    # Power savings
+    auto-cpufreq.enable = true;
   };
 
   systemd = {

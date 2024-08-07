@@ -65,6 +65,7 @@
     # nushell
     fractal
     cinny-desktop
+    docker-compose
   ];
 
   # List services that you want to enable:
@@ -85,7 +86,7 @@
     openssh.enable = true;
   };
 
-  # virtualisation.docker.enable = false;
+  virtualisation.docker.enable = true;
   # virtualisation.virtualbox.host.enable = true;
 
   #virtualisation.waydroid.enable = true;

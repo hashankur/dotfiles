@@ -1,4 +1,4 @@
-{ pkgs, umu, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     gamemode
@@ -22,4 +22,6 @@
     extraPackages = [ pkgs.amdvlk ];
     extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
+
+  chaotic.scx.enable = true;
 }
