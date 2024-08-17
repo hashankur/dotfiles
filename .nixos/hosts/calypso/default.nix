@@ -6,6 +6,8 @@
     ./hardware-configuration.nix
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
   networking = {
     hostName = "calypso"; # Define your hostname.
     # Enables wireless support via wpa_supplicant.

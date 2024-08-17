@@ -19,7 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     niri = {
       url = "github:sodiboo/niri-flake";
@@ -68,7 +71,7 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
               };
-              home-manager.users.han = import ./home-manager/home.nix;
+              home-manager.users.han = import ./home-manager/han.nix;
             }
           ];
         };
@@ -81,7 +84,16 @@
             ./modules/core.nix
             ./modules/desktop.nix
             ./modules/nix.nix
-            chaotic.nixosModules.default
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+              };
+              home-manager.users.merina = import ./home-manager/merina.nix;
+            }
           ];
         };
 
@@ -93,7 +105,6 @@
             ./modules/core.nix
             # ./modules/desktop.nix
             ./modules/nix.nix
-            chaotic.nixosModules.default
           ];
         };
       };

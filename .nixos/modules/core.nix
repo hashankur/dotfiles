@@ -12,14 +12,10 @@
         canTouchEfiVariables = true;
       };
     };
-    kernelPackages = pkgs.linuxPackages_cachyos;
-    # kernelParams = [ "amd_pstate=active" ];
-    # kernelModules = [ "amd-pstate" ];
     supportedFilesystems = [
       "btrfs"
       "ntfs"
     ];
-    # extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
   };
 
   # Bluetooth battery
@@ -64,7 +60,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {

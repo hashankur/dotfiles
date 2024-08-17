@@ -4,7 +4,7 @@
     tdesktop
 
     ## Media
-    tauon
+    # tauon
     gimp
     inkscape
     # foliate
@@ -21,16 +21,13 @@
     unrar
     libnotify
 
-    gnome.gnome-tweaks
-    pavucontrol
+    gnome-tweaks
     adw-gtk3
   ];
 
   fonts = {
     packages = with pkgs; [
       iosevka-bin
-      noto-fonts
-      noto-fonts-cjk
       # noto-fonts-color-emoji
       # twitter-color-emoji
     ];

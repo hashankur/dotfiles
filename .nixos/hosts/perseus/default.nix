@@ -6,6 +6,8 @@
     ./hardware-configuration.nix
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
   networking = {
     hostName = "perseus"; # Define your hostname.
     # Enables wireless support via wpa_supplicant.
@@ -20,16 +22,6 @@
       merina = {
         isNormalUser = true;
         description = "Merina";
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-          "video"
-        ];
-        shell = pkgs.fish;
-      };
-      anne = {
-        isNormalUser = true;
-        description = "Anne K";
         extraGroups = [
           "networkmanager"
           "wheel"

@@ -6,6 +6,8 @@
     ./hardware-configuration.nix
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+
   networking = {
     hostName = "odyssey"; # Define your hostname.
     # Enables wireless support via wpa_supplicant.
@@ -38,7 +40,6 @@
     transmission_4-gtk
     # thunderbird-bin
     brave
-    spotify
 
     ## Media
     # handbrake
@@ -57,14 +58,8 @@
     # colmena
     mission-center
 
-    # temp
-    material-symbols
     anydesk
-
-    # emacs29-pgtk
     # nushell
-    fractal
-    cinny-desktop
     docker-compose
   ];
 

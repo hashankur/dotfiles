@@ -11,7 +11,6 @@
     # lutris
     # umu.packages.${pkgs.system}.umu
     # wineWowPackages.stagingFull
-    wineWowPackages.waylandFull
   ];
 
   hardware.graphics = {
@@ -23,5 +22,8 @@
     extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
 
-  chaotic.scx.enable = true;
+  chaotic.scx = {
+    enable = true;
+    scheduler = "scx_bpfland";
+  };
 }

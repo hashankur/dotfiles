@@ -1,10 +1,9 @@
-{ pkgs, ... }:
+{ niri, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     # hyprlock
     hypridle
     # hyprpicker
-    # hyprshade
     # wlsunset
     gammastep
     # wluma
@@ -12,7 +11,6 @@
     playerctl
     libnotify
     # pamixer
-    # pulseaudio
     swww
     waybar
     brightnessctl
@@ -30,19 +28,19 @@
     bemenu # wayland clone of dmenu
     # clipse
 
-    # eww-wayland
     encfs
     gocryptfs
-    gnome.zenity
+    zenity
     sshfs
     jq
     socat
     bc
     ripgrep
     fd
-    (callPackage ../pkgs/xwayland-satellite { })
-    # xwayland-satellite
+    xwayland-satellite
   ];
+
+  nixpkgs.overlays = [ niri.overlays.niri ];
 
   # stylix.image = "../../assets/wallhaven-kxvqp7.jpg";
 
@@ -56,11 +54,12 @@
   };
 
   programs = {
-    hyprland = {
-      enable = false;
+    niri = {
+      enable = true;
+      package = pkgs.niri-unstable;
     };
 
-    niri = {
+    xwayland = {
       enable = true;
     };
   };

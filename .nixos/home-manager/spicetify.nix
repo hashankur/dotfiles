@@ -1,20 +1,18 @@
 { inputs, pkgs, ... }:
-let spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
-in {
+let
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+in
+{
   # import the flake's module for your system
-  imports = [ inputs.spicetify-nix.homeManagerModule ];
+  imports = [ inputs.spicetify-nix.homeManagerModules.default ];
 
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.Comfy;
-    colorScheme = "mono";
+    theme = spicePkgs.themes.spotifyNoPremium;
+    # colorScheme = "mono";
 
-    enabledCustomApps = with spicePkgs.apps; [
-      lyrics-plus
-      marketplace
-      localFiles
-    ];
+    enabledCustomApps = with spicePkgs.apps; [ lyricsPlus ];
 
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplay
@@ -22,8 +20,9 @@ in {
       powerBar
       songStats
       autoVolume
-      # genre
+      betterGenres # genre
       adblock
+      # beautifulLyrics
     ];
   };
 }

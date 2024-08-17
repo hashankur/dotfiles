@@ -2,11 +2,10 @@
 {
   environment.systemPackages = with pkgs; [
     vscode.fhs
-    zed-editor_git
+    zed-editor
     nodejs
-    yarn
     bun
-    python3Full
+    # python3Full
     rustup
     # python3
     # (python3.withPackages (ps:
@@ -27,8 +26,6 @@
     # gcc
     # flutter
     # scrcpy
-    # jetbrains.idea-community
-    # android-studio
     # jdt-language-server
     jetbrains-toolbox
     # volta
@@ -39,18 +36,8 @@
     nodePackages_latest.typescript-language-server
     nodePackages_latest."@tailwindcss/language-server"
     marksman
-    # lldb
     lua-language-server
     helix-gpt
-    taplo
-    # black
-    ruff-lsp
-    pyright
-    # nodePackages_latest.vls
-
-    php83
-    php83Packages.composer
-    laravel
   ];
 
   programs = {
@@ -65,10 +52,10 @@
 
     adb.enable = true;
 
-    java = {
-      enable = false;
-      package = pkgs.temurin-bin;
-    };
+    # java = {
+    #   enable = false;
+    #   package = pkgs.temurin-bin;
+    # };
 
     direnv.enable = false;
 
