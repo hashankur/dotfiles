@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     vscode.fhs
-    zed-editor
+    zed-editor_git
     nodejs
     bun
     # python3Full

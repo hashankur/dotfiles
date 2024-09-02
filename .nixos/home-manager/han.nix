@@ -6,5 +6,6 @@
   imports = [
     ./ags.nix
     ./spicetify.nix
+    # ./stylix.nix
   ];
 }

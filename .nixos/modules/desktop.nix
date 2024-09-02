@@ -23,11 +23,13 @@
 
     gnome-tweaks
     adw-gtk3
+    nh
   ];
 
   fonts = {
     packages = with pkgs; [
       iosevka-bin
+      inter
       # noto-fonts-color-emoji
       # twitter-color-emoji
     ];

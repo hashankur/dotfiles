@@ -14,7 +14,7 @@
     swww
     waybar
     brightnessctl
-    # dunst
+    dunst
 
     # Screenshot
     # grim
@@ -42,8 +42,6 @@
 
   nixpkgs.overlays = [ niri.overlays.niri ];
 
-  # stylix.image = "../../assets/wallhaven-kxvqp7.jpg";
-
   environment.sessionVariables = {
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "1";
@@ -51,6 +49,21 @@
 
   fonts = {
     packages = with pkgs; [ (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; }) ];
+  };
+
+  stylix = {
+    enable = true;
+    polarity = "dark";
+    image = pkgs.fetchurl {
+      url = "https://w.wallhaven.cc/full/kx/wallhaven-kxvqp7.jpg";
+      sha256 = "sha256-0p49GSybwWbaxK/AbLMtUXLdvg5KhiIJ/G2Mubhd5tA=";
+    };
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 20;
+    };
   };
 
   programs = {

@@ -28,6 +28,11 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # Output config, or config for NixOS system
@@ -38,6 +43,7 @@
       home-manager,
       chaotic,
       niri,
+      stylix,
       ...
     }@inputs:
     let
@@ -63,11 +69,13 @@
             ./modules/terminal.nix
             chaotic.nixosModules.default
             niri.nixosModules.niri
+            stylix.nixosModules.stylix
 
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "bak";
               home-manager.extraSpecialArgs = {
                 inherit inputs;
               };

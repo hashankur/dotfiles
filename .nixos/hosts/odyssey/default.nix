@@ -28,6 +28,7 @@
         "docker"
         "adbusers"
         "vboxusers"
+        "kvm"
       ];
       shell = pkgs.fish;
     };
@@ -61,6 +62,7 @@
     anydesk
     # nushell
     docker-compose
+    steam-run
   ];
 
   # List services that you want to enable:
@@ -84,10 +86,10 @@
   virtualisation.docker.enable = true;
   # virtualisation.virtualbox.host.enable = true;
 
-  #virtualisation.waydroid.enable = true;
+  # virtualisation.waydroid.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ ];
+  networking.firewall.allowedTCPPorts = [ 8081 ]; # For expo
   # networking.firewall.allowedUDPPorts = [ ... ];
 
   system.stateVersion = "23.05"; # Did you read the comment?
