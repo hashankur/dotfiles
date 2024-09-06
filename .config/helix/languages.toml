@@ -17,21 +17,20 @@ name = "javascript"
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 indent = { tab-width = 4, unit = "  " }
-language-servers = ["typescript-language-server", "tailwindcss-ls", "gpt"]
+language-servers = ["typescript-language-server", "tailwindcss-ls"]
 
 [[language]]
 name = "typescript"
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 indent = { tab-width = 4, unit = "  " }
-language-servers = ["typescript-language-server", "gpt"]
 
 [[language]]
 name = "tsx"
 roots = ["tailwind.config.cjs", "tailwind.config.js"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
-language-servers = ["typescript-language-server", "tailwindcss-ls", "gpt"]
+language-servers = ["typescript-language-server", "tailwindcss-ls"]
 
 [[language]]
 name = "python"
@@ -48,7 +47,7 @@ formatter = { command = 'prettier', args = [
   ".",
 ] }
 auto-format = true
-language-servers = ["svelteserver", "tailwindcss-ls", "gpt"]
+language-servers = ["svelteserver", "tailwindcss-ls"]
 
 [[language]]
 name = "nix"
@@ -58,7 +57,7 @@ auto-format = true
 
 [[language]]
 name = "rust"
-language-servers = ["rust-analyzer", "tailwindcss-ls", "gpt"]
+language-servers = ["rust-analyzer", "tailwindcss-ls"]
 
 [[language]]
 name = "toml"
