@@ -7,9 +7,9 @@ return {
 		["Ayu Dark Nue"] = require("colors")
 	},
 	color_scheme = 'Ayu Dark Nue',
-	font = wt.font { family = 'Pragmasevka', weight = 400 },
-	font_size = 10,
-	line_height = 1.25,
+	font = wt.font { family = 'Iosevka', weight = 400 },
+	font_size = 10.8,
+	line_height = 1.2,
 
 	use_fancy_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
