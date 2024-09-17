@@ -27,17 +27,20 @@
     # flutter
     # scrcpy
     # jdt-language-server
-    jetbrains-toolbox
+    # jetbrains-toolbox
+    # androidStudioPackages.beta
     # volta
 
-    nil
+    # nil
     nixfmt-rfc-style
+    nixd
     nodePackages_latest.vscode-langservers-extracted
     nodePackages_latest.typescript-language-server
     nodePackages_latest."@tailwindcss/language-server"
     marksman
     lua-language-server
-    helix-gpt
+
+    arduino-ide
   ];
 
   programs = {
@@ -61,8 +64,9 @@
 
     nix-ld = {
       enable = true;
-      package = pkgs.nix-ld-rs;
-      # libraries = with pkgs; [ stdenv.cc.cc.lib ];
+      libraries = with pkgs; [
+        stdenv.cc.cc.lib
+      ];
     };
   };
 

@@ -29,6 +29,7 @@
         "adbusers"
         "vboxusers"
         "kvm"
+        "dialout"
       ];
       shell = pkgs.fish;
     };
@@ -39,8 +40,10 @@
   environment.systemPackages = with pkgs; [
     obsidian
     transmission_4-gtk
+    fragments
     # thunderbird-bin
     brave
+    floorp
 
     ## Media
     # handbrake
@@ -62,7 +65,7 @@
     anydesk
     # nushell
     docker-compose
-    steam-run
+    # steam-run
   ];
 
   # List services that you want to enable:
@@ -81,6 +84,8 @@
 
     # Enable the OpenSSH daemon.
     openssh.enable = true;
+
+    flatpak.enable = true;
   };
 
   virtualisation.docker.enable = true;

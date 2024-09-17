@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     # hyprlock
-    hypridle
+    swayidle
     # hyprpicker
     # wlsunset
     gammastep
@@ -37,7 +37,8 @@
     bc
     ripgrep
     fd
-    xwayland-satellite
+    xwayland-satellite-unstable
+    wl-mirror
   ];
 
   nixpkgs.overlays = [ niri.overlays.niri ];
@@ -58,7 +59,7 @@
       url = "https://w.wallhaven.cc/full/kx/wallhaven-kxvqp7.jpg";
       sha256 = "sha256-0p49GSybwWbaxK/AbLMtUXLdvg5KhiIJ/G2Mubhd5tA=";
     };
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
@@ -77,15 +78,9 @@
     };
   };
 
-  services = {
-    # High CPU usage for extended periods of time
-    # gnome.tracker.enable = false;
-    # gnome.tracker-miners.enable = false;
-
-    power-profiles-daemon.enable = false;
-
-    # Power savings
-    auto-cpufreq.enable = true;
+  chaotic.scx = {
+    enable = true;
+    scheduler = "scx_rusty";
   };
 
   systemd = {

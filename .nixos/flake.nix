@@ -33,6 +33,11 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ala-lape = {
+      url = "git+https://git.madhouse-project.org/algernon/ala-lape.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # Output config, or config for NixOS system

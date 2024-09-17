@@ -21,9 +21,4 @@
     extraPackages = [ pkgs.amdvlk ];
     extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
-
-  chaotic.scx = {
-    enable = true;
-    scheduler = "scx_bpfland";
-  };
 }
