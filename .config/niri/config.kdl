@@ -41,7 +41,7 @@ input {
     warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
-    // focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="0%"
 
     workspace-auto-back-and-forth
 }
@@ -82,7 +82,7 @@ output "eDP-1" {
     // automatically.
     position x=0 y=0
 
-    variable-refresh-rate
+    // variable-refresh-rate
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -98,7 +98,9 @@ layout {
     // - "always", the focused column will always be centered.
     // - "on-overflow", focusing a column will center it if it doesn't fit
     //   together with the previously focused column.
-    center-focused-column "on-overflow"
+    center-focused-column "never"
+
+    always-center-single-column
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
@@ -106,6 +108,9 @@ layout {
         // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
         // The default preset widths are 1/3, 1/2 and 2/3 of the output.
         proportion 0.5
+        // proportion 0.6866 // For AVD setup
+        // proportion 0.709 // For AVD setup
+        proportion 0.705 // For AVD setup
         proportion 0.66667
         proportion 0.33333
 
@@ -132,10 +137,10 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-        // off
+        off
 
         // How many logical pixels the ring extends out from the windows.
-        width 2
+        width 1
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -144,7 +149,7 @@ layout {
 
         // Color of the ring on the active monitor.
         // active-color "#3b818c"
-        active-color "#1e4e4d"
+        active-color "#BFBDB6"
 
         // Color of the ring on inactive monitors.
         inactive-color "#505050"
@@ -184,8 +189,8 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        // left 64
-        // right 64
+        // left 50
+        // right 50
         // top 64
         // bottom 64
     }
@@ -194,13 +199,14 @@ layout {
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
+spawn-at-startup "dunst"
+spawn-at-startup "waybar"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "gammastep" "-l" "22.6:88.4"
-// spawn-at-startup "clipse" "-listen"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "ags"
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "hypridle"
+spawn-at-startup "swayidle"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -250,13 +256,17 @@ window-rule {
 
 window-rule {
     match app-id="nautilus"
-    match app-id="brave"
     open-on-workspace "1"
 }
 
 window-rule {
+    match app-id="brave"
+    open-on-workspace "2"
+}
+
+window-rule {
     match app-id="bottles"
-    open-on-workspace "4"
+    open-on-workspace "5"
 }
 
 window-rule {
@@ -270,7 +280,6 @@ window-rule {
 }
 
 window-rule {
-    match app-id="cinny"
     match app-id="geary"
     open-on-workspace "9"
 }
@@ -278,6 +287,24 @@ window-rule {
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+}
+
+window-rule {
+    match title="Emulator"
+    clip-to-geometry false
+}
+
+window-rule {
+    match title="Android Emulator - Pixel_4_API_34:5554"
+    // min-width 483
+    max-width 483
+    // default-column-width { fixed 502; }
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id="at.yrlf.wl_mirror"
+    open-fullscreen true
 }
 
 // Example: block out two password managers from screen capture.
@@ -302,7 +329,7 @@ workspace "6"
 workspace "7"
 workspace "8"
 workspace "9"
-workspace "0"
+// workspace "0"
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -322,24 +349,32 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "rio"; }
     Super+Alt+L { spawn "swaylock"; }
-    Mod+Shift+B {spawn "brave" "--ozone-platform-hint=auto" "--enable-features=TouchpadOverscrollHistoryNavigation" "--gtk-version=4"; }
+    Mod+Shift+B {spawn "zen"; }
     Mod+Shift+N { spawn "nautilus"; }
     Mod+Shift+C { spawn "gnome-calculator"; }
     Mod+Shift+V { spawn "code"; }
+    Mod+Shift+Z { spawn "zeditor"; }
     Mod+Shift+O { spawn "obsidian"; }
     Mod+Shift+M { spawn "spotify"; }
     Mod+Shift+I { spawn "sh" "-c" "XDG_CURRENT_DESKTOP=gnome gnome-control-center"; }
     Mod+Escape { spawn "missioncenter"; }
+    Mod+Shift+Backslash {spawn "sh" "-c" "QT_QPA_PLATFORM=xcb emulator @Pixel_4_API_34 -read-only -use-host-vulkan"; }
 
+    Alt+Shift+N { spawn "sh" "-c" "zeditor ~/.nixos"; }
+    Alt+Shift+C { spawn "sh" "-c" "rio -e hx ~/.config"; }
+    Alt+Shift+A { spawn "sh" "-c" "zeditor ~/.config/ags"; }
+    Mod+Slash { spawn "sh" "-c" "encfs --extpass='zenity --password --timeout=3' -m ~/.local/share/plasma-vault/Han.enc ~/Vaults/Han/"; }
 
-    Alt+Shift+N { spawn "sh" "-c" "wezterm start hx ~/.nixos"; }
-    Alt+Shift+C { spawn "sh" "-c" "wezterm start hx ~/.config"; }
-    // Mod+V { spawn "sh" "-c" "wezterm start clipse"; }
-    Mod+V { spawn "sh" "-c" "wezterm start sh -c cliphist list | fzf | cliphist decode | wl-copy"; }
-
-    Mod+D { spawn "ags" "-t" "applauncher"; }
-    Mod+M { spawn "ags" "-t" "mpris"; }
+    Mod+D { spawn "ags" "-t" "app-launcher"; }
+    Mod+M { spawn "ags" "-t" "media"; }
+    Mod+O { spawn "ags" "-t" "dashboard"; }
+    Mod+V { spawn "ags" "-t" "clipboard"; }
+    Alt+Escape {spawn "ags" "-t" "power-menu"; }
     Mod+Alt+R { spawn "sh" "-c" "ags -q; ags"; }
+
+    Mod+Backslash { spawn "wl-mirror" "eDP-1"; }
+
+    Mod+N { spawn "dunstctl" "history-pop"; }
 
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }

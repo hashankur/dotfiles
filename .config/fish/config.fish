@@ -4,12 +4,12 @@ set EDITOR hx
 #set VISUAL "kate"
 set fish_greeting
 
-#set --export ANDROID $HOME/Android;
-#set --export ANDROID_HOME $ANDROID/Sdk;
-#set -gx PATH $ANDROID_HOME/tools $PATH;
-#set -gx PATH $ANDROID_HOME/tools/bin $PATH;
-#set -gx PATH $ANDROID_HOME/platform-tools $PATH;
-#set -gx PATH $ANDROID_HOME/emulator $PATH
+set --export ANDROID $HOME/Android
+set --export ANDROID_HOME $ANDROID/Sdk
+set -gx PATH $ANDROID_HOME/tools $PATH
+set -gx PATH $ANDROID_HOME/tools/bin $PATH
+set -gx PATH $ANDROID_HOME/platform-tools $PATH
+set -gx PATH $ANDROID_HOME/emulator $PATH
 
 ## Source .profile to apply its values
 #source ~/.profile

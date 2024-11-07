@@ -1,7 +1,7 @@
 * {
-  font-family: Pragmasevka, "Font Awesome 6 Pro";
-  font-size: 14px;
-  font-weight: bold;
+  font-family: "Satoshi Variable", "Font Awesome 6 Pro";
+  font-size: 13px;
+  font-weight: 700;
   color: #bfbdb6;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -35,7 +35,7 @@ window#waybar.hidden {
 window>box {
   /* border-radius: 10px; */
   padding: 0px 20px;
-  background-color: #091613;
+  background-color: #0b0e14;
 }
 
 tooltip {
@@ -48,11 +48,11 @@ tooltip label {
 
 #workspaces {
   margin: 0px 0px;
-  border: 11px solid #0b0e14;
+  border: 10px solid #0b0e14;
 }
 
 #workspaces button {
-  padding: 0px 2px;
+  padding: 0px 1px;
   margin: 0px 5px;
   border-radius: 20px;
   background-color: #565b66;
@@ -71,6 +71,17 @@ tooltip label {
   min-width: 50px;
 }
 
-#workspaces button.persistent {
+/* #workspaces button.persistent {
+  background-color: #131721;
+} */
+
+#workspaces button.empty {
   background-color: #131721;
 }
+
+/* #privacy {
+  border-width: 2px;
+  background-color: #d95757;
+  margin: 5px;
+  border-radius: 20px;
+} */

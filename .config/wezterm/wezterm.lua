@@ -8,8 +8,9 @@ return {
 	},
 	color_scheme = 'Ayu Dark Nue',
 	font = wt.font { family = 'Iosevka', weight = 400 },
-	font_size = 10.8,
+	font_size = 11.8,
 	line_height = 1.2,
+	-- dpi = 72,
 
 	use_fancy_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,

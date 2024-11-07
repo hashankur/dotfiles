@@ -2,7 +2,7 @@
 set $alt Mod1
 set $mod Mod4
 
-set $term alacritty
+set $term wezterm
 set $menu $modules_path/executable_bemenu.sh | xargs swaymsg exec --
 set $launcher rofi -show drun
 set $browser firefox
