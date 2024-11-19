@@ -365,12 +365,12 @@ binds {
     Alt+Shift+A { spawn "sh" "-c" "zeditor ~/.config/ags"; }
     Mod+Slash { spawn "sh" "-c" "encfs --extpass='zenity --password --timeout=3' -m ~/.local/share/plasma-vault/Han.enc ~/Vaults/Han/"; }
 
-    Mod+D { spawn "ags" "-t" "app-launcher"; }
-    Mod+M { spawn "ags" "-t" "media"; }
-    Mod+O { spawn "ags" "-t" "dashboard"; }
-    Mod+V { spawn "ags" "-t" "clipboard"; }
-    Alt+Escape {spawn "ags" "-t" "power-menu"; }
-    Mod+Alt+R { spawn "sh" "-c" "ags -q; ags"; }
+    Mod+D { spawn "ags" "toggle" "app-launcher"; }
+    Mod+M { spawn "ags" "toggle" "media"; }
+    Mod+O { spawn "ags" "toggle" "dashboard"; }
+    Mod+V { spawn "ags" "toggle" "clipboard"; }
+    Alt+Escape {spawn "ags" "toggle" "power-menu"; }
+    Mod+Alt+R { spawn "sh" "-c" "ags quit; ags run"; }
 
     Mod+Backslash { spawn "wl-mirror" "eDP-1"; }
 
