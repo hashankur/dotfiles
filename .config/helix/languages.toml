@@ -4,7 +4,13 @@ formatter = { command = 'prettier', args = ["--parser", "html"] }
 
 [[language]]
 name = "json"
-formatter = { command = 'prettier', args = ["--parser", "json"] }
+# formatter = { command = 'prettier', args = ["--parser", "json"] }
+language-servers = [
+  { name = "vscode-json-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+]
 
 [[language]]
 name = "scss"
@@ -14,23 +20,41 @@ indent = { tab-width = 4, unit = "  " }
 
 [[language]]
 name = "javascript"
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+# formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
-indent = { tab-width = 4, unit = "  " }
-language-servers = ["typescript-language-server", "tailwindcss-ls"]
+# indent = { tab-width = 4, unit = "  " }
+# language-servers = ["typescript-language-server", "tailwindcss-ls"]
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+]
 
 [[language]]
 name = "typescript"
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+# formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
-indent = { tab-width = 4, unit = "  " }
+# indent = { tab-width = 4, unit = "  " }
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+]
 
 [[language]]
 name = "tsx"
 roots = ["tailwind.config.cjs", "tailwind.config.js"]
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+# formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
-language-servers = ["typescript-language-server", "tailwindcss-ls"]
+# language-servers = ["typescript-language-server", "tailwindcss-ls"]
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+]
 
 [[language]]
 name = "python"
@@ -67,8 +91,15 @@ auto-format = true
 [language-server.rust-analyzer.config.check]
 command = "clippy"
 
-[language-server.tailwindcss-ls]
-config = { userLanguages = { rust = "html", "*.rs" = "html" } }
+# [language-server.tailwindcss-ls]
+# config = { classAttributes = ["class", "className", "cssClasses"] }
+# config = { userLanguages = { rust = "html", "*.rs" = "html" }, tailwindCSS = { experimental = { classRegex = [
+#   [
+#     "\\S*cssClasses\\S*={\\[([\\s\\S]+?)(?=][\\s;,.}])",
+#     "'([^']*)'",
+#   ],
+#   "return '(.*)'",
+# ] } } }
 
 [language-server.gpt]
 command = "helix-gpt"
@@ -82,3 +113,6 @@ command = "ruff-lsp"
 
 [language-server.ruff.config.settings]
 args = ["--ignore", "E501"]
+
+[language-server]
+biome = { command = "biome", args = ["lsp-proxy"] }
