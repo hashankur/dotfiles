@@ -1,0 +1,11 @@
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+font-family = Iosevka
+window-padding-x = 10
+adjust-cell-height = 10%
+
+gtk-single-instance = true
