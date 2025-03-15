@@ -339,7 +339,7 @@ window-rule {
     border {
         on
         width 2
-        active-color "#80d4db7f"
+        active-color "#005467"
     }
 }
 
@@ -363,11 +363,15 @@ layer-rule {
 
 layer-rule {
     match namespace="gtk4-layer-shell"
+    match namespace="astal-notifications"
     
     shadow {
         on
     }
+
+    geometry-corner-radius 12
 }
+
 // Named workspaces
 workspace "1"
 workspace "2"

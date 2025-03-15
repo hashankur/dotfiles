@@ -1,1 +1,13 @@
 @import 'colors.css';
+
+.tiled-left,
+.tiled-top,
+.tiled-bottom,
+.tiled-right {
+  box-shadow: none;
+}
+
+.csd {
+  /* niri draws our radius */
+  border-radius: 0;
+}
