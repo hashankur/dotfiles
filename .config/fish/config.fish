@@ -11,6 +11,8 @@ set -gx PATH $ANDROID_HOME/tools/bin $PATH
 set -gx PATH $ANDROID_HOME/platform-tools $PATH
 set -gx PATH $ANDROID_HOME/emulator $PATH
 
+set -U fish_user_paths /home/han/.bun/bin
+
 ## Source .profile to apply its values
 #source ~/.profile
 
@@ -98,7 +100,6 @@ alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
 alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
-
 
 ## Import colorscheme from 'wal' asynchronously
 # if type "wal" >> /dev/null 2>&1

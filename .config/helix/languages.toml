@@ -57,6 +57,17 @@ language-servers = [
 ]
 
 [[language]]
+name = "vue"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "vue"] }
+language-servers = ["typescript-language-server", "tailwindcss-ls"]
+
+[[language-server.typescript-language-server.config.plugins]]
+name = "@vue/typescript-plugin"
+location = "/home/han/.bun/install/global/node_modules/@vue/language-server/"
+languages = ["vue"]
+
+[[language]]
 name = "python"
 formatter = { command = "black", args = ["--quiet", "-"] }
 auto-format = true
