@@ -2,13 +2,13 @@
 success_symbol = "[λ](bold green)"
 error_symbol = "[λ](bold red)"
 
-[username]
-show_always = true
+# [username]
+# show_always = false
 
 [time]
 disabled = true
 format = '[$time]($style) '
-time_format = "%H:%M"
+time_format = "%I:%M %p"
 # utc_time_offset = "+5.30"
 # time_range = "10:00:00-14:00:00"
 
@@ -23,8 +23,8 @@ show_milliseconds = false
 
 [status]
 # style = "bg:blue"
-symbol = "🔴"
-format = '[\[$symbol $common_meaning$signal_name$maybe_int\]]($style) '
+# symbol = "🔴"
+# format = '[\[$symbol $common_meaning$signal_name$maybe_int\]]($style) '
 map_symbol = true
 disabled = true
 
@@ -34,6 +34,10 @@ symbol = "󰍛 "
 
 [battery]
 disabled = true
+
+[gcloud]
+disabled = true
+# format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
 
 [aws]
 symbol = "  "
@@ -114,8 +118,8 @@ symbol = '󰒃  '
 disabled = false
 
 [os]
-# format = "[($name )]($style)"
-# style = "bold blue"
+format = "[$symbol ]($style)"
+style = "bold blue"
 disabled = true
 
 [os.symbols]
