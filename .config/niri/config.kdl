@@ -18,6 +18,8 @@ input {
 
             options "caps:escape"
         }
+
+        numlock
     }
 
     // Next sections include libinput settings.
@@ -83,12 +85,17 @@ output "eDP-1" {
     position x=0 y=0
 
     // variable-refresh-rate
+
+    // backdrop-color "#0a0f12"
 }
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
+    background-color "transparent"
+    // background-color "#0a0f127f"
+
     // Set gaps around windows in logical pixels.
     gaps 5
 
@@ -211,7 +218,23 @@ layout {
     }
 
     shadow {
-        on
+        // on
+        softness 100
+        spread 10
+        offset x=0 y=10
+        color "#00000050"
+    }
+}
+
+overview {
+    zoom 0.25
+
+    workspace-shadow {
+        // off
+        softness 500
+        spread 100
+        offset x=0 y=10
+        color "#00000050"
     }
 }
 
@@ -225,7 +248,7 @@ spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swayidle"
 spawn-at-startup "soteria"
-spawn-at-startup "ags" "run" "--gtk4"
+spawn-at-startup "ags" "run"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -250,13 +273,18 @@ animations {
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
 
-     workspace-switch {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    window-open {
+        curve "linear"
     }
 
-    horizontal-view-movement {
-        spring damping-ratio=0.9 stiffness=800 epsilon=0.0001
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+        // spring damping-ratio=1.5 stiffness=1000 epsilon=0.0001
     }
+
+    // horizontal-view-movement {
+    //     spring damping-ratio=1.5 stiffness=800 epsilon=0.0001
+    // }
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -343,6 +371,12 @@ window-rule {
     }
 }
 
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+
+    default-column-width { proportion 0.5; }
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -359,17 +393,24 @@ layer-rule {
     match namespace="astal-notifications"
 
     block-out-from "screen-capture"
+    // baba-is-float true
 }
 
 layer-rule {
     match namespace="gtk4-layer-shell"
-    match namespace="astal-notifications"
-    
+
     shadow {
         on
     }
 
     geometry-corner-radius 12
+}
+
+layer-rule {
+    // This is for swaybg; change for other wallpaper tools.
+    // Find the right namespace by running niri msg layers.
+    match namespace="^swww-daemon$"
+    place-within-backdrop true
 }
 
 // Named workspaces
@@ -401,7 +442,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "ghostty"; }
-    Super+Alt+L { spawn "swaylock"; }
+    Ctrl+Alt+L { spawn "hyprlock"; }
     Mod+Shift+B {spawn "zen"; }
     Mod+Shift+N { spawn "nautilus"; }
     Mod+Shift+C { spawn "gnome-calculator"; }
@@ -414,17 +455,17 @@ binds {
     Mod+Shift+Backslash {spawn "sh" "-c" "QT_QPA_PLATFORM=xcb emulator @Pixel_4_API_34 -read-only -use-host-vulkan"; }
 
     Alt+Shift+N { spawn "sh" "-c" "zeditor ~/.nixos"; }
-    Alt+Shift+C { spawn "sh" "-c" "ghostty -e hx ~/.config"; }
-    Alt+Shift+A { spawn "sh" "-c" "ghostty ~/.config/ags"; }
+    Alt+Shift+C { spawn "sh" "-c" "zeditor ~/.config"; }
+    Alt+Shift+A { spawn "sh" "-c" "zeditor ~/.config/ags"; }
     Mod+Slash { spawn "sh" "-c" "encfs --extpass='zenity --password --timeout=3' -m ~/.local/share/plasma-vault/Han.enc ~/Vaults/Han/"; }
 
     Mod+D { spawn "ags" "toggle" "app-launcher"; }
     Mod+M { spawn "ags" "toggle" "media"; }
-    Mod+O { spawn "ags" "toggle" "dashboard"; }
+    // Mod+O { spawn "ags" "toggle" "dashboard"; }
     Mod+V { spawn "ags" "toggle" "clipboard"; }
     Mod+N { spawn "ags" "toggle" "notifications"; }
     Alt+Escape {spawn "ags" "toggle" "power-menu"; }
-    Mod+Alt+R { spawn "sh" "-c" "ags quit; ags run --gtk4"; }
+    Mod+Alt+R { spawn "sh" "-c" "ags quit; ags run"; }
 
     Mod+Backslash { spawn "wl-mirror" "eDP-1"; }
 
@@ -636,6 +677,8 @@ binds {
 cursor {
     xcursor-theme "Bibata-Modern-Classic"
     xcursor-size 20
+
+    hide-after-inactive-ms 1000
 }
 
 hotkey-overlay {
@@ -644,5 +687,5 @@ hotkey-overlay {
 
 environment {
     QT_QPA_PLATFORM "wayland"
-    DISPLAY ":0" // Xwayland support through xwayland-satellite
+    DISPLAY ":0"
 }
