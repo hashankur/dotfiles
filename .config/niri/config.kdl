@@ -16,7 +16,7 @@ input {
             // layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
 
-            options "caps:escape"
+            // options "caps:escape"
         }
 
         numlock
@@ -88,6 +88,21 @@ output "eDP-1" {
 
     // backdrop-color "#0a0f12"
 }
+output "HDMI-A-1" {
+    // off
+
+    // mode "1920x1080"
+
+    scale 1.0
+
+    transform "normal"
+
+    position x=-1920 y=0
+
+    // variable-refresh-rate
+
+    // backdrop-color "#0a0f12"
+}
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -97,7 +112,7 @@ layout {
     // background-color "#0a0f127f"
 
     // Set gaps around windows in logical pixels.
-    gaps 5
+    gaps 10
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -117,9 +132,11 @@ layout {
         proportion 0.5
         // proportion 0.6866 // For AVD setup
         // proportion 0.709 // For AVD setup
-        proportion 0.705 // For AVD setup
-        proportion 0.66667
-        proportion 0.33333
+        // proportion 0.705 // For AVD setup
+        proportion 0.8
+        proportion 0.2
+        // proportion 0.66667
+        // proportion 0.33333
 
         // Fixed sets the width in logical pixels exactly.
         // fixed 1920
@@ -147,7 +164,7 @@ layout {
         off
 
         // How many logical pixels the ring extends out from the windows.
-        width 1
+        width 2
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -156,7 +173,7 @@ layout {
 
         // Color of the ring on the active monitor.
         // active-color "#3b818c"
-        active-color "#BFBDB6"
+        active-color "#574236"
 
         // Color of the ring on inactive monitors.
         inactive-color "#505050"
@@ -242,10 +259,8 @@ overview {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 spawn-at-startup "swww-daemon"
-// spawn-at-startup "dunst"
 spawn-at-startup "gammastep" "-l" "22.6:88.4"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
-spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swayidle"
 spawn-at-startup "soteria"
 spawn-at-startup "ags" "run"
@@ -367,7 +382,7 @@ window-rule {
     border {
         on
         width 2
-        active-color "#005467"
+        active-color "#004f56"
     }
 }
 
@@ -455,7 +470,7 @@ binds {
     Mod+Shift+Backslash {spawn "sh" "-c" "QT_QPA_PLATFORM=xcb emulator @Pixel_4_API_34 -read-only -use-host-vulkan"; }
 
     Alt+Shift+N { spawn "sh" "-c" "zeditor ~/.nixos"; }
-    Alt+Shift+C { spawn "sh" "-c" "zeditor ~/.config"; }
+    Alt+Shift+C { spawn "sh" "-c" "ghostty -e hx ~/.config"; }
     Alt+Shift+A { spawn "sh" "-c" "zeditor ~/.config/ags"; }
     Mod+Slash { spawn "sh" "-c" "encfs --extpass='zenity --password --timeout=3' -m ~/.local/share/plasma-vault/Han.enc ~/Vaults/Han/"; }
 
@@ -678,7 +693,7 @@ cursor {
     xcursor-theme "Bibata-Modern-Classic"
     xcursor-size 20
 
-    hide-after-inactive-ms 1000
+    // hide-after-inactive-ms 1000
 }
 
 hotkey-overlay {
@@ -687,5 +702,4 @@ hotkey-overlay {
 
 environment {
     QT_QPA_PLATFORM "wayland"
-    DISPLAY ":0"
 }
